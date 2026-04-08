@@ -6,35 +6,37 @@
 <title>Funnel Hub | Freeborn / JA Inc</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e8e0d0;line-height:1.6}
-.header{padding:2.5rem 2rem 1.75rem;border-bottom:1px solid #1f1f1f;text-align:center}
-.badge{display:inline-block;background:#1a1a1a;border:1px solid #2a2a2a;padding:.25rem .8rem;border-radius:20px;font-size:.72rem;color:#666;margin-bottom:.9rem;letter-spacing:.08em;text-transform:uppercase}
-.header h1{font-size:1.55rem;font-weight:700;margin-bottom:.4rem;color:#f0e8d8}
-.header p{color:#5a5040;font-size:.9rem}
-.section-title{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#4a3a28;padding:.7rem 1.5rem;border-bottom:1px solid #181818;margin-top:2rem;display:flex;align-items:center;gap:.75rem}
-.section-title::after{content:'';flex:1;height:1px;background:#181818}
+:root{--cream:#FAF7F0;--navy:#1B2A4A;--copper:#B87333;--gold:#C9A84C;--charcoal:#2C2C2C;--deep-red:#8B1A1A;--dark-copper:#A0622A;--light-navy:#f0f3f8}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6}
+.header{background:var(--navy);padding:2.5rem 2rem 1.75rem;text-align:center}
+.badge{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:.25rem .8rem;border-radius:20px;font-size:.72rem;color:rgba(250,247,240,.6);margin-bottom:.9rem;letter-spacing:.08em;text-transform:uppercase}
+.header h1{font-size:1.55rem;font-weight:700;margin-bottom:.4rem;color:var(--cream)}
+.header p{color:rgba(250,247,240,.6);font-size:.9rem}
+.header a{color:var(--copper);text-decoration:none}
+.section-title{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);padding:.7rem 1.5rem;border-bottom:2px solid var(--copper);margin-top:2rem;display:flex;align-items:center;gap:.75rem;font-weight:700}
+.section-title::after{content:'';flex:1;height:1px;background:rgba(27,42,74,.15)}
 .funnels{max-width:1280px;margin:1.25rem auto 0;padding:0 1.5rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;padding-bottom:1.5rem}
-.funnel{background:#111;border-radius:8px;overflow:hidden;border:1px solid #1e1e1e;transition:border-color .2s}
-.funnel:hover{border-color:#3a2a18}
+.funnel{background:#fff;border-radius:8px;overflow:hidden;border:1px solid rgba(27,42,74,.15);transition:border-color .2s,box-shadow .2s;box-shadow:0 2px 8px rgba(27,42,74,.06)}
+.funnel:hover{border-color:var(--copper);box-shadow:0 4px 16px rgba(27,42,74,.12)}
 .funnel-img{height:180px;overflow:hidden}
 .funnel-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
 .funnel:hover .funnel-img img{transform:scale(1.04)}
 .funnel-body{padding:1.5rem}
-.funnel-brand{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:#5a4a38;margin-bottom:.4rem}
-.funnel-title{font-size:1rem;font-weight:700;margin-bottom:.4rem;color:#e8d8b8;line-height:1.3}
-.funnel-desc{font-size:.82rem;color:#5a4a38;margin-bottom:1.25rem;line-height:1.5}
+.funnel-brand{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--copper);margin-bottom:.4rem;font-weight:700}
+.funnel-title{font-size:1rem;font-weight:700;margin-bottom:.4rem;color:var(--navy);line-height:1.3}
+.funnel-desc{font-size:.82rem;color:#5a6070;margin-bottom:1.25rem;line-height:1.5}
 .pages{display:flex;flex-direction:column;gap:.4rem}
 .page-link{display:flex;align-items:center;gap:.6rem;font-size:.82rem}
-.page-dot{width:8px;height:8px;border-radius:50%;background:#b87333;flex-shrink:0}
-.page-link a{color:#c8a870;text-decoration:none;font-weight:600}
-.page-link a:hover{color:#f0c880}
-.page-tag{font-size:.62rem;background:#1a2535;color:#4a7aaa;padding:.1rem .4rem;border-radius:2px;margin-left:.3rem;font-weight:700;letter-spacing:.04em}
-.page-tag.arms{background:#1a1a0a;color:#b87333}
-.page-tag.prep{background:#0a1a0a;color:#4a9a4a}
-.section-arms .funnel{border-color:#1e1a10}
-.section-arms .funnel:hover{border-color:#5a3a10}
-.section-arms .page-dot{background:#b87333}
-footer{text-align:center;padding:2.5rem;color:#2a2018;font-size:.78rem;border-top:1px solid #151515;margin-top:2.5rem}
+.page-dot{width:8px;height:8px;border-radius:50%;background:var(--copper);flex-shrink:0}
+.page-link a{color:var(--copper);text-decoration:none;font-weight:600}
+.page-link a:hover{color:var(--dark-copper);text-decoration:underline}
+.page-tag{font-size:.62rem;background:var(--light-navy);color:var(--navy);padding:.1rem .4rem;border-radius:2px;margin-left:.3rem;font-weight:700;letter-spacing:.04em}
+.page-tag.arms{background:rgba(184,115,51,.12);color:var(--copper)}
+.page-tag.prep{background:rgba(27,42,74,.1);color:var(--navy)}
+.section-arms .section-title{color:var(--copper)}
+footer{text-align:center;padding:2.5rem;background:var(--navy);color:rgba(250,247,240,.5);font-size:.78rem;margin-top:2.5rem}
+footer a{color:var(--copper);text-decoration:none}
+footer a:hover{text-decoration:underline}
 @media(max-width:700px){.funnels{grid-template-columns:1fr}}
 </style>
 </head>
@@ -44,12 +46,12 @@ footer{text-align:center;padding:2.5rem;color:#2a2018;font-size:.78rem;border-to
   <div class="badge">JA Inc &bull; Internal &bull; Freeborn</div>
   <h1>Funnel Review Hub</h1>
   <p>All 11 Freeborn funnels — deployed and live on GitHub Pages</p>
-  <p style="margin-top:.35rem;font-size:.78rem;color:#3a2a18">https://janderson84.github.io/freeborn/</p>
+  <p style="margin-top:.35rem;font-size:.78rem"><a href="https://janderson84.github.io/freeborn/">https://janderson84.github.io/freeborn/</a></p>
 </div>
 
 <!-- SECOND AMENDMENT -->
 <div class="section-title section-arms">Second Amendment &amp; Home Defense</div>
-<div class="funnels section-arms">
+<div class="funnels">
   <div class="funnel">
     <div class="funnel-img"><img src="freeborn-arms/images/hero_ai.jpg" alt="Home Defense"></div>
     <div class="funnel-body">
@@ -72,7 +74,7 @@ footer{text-align:center;padding:2.5rem;color:#2a2018;font-size:.78rem;border-to
     <div class="funnel-body">
       <div class="funnel-brand">Emergency Prep &bull; 1A</div>
       <div class="funnel-title">The Family Bug-Out Blueprint</div>
-      <div class="funnel-desc">Evacuation planning, go-bags, rally points, 15-min family drill. Free opt-in lead magnet.</div>
+      <div class="funnel-desc">Free Bug-Out Binder — evacuation blueprint for families, includes rally points, go-bag checklist, 15-min drill guide.</div>
       <div class="pages">
         <div class="page-link"><span class="page-dot"></span><a href="funnel-1a/index.html">Landing Page (Opt-In)</a><span class="page-tag prep">LEAD GEN</span></div>
         <div class="page-link"><span class="page-dot"></span><a href="funnel-1a/thank-you.html">Thank You Page</a></div>
@@ -84,7 +86,7 @@ footer{text-align:center;padding:2.5rem;color:#2a2018;font-size:.78rem;border-to
     <div class="funnel-body">
       <div class="funnel-brand">Emergency Prep &bull; 1B</div>
       <div class="funnel-title">The Power-Out Playbook</div>
-      <div class="funnel-desc">Grid-down survival guide for families. 72-hour blackout systems, food, water, heat solutions.</div>
+      <div class="funnel-desc">Grid-Down Checklist — power outage playbook, 72-hour home resilience plan.</div>
       <div class="pages">
         <div class="page-link"><span class="page-dot"></span><a href="funnel-1b/index.html">Landing Page (Opt-In)</a><span class="page-tag prep">LEAD GEN</span></div>
         <div class="page-link"><span class="page-dot"></span><a href="funnel-1b/thank-you.html">Thank You Page</a></div>
@@ -101,7 +103,7 @@ footer{text-align:center;padding:2.5rem;color:#2a2018;font-size:.78rem;border-to
     <div class="funnel-body">
       <div class="funnel-brand">Food Independence &bull; 2A</div>
       <div class="funnel-title">The 1-Year Pantry Method</div>
-      <div class="funnel-desc">Systematic food storage on a real budget. The "buy one more" strategy for building 12-month food security.</div>
+      <div class="funnel-desc">1-Year Pantry Method — step-by-step food storage system, builds a full pantry on a normal budget.</div>
       <div class="pages">
         <div class="page-link"><span class="page-dot"></span><a href="funnel-2a/index.html">Landing Page (Opt-In)</a><span class="page-tag prep">LEAD GEN</span></div>
         <div class="page-link"><span class="page-dot"></span><a href="funnel-2a/thank-you.html">Thank You Page</a></div>
@@ -113,7 +115,7 @@ footer{text-align:center;padding:2.5rem;color:#2a2018;font-size:.78rem;border-to
     <div class="funnel-body">
       <div class="funnel-brand">Food Independence &bull; 2B</div>
       <div class="funnel-title">The $50 Backyard Garden</div>
-      <div class="funnel-desc">Grow hundreds of dollars of food starting with $50 and a weekend. High-yield beginner gardening system.</div>
+      <div class="funnel-desc">$50 Backyard Garden — produce food from a small space, works in suburbs, starts with $50.</div>
       <div class="pages">
         <div class="page-link"><span class="page-dot"></span><a href="funnel-2b/index.html">Landing Page (Opt-In)</a><span class="page-tag prep">LEAD GEN</span></div>
         <div class="page-link"><span class="page-dot"></span><a href="funnel-2b/thank-you.html">Thank You Page</a></div>
@@ -130,7 +132,7 @@ footer{text-align:center;padding:2.5rem;color:#2a2018;font-size:.78rem;border-to
     <div class="funnel-body">
       <div class="funnel-brand">Homestead Skills &bull; 3A</div>
       <div class="funnel-title">The Modern Homestead Skills Roadmap</div>
-      <div class="funnel-desc">Prioritized skill-building guide for the self-reliant family. 12-month learning calendar and assessment.</div>
+      <div class="funnel-desc">Modern Homestead Skills Roadmap — priority skill sequence for homesteaders, practical milestones.</div>
       <div class="pages">
         <div class="page-link"><span class="page-dot"></span><a href="funnel-3a/index.html">Landing Page (Opt-In)</a><span class="page-tag prep">LEAD GEN</span></div>
         <div class="page-link"><span class="page-dot"></span><a href="funnel-3a/thank-you.html">Thank You Page</a></div>
@@ -142,7 +144,7 @@ footer{text-align:center;padding:2.5rem;color:#2a2018;font-size:.78rem;border-to
     <div class="funnel-body">
       <div class="funnel-brand">Homestead Skills &bull; 3B</div>
       <div class="funnel-title">Food Preservation Mastery</div>
-      <div class="funnel-desc">Canning, fermenting, dehydrating, and freezing for beginners. Turn seasonal surpluses into year-round pantry.</div>
+      <div class="funnel-desc">Food Preservation Mastery — canning, fermenting, and drying guide, zero-waste food storage.</div>
       <div class="pages">
         <div class="page-link"><span class="page-dot"></span><a href="funnel-3b/index.html">Landing Page (Opt-In)</a><span class="page-tag prep">LEAD GEN</span></div>
         <div class="page-link"><span class="page-dot"></span><a href="funnel-3b/thank-you.html">Thank You Page</a></div>
@@ -159,7 +161,7 @@ footer{text-align:center;padding:2.5rem;color:#2a2018;font-size:.78rem;border-to
     <div class="funnel-body">
       <div class="funnel-brand">Financial Independence &bull; 4A</div>
       <div class="funnel-title">The One-Income Homestead</div>
-      <div class="funnel-desc">Reduce monthly expenses by $500-$1,000 through strategic home production. Financial resilience through self-reliance.</div>
+      <div class="funnel-desc">One-Income Homestead — run a homestead on one income, expense audit and priority system.</div>
       <div class="pages">
         <div class="page-link"><span class="page-dot"></span><a href="funnel-4a/index.html">Landing Page (Opt-In)</a><span class="page-tag prep">LEAD GEN</span></div>
         <div class="page-link"><span class="page-dot"></span><a href="funnel-4a/thank-you.html">Thank You Page</a></div>
@@ -171,7 +173,7 @@ footer{text-align:center;padding:2.5rem;color:#2a2018;font-size:.78rem;border-to
     <div class="funnel-body">
       <div class="funnel-brand">Financial Independence &bull; 4B</div>
       <div class="funnel-title">The Homestead Side Income Blueprint</div>
-      <div class="funnel-desc">6 income streams from your homestead. Eggs, preserves, workshops, YouTube — real numbers, starter steps.</div>
+      <div class="funnel-desc">Homestead Side Income Blueprint — turn homestead skills into income streams, real numbers.</div>
       <div class="pages">
         <div class="page-link"><span class="page-dot"></span><a href="funnel-4b/index.html">Landing Page (Opt-In)</a><span class="page-tag prep">LEAD GEN</span></div>
         <div class="page-link"><span class="page-dot"></span><a href="funnel-4b/thank-you.html">Thank You Page</a></div>
@@ -188,7 +190,7 @@ footer{text-align:center;padding:2.5rem;color:#2a2018;font-size:.78rem;border-to
     <div class="funnel-body">
       <div class="funnel-brand">Medical Preparedness &bull; 5A</div>
       <div class="funnel-title">The Family Medical Preparedness Kit</div>
-      <div class="funnel-desc">Complete household medical system for families far from emergency care. Supplies, skills, and decision frameworks.</div>
+      <div class="funnel-desc">Family Medical Preparedness Kit — off-grid first aid guide, 30-day medical supply checklist.</div>
       <div class="pages">
         <div class="page-link"><span class="page-dot"></span><a href="funnel-5a/index.html">Landing Page (Opt-In)</a><span class="page-tag prep">LEAD GEN</span></div>
         <div class="page-link"><span class="page-dot"></span><a href="funnel-5a/thank-you.html">Thank You Page</a></div>
@@ -200,7 +202,7 @@ footer{text-align:center;padding:2.5rem;color:#2a2018;font-size:.78rem;border-to
     <div class="funnel-body">
       <div class="funnel-brand">Medical Preparedness &bull; 5B</div>
       <div class="funnel-title">The Backyard Apothecary</div>
-      <div class="funnel-desc">12 medicinal plants to grow at home. Tinctures, salves, teas — plant medicine grounded in modern research.</div>
+      <div class="funnel-desc">Backyard Apothecary — grow and use medicinal herbs, reduce pharmacy dependence.</div>
       <div class="pages">
         <div class="page-link"><span class="page-dot"></span><a href="funnel-5b/index.html">Landing Page (Opt-In)</a><span class="page-tag prep">LEAD GEN</span></div>
         <div class="page-link"><span class="page-dot"></span><a href="funnel-5b/thank-you.html">Thank You Page</a></div>
@@ -210,7 +212,7 @@ footer{text-align:center;padding:2.5rem;color:#2a2018;font-size:.78rem;border-to
 </div>
 
 <footer>
-  &copy; 2025 Freeborn &bull; JA Inc Internal &bull; 
+  &copy; 2025 Freeborn &bull; JA Inc Internal &bull;
   <a href="https://janderson84.github.io/freeborn/">Live Site</a>
 </footer>
 </body>
