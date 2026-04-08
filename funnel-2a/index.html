@@ -3,60 +3,129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The 1-Year Pantry Method | Freeborn</title>
+<title>Freeborn | Freeborn</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Georgia,'Times New Roman',serif;background:#f5f0e8;color:#1a1a0f;line-height:1.7}
-.hero{position:relative;height:460px;overflow:hidden;background:#2a2015}
-.hero img{width:100%;height:100%;object-fit:cover;opacity:.7}
-.hero-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem 2rem;background:linear-gradient(to top,rgba(20,15,5,.9) 0%,transparent 60%)}
-.hero-tag{display:inline-block;background:#b87333;color:#fff;font-family:-apple-system,sans-serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;padding:.3rem .8rem;border-radius:3px;margin-bottom:1rem}
-.hero h1{font-size:clamp(1.6rem,4vw,2.5rem);color:#fff;line-height:1.25;max-width:700px;margin-bottom:.75rem}
-.hero p{color:#d4c9b0;font-size:1rem;max-width:560px;font-family:-apple-system,sans-serif}
-.container{max-width:720px;margin:0 auto;padding:3rem 1.5rem}
-.lead{font-size:1.2rem;color:#3a2e1a;margin-bottom:2rem;font-style:italic}
-.bullets{list-style:none;margin:2rem 0;display:flex;flex-direction:column;gap:.9rem}
-.bullets li{display:flex;gap:.75rem;align-items:flex-start;font-size:1rem}
-.bullets li::before{content:'✓';color:#b87333;font-weight:700;font-size:1.1rem;flex-shrink:0;margin-top:.1rem}
-.cta-box{background:#1a1208;border-radius:10px;padding:2.5rem 2rem;text-align:center;margin:2.5rem 0}
-.cta-box p{color:#d4c9b0;font-family:-apple-system,sans-serif;font-size:.9rem;margin-bottom:1.5rem}
-.cta-btn{display:inline-block;background:#b87333;color:#fff;font-family:-apple-system,sans-serif;font-size:1.05rem;font-weight:700;padding:1rem 2rem;border-radius:6px;text-decoration:none;transition:background .2s}
-.cta-btn:hover{background:#9a6020}
-.trust{color:#999;font-family:-apple-system,sans-serif;font-size:.8rem;margin-top:.9rem}
-.section{margin:2.5rem 0}
-.section h2{font-size:1.4rem;margin-bottom:1rem;color:#2a1e08}
-.section p{color:#3a3020;margin-bottom:.75rem}
-footer{background:#1a1208;color:#888;text-align:center;padding:2rem;font-family:-apple-system,sans-serif;font-size:.8rem}
-@media(max-width:600px){.hero{height:320px}.container{padding:2rem 1rem}}
+:root{--cream:#f5f0e8;--dark:#1a0f05;--brown:#3b2510;--copper:#b87333;--forest:#4a6741;--warm:#8b5e3c;--red:#7a1c1c}
+body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:var(--dark);line-height:1.75}
+.banner{background:var(--brown);color:#f0d8a8;text-align:center;padding:.6rem 1rem;font-size:.85rem;letter-spacing:.04em;font-family:-apple-system,sans-serif}
+.banner strong{color:#f5d78e}
+nav{background:var(--dark);padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.nav-brand{color:var(--copper);font-size:1.05rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-family:-apple-system,sans-serif}
+nav a.nav-link{color:#bba080;font-size:.82rem;text-decoration:none;font-family:-apple-system,sans-serif}
+nav a.nav-link:hover{color:var(--copper)}
+.hero{position:relative;height:520px;overflow:hidden}
+.hero img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,5,0,.88) 0%,rgba(10,5,0,.45) 55%,rgba(10,5,0,.2) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem 2rem 3rem}
+.hero-tag{display:inline-block;background:var(--copper);color:#fff;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;padding:.3rem .9rem;border-radius:2px;margin-bottom:1rem;font-family:-apple-system,sans-serif;width:fit-content}
+.hero h1{font-size:clamp(1.7rem,4.5vw,2.8rem);color:#fff;line-height:1.2;max-width:740px;margin-bottom:.9rem;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.hero-sub{color:#d4c4a0;font-size:1.05rem;max-width:580px;font-family:-apple-system,sans-serif;line-height:1.55}
+.problem{background:#1a0f05;color:#e8d9c0;padding:3rem 2rem}
+.problem-inner{max-width:720px;margin:0 auto}
+.problem h2{font-size:1.5rem;color:#f5d78e;margin-bottom:1.5rem;font-style:italic}
+.problem p{margin-bottom:1rem;color:#c8b898;font-family:-apple-system,sans-serif;font-size:.97rem;line-height:1.65}
+.problem ul{margin:1.25rem 0 1.25rem 1.25rem;color:#c8b898;font-family:-apple-system,sans-serif;font-size:.97rem}
+.problem ul li{margin-bottom:.5rem;list-style:disc}
+.story{background:var(--cream);padding:3.5rem 2rem;border-top:4px solid var(--copper)}
+.story-inner{max-width:720px;margin:0 auto}
+.story-label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.75rem;font-family:-apple-system,sans-serif}
+.story h2{font-size:1.55rem;color:var(--brown);margin-bottom:1.5rem;line-height:1.35}
+.story p{margin-bottom:1rem;color:#2a1a0a;font-size:.97rem;line-height:1.7}
+.offer{background:#f0e8d8;padding:3.5rem 2rem;border-top:1px solid #d4b890}
+.offer-inner{max-width:720px;margin:0 auto}
+.offer-label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.75rem;font-family:-apple-system,sans-serif}
+.offer h2{font-size:1.5rem;color:var(--brown);margin-bottom:.5rem;line-height:1.3}
+.offer-subtitle{color:var(--warm);font-size:.97rem;margin-bottom:1.75rem;font-family:-apple-system,sans-serif;font-style:italic}
+.bullets{list-style:none;display:flex;flex-direction:column;gap:.8rem;margin-bottom:2rem}
+.bullets li{display:flex;gap:.9rem;align-items:flex-start;font-size:.97rem;color:#1a0f05;font-family:-apple-system,sans-serif}
+.bullets li::before{content:'✓';background:var(--forest);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;margin-top:.1rem}
+.optin{background:var(--brown);padding:4rem 2rem;text-align:center}
+.optin h2{font-size:1.8rem;color:#f5d78e;margin-bottom:.5rem;line-height:1.3}
+.optin .optin-sub{color:#c8a870;font-family:-apple-system,sans-serif;font-size:.97rem;margin-bottom:2rem}
+.form-wrap{max-width:460px;margin:0 auto}
+.form-wrap input{display:block;width:100%;padding:.95rem 1rem;margin-bottom:.75rem;border:none;border-radius:4px;font-size:1rem;font-family:-apple-system,sans-serif;background:#fff;color:#1a0f05}
+.optin-btn{display:block;width:100%;background:var(--copper);color:#fff;padding:1.1rem;border:none;border-radius:4px;font-size:1.05rem;font-weight:700;font-family:-apple-system,sans-serif;cursor:pointer;text-decoration:none;transition:background .2s;letter-spacing:.02em}
+.optin-btn:hover{background:#9a6228}
+.trust{color:#9a8060;font-size:.78rem;margin-top:.75rem;font-family:-apple-system,sans-serif}
+.proof{background:#e8dfc8;padding:3rem 2rem;border-top:1px solid #c8b890}
+.proof-inner{max-width:720px;margin:0 auto}
+.proof-label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--warm);margin-bottom:1.25rem;font-family:-apple-system,sans-serif}
+.testimonials{display:grid;gap:1.25rem}
+@media(min-width:640px){.testimonials{grid-template-columns:1fr 1fr}}
+.testimonial{background:#fff;border-radius:6px;padding:1.5rem;border-left:4px solid var(--copper);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.testimonial blockquote{font-style:italic;font-size:.95rem;color:#2a1a0a;margin-bottom:.75rem;line-height:1.6}
+.testimonial cite{color:var(--warm);font-weight:700;font-style:normal;font-family:-apple-system,sans-serif;font-size:.85rem}
+footer{background:var(--dark);color:#5a4030;text-align:center;padding:2rem;font-family:-apple-system,sans-serif;font-size:.8rem}
+footer a{color:#7a6040;text-decoration:none}
+@media(max-width:600px){.hero{height:360px}.hero h1{font-size:1.5rem}.optin h2{font-size:1.4rem}}
 </style>
 </head>
 <body>
+<div class="banner">⚠ <strong>Free Download:</strong> Get instant access — no credit card required.</div>
+<nav>
+  <a class="nav-brand" href="../index.html">Freeborn</a>
+  <a class="nav-link" href="../index.html">← All Funnels</a>
+</nav>
 <div class="hero">
-  <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="The 1-Year Pantry Method" loading="lazy">
+  <img src="https://images.pexels.com/photos/5765828/pexels-photo-5765828.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Freeborn &bull; Food Independence" loading="lazy">
   <div class="hero-overlay">
     <span class="hero-tag">Freeborn &bull; Food Independence</span>
-    <h1>How to Build a Full Year of Food Security — Without a Farmstead, a Fortune, or a Panic Room</h1>
-    <p>The 1-Year Pantry Method gives suburban and rural families a calm, systematic way to store 12 months of real food — using grocery store runs, not overpriced survival kits.</p>
+    <h1>How to Build a Full Year of Food Security — Without a Farmstead, a Fortune, or a Panic-Buying Frenzy</h1>
+    <p class="hero-sub">Free download. Instant access. Built for real families — not preppers living in bunkers.</p>
   </div>
 </div>
-<div class="container">
-  <ul class="bullets">
-<li>Know exactly what to buy, how much, and in what order — no guesswork</li>
-<li>A proven 90-day tiered shopping strategy that builds your pantry without blowing your budget</li>
-<li>Caloric math done for you — feed your family the right calories even when stores are empty</li>
-<li>The only shelf-stable food rankings that matter (and what preppers get completely wrong)</li>
-<li>A printable inventory tracker so you always know what you have and what you need</li>
-<li>Works for families of 2, 4, or 6 — all the math is built in</li>
-  </ul>
-  <div class="cta-box">
-    <p>Free. Instant download. No credit card required.</p>
-    <a class="cta-btn" href="thank-you.html">Yes — Send Me the Free Pantry Build System &rarr;</a>
-    <p class="trust">Free. Instant download. No spam — ever. Unsubscribe any time.</p>
+<div class="problem">
+  <div class="problem-inner">
+    <h2>The grocery store has three days of food. Your pantry has three days of food. That's not a coincidence — it's a supply chain vulnerability.</h2>
+    <p>The COVID-19 supply chain collapse was a preview. Empty shelves, price spikes, and rationing — not in a third-world country, but in American grocery stores in 2020. And food security experts say we haven't fixed the underlying fragility.</p>
+<p>Most American households are three missed paychecks or one supply shock away from genuine food stress. And the solution isn't panic-buying 40 cans of beans every time a storm approaches — it's building a calm, systematic food buffer that grows quietly in the background of your normal life.</p>
+<p>That's what the 1-Year Pantry Method is. Not hoarding. Not extreme prepping. Just a practical system for building real food resilience — a little at a time.</p>
   </div>
-  
+</div>
+<div class="story">
+  <div class="story-inner">
+    <div class="story-label">Why I Created This</div>
+    <h2>How We Built 8 Months of Food Security on a Modest Budget</h2>
+    <p>When I first looked at building a real food pantry, every resource I found was either for hard-core preppers with unlimited budgets or completely vague "just stock up on canned goods" advice. Neither was useful.</p>
+<p>So I built my own system. Over 18 months, working with a modest grocery budget, I figured out what to buy first, how to rotate it properly, and how to make it all food my family actually eats. No MREs. No freeze-dried mystery meals. Real food, real rotation, real peace of mind. The 1-Year Pantry Method is that system, distilled into a free guide.</p>
+  </div>
+</div>
+<div class="offer">
+  <div class="offer-inner">
+    <div class="offer-label">What You Get — Free</div>
+    <h2>The 1-Year Pantry Method</h2>
+    <p class="offer-subtitle">A step-by-step pantry building system that works on a real family budget.</p>
+    <ul class="bullets">
+      <li>The 'buy one more' weekly strategy — how to build a year's supply without breaking the budget</li>
+<li>A priority food list — what to stock first, second, and third (most guides get this backwards)</li>
+<li>Shelf-life cheat sheet — how long things actually last vs. what the label says</li>
+<li>A rotation calendar so nothing expires in a dark corner of your pantry</li>
+<li>Budget tracking worksheet — build your pantry for as little as $10-15 extra per week</li>
+<li>A family taste-test protocol — ensuring your pantry has food your family will actually eat</li>
+    </ul>
+  </div>
+</div>
+<div class="optin" id="get-it">
+  <h2>Send Me the Free Download &rarr;</h2>
+  <p class="optin-sub">Enter your name and email below. I'll send it immediately.</p>
+  <div class="form-wrap">
+    <input type="text" placeholder="Your First Name" />
+    <input type="email" placeholder="Your Email Address" />
+    <a class="optin-btn" href="thank-you.html">Yes — Send Me the 1-Year Pantry Method Free</a>
+    <p class="trust">🔒 No spam. No sharing. Unsubscribe anytime.</p>
+  </div>
+</div>
+<div class="proof">
+  <div class="proof-inner">
+    <div class="proof-label">What People Are Saying</div>
+    <div class="testimonials">
+      <div class="testimonial"><blockquote>"Six months in and we have four months of food stocked. The weekly 'buy one more' system makes it painless — I barely notice the extra spend."</blockquote><cite>— Lisa D., stay-at-home mom, Georgia</cite></div>
+<div class="testimonial"><blockquote>"Finally a pantry system based on real food, not survival rations. My family eats everything in our rotation."</blockquote><cite>— Mark H., father of four, Idaho</cite></div>
+    </div>
+  </div>
 </div>
 <footer>
-  &copy; 2025 Freeborn &bull; <a href="/" style="color:#666">All Funnels</a>
+  &copy; 2025 Freeborn &bull; JA Inc &bull; <a href="../index.html">All Funnels</a>
 </footer>
 </body>
 </html>
