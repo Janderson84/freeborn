@@ -4,167 +4,429 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Free Home Defense Blueprint | Freeborn Arms</title>
+<meta name="description" content="The 5-layer home defense framework used by security professionals — printable, room-by-room — for responsible gun owners. Just $17 today.">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--black:#0d0d0d;--dark:#111;--steel:#1e2d3d;--copper:#b87333;--cream:#f0ede8;--red:#7a1010;--light:#e8e4de}
-body{font-family:Georgia,'Times New Roman',serif;background:var(--black);color:var(--cream);line-height:1.75}
-.banner{background:var(--red);color:#f5d8d8;text-align:center;padding:.55rem 1rem;font-size:.82rem;letter-spacing:.04em;font-family:-apple-system,sans-serif}
-nav{background:#0a0a0a;padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;border-bottom:1px solid #222}
+:root{
+  --black:#0d0d0d;
+  --dark:#111;
+  --steel:#1e2d3d;
+  --copper:#b87333;
+  --copper-light:#d4904a;
+  --cream:#f0ede8;
+  --red:#7a1010;
+  --red-dark:#5a0808;
+  --light:#e8e4de;
+  --gold:#c9a227;
+  --muted:#8a9aaa;
+}
+body{font-family:Georgia,'Times New Roman',serif;background:var(--black);color:var(--cream);line-height:1.75;font-size:17px}
+
+/* URGENCY BAR */
+.urgency-bar{background:#7b1a1a;color:#fff;text-align:center;padding:11px 20px;font-size:14px;font-weight:700;font-family:-apple-system,sans-serif;letter-spacing:.03em}
+#timer{color:#f5c842;font-weight:900}
+
+/* NAV */
+nav{background:#0a0a0a;padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;border-bottom:1px solid #1e2d3d}
 .nav-brand{color:var(--copper);font-size:1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;font-family:-apple-system,sans-serif}
 nav a.nav-link{color:#888;font-size:.82rem;text-decoration:none;font-family:-apple-system,sans-serif}
 nav a.nav-link:hover{color:var(--copper)}
-.hero{position:relative;height:560px;overflow:hidden}
-.hero img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.55)}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.5) 50%,rgba(0,0,0,.15) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:3rem 2.5rem 3.5rem}
-.hero-tag{display:inline-block;background:var(--copper);color:#fff;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .9rem;border-radius:2px;margin-bottom:1rem;font-family:-apple-system,sans-serif;width:fit-content}
-.hero h1{font-size:clamp(1.8rem,4.5vw,3rem);color:#fff;line-height:1.18;max-width:780px;margin-bottom:1rem;text-shadow:0 3px 16px rgba(0,0,0,.8)}
-.hero-sub{color:#b8a890;font-size:1.05rem;max-width:620px;font-family:-apple-system,sans-serif;line-height:1.55}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;background:var(--steel)}
+.hero-grid{display:grid;grid-template-columns:1fr 460px;min-height:520px}
+.hero-copy{padding:60px 44px 60px 2.5rem;display:flex;flex-direction:column;justify-content:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#111;font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:3px;margin-bottom:18px;font-family:sans-serif;align-self:flex-start}
+.hero h1{font-size:clamp(1.7rem,4vw,2.9rem);color:#fff;line-height:1.15;margin-bottom:1rem;font-weight:900}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.8);margin-bottom:1.75rem;font-family:-apple-system,sans-serif;line-height:1.6;font-style:italic}
+.hero-note{font-size:12px;color:rgba(255,255,255,.5);margin-top:10px;font-family:sans-serif}
+.hero-img{overflow:hidden}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* BUTTONS */
+.btn{display:inline-block;padding:18px 40px;font-size:1.05rem;font-weight:800;color:#fff;background:var(--red);border:none;border-radius:4px;cursor:pointer;font-family:-apple-system,sans-serif;letter-spacing:.03em;transition:background .2s,transform .15s;text-align:center;text-decoration:none}
+.btn:hover{background:var(--red-dark);transform:translateY(-2px)}
+.btn-lg{font-size:1.15rem;padding:20px 44px;width:100%;max-width:560px;display:block;margin:0 auto}
+
+/* STAT STRIP */
 .stat-strip{background:var(--steel);display:flex;flex-wrap:wrap;justify-content:center;gap:0;border-top:2px solid var(--copper)}
 .stat{padding:1.5rem 2.5rem;text-align:center;border-right:1px solid #2a3d50}
 .stat:last-child{border-right:none}
 .stat strong{display:block;font-size:2rem;color:var(--copper);font-family:-apple-system,sans-serif;font-weight:800;line-height:1}
-.stat span{font-size:.78rem;color:#8a9aaa;font-family:-apple-system,sans-serif;letter-spacing:.05em;text-transform:uppercase;margin-top:.3rem;display:block}
-.problem{background:#0f0f0f;padding:3.5rem 2rem;border-top:1px solid #1a1a1a}
-.problem-inner{max-width:720px;margin:0 auto}
-.problem h2{font-size:1.55rem;color:#f5d78e;margin-bottom:1.5rem;line-height:1.3}
-.problem p{margin-bottom:1rem;color:#a89878;font-family:-apple-system,sans-serif;font-size:.97rem;line-height:1.65}
-.story{background:#111;padding:3.5rem 2rem;border-top:3px solid var(--copper)}
-.story-inner{max-width:720px;margin:0 auto}
-.story-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.75rem;font-family:-apple-system,sans-serif}
-.story h2{font-size:1.5rem;color:#e8d8b8;margin-bottom:1.5rem;line-height:1.3}
-.story p{margin-bottom:1rem;color:#a89878;font-family:-apple-system,sans-serif;font-size:.97rem;line-height:1.7}
-.offer{background:#0d1520;padding:3.5rem 2rem;border-top:1px solid #1a2535}
-.offer-inner{max-width:720px;margin:0 auto}
-.offer-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.75rem;font-family:-apple-system,sans-serif}
-.offer h2{font-size:1.5rem;color:#e8d8b8;margin-bottom:.5rem}
-.offer-subtitle{color:#7a8898;font-size:.97rem;margin-bottom:1.75rem;font-family:-apple-system,sans-serif;font-style:italic}
-.bullets{list-style:none;display:flex;flex-direction:column;gap:.85rem;margin-bottom:2rem}
-.bullets li{display:flex;gap:.9rem;align-items:flex-start;font-size:.97rem;color:#c8b898;font-family:-apple-system,sans-serif}
-.bullets li::before{content:'▶';color:var(--copper);font-size:.7rem;flex-shrink:0;margin-top:.35rem}
-.optin{background:#0a0a0a;padding:4rem 2rem;text-align:center;border-top:2px solid var(--copper)}
-.optin h2{font-size:1.8rem;color:#f5d78e;margin-bottom:.5rem;line-height:1.3}
-.optin-sub{color:#7a6848;font-family:-apple-system,sans-serif;font-size:.95rem;margin-bottom:2rem}
-.form-wrap{max-width:460px;margin:0 auto}
-.form-wrap input{display:block;width:100%;padding:.95rem 1rem;margin-bottom:.75rem;border:1px solid #333;border-radius:3px;font-size:1rem;font-family:-apple-system,sans-serif;background:#1a1a1a;color:#e8d8b8}
-.optin-btn{display:block;width:100%;background:var(--red);color:#fff;padding:1.15rem;border:none;border-radius:3px;font-size:1.05rem;font-weight:700;font-family:-apple-system,sans-serif;cursor:pointer;text-decoration:none;transition:background .2s;letter-spacing:.03em}
-.optin-btn:hover{background:#5a0808}
-.trust{color:#5a4a3a;font-size:.78rem;margin-top:.75rem;font-family:-apple-system,sans-serif}
-.proof{background:#0f0f0f;padding:3rem 2rem;border-top:1px solid #1a1a1a}
-.proof-inner{max-width:720px;margin:0 auto}
-.proof-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#7a6848;margin-bottom:1.25rem;font-family:-apple-system,sans-serif}
-.testimonials{display:grid;gap:1.25rem}
-@media(min-width:640px){.testimonials{grid-template-columns:1fr 1fr}}
-.testimonial{background:#1a1a1a;border-radius:4px;padding:1.5rem;border-left:3px solid var(--copper)}
-.testimonial blockquote{font-style:italic;font-size:.95rem;color:#c8b898;margin-bottom:.75rem;line-height:1.6}
-.testimonial cite{color:var(--copper);font-weight:700;font-style:normal;font-family:-apple-system,sans-serif;font-size:.82rem}
-footer{background:#0a0a0a;color:#3a3028;text-align:center;padding:2rem;font-family:-apple-system,sans-serif;font-size:.78rem;border-top:1px solid #151515}
-footer a{color:#4a4030;text-decoration:none}
-@media(max-width:600px){.hero{height:380px}.stat{padding:1.25rem 1.5rem}.stat strong{font-size:1.6rem}}
+.stat span{font-size:.78rem;color:var(--muted);font-family:-apple-system,sans-serif;letter-spacing:.05em;text-transform:uppercase;margin-top:.3rem;display:block}
 
-.price-display{text-align:center;margin-bottom:1.5rem}
-.price-was{color:#9a8060;font-size:.95rem;font-family:-apple-system,sans-serif;text-decoration:line-through;margin-bottom:.25rem}
-.price-now-big{font-size:2.8rem;font-weight:900;color:#f5d78e;font-family:-apple-system,sans-serif;line-height:1;letter-spacing:-.02em}
-.price-tag-line{color:#c8a870;font-size:.85rem;font-family:-apple-system,sans-serif;margin-top:.25rem;letter-spacing:.04em;text-transform:uppercase}
-.guarantee-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(74,103,65,.25);border:1px solid rgba(74,103,65,.5);border-radius:4px;padding:.5rem 1rem;margin:1rem auto;font-family:-apple-system,sans-serif;font-size:.82rem;color:#a8c8a0}
-.story-img-wrap{margin:1.5rem 0;border-radius:6px;overflow:hidden}
-.story-img-wrap img{width:100%;max-height:320px;object-fit:cover;display:block}
-
-.quick-buy{background:#0a0f18;padding:2rem;text-align:center;border-bottom:3px solid var(--copper)}
+/* QUICK BUY */
+.quick-buy{background:#0a0f18;padding:2rem;text-align:center;border-bottom:3px solid var(--copper);border-top:3px solid var(--copper)}
 .quick-buy-inner{max-width:500px;margin:0 auto}
 .quick-buy-label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.5rem;font-family:-apple-system,sans-serif}
 .quick-buy-price{font-size:3rem;font-weight:900;color:#f5d78e;line-height:1;font-family:-apple-system,sans-serif}
 .quick-buy-sub{color:#8b7060;font-size:.85rem;font-family:-apple-system,sans-serif;margin:.4rem 0 1.25rem}
-.problem-img-wrap{margin:2rem 0 0;border-radius:6px;overflow:hidden}
-.problem-img-wrap img{width:100%;max-height:340px;object-fit:cover;display:block}
+
+/* PROBLEM */
+.problem{background:#0f0f0f;padding:3.5rem 2rem;border-top:1px solid #1a1a1a}
+.problem-inner{max-width:720px;margin:0 auto}
+.problem h2{font-size:clamp(1.3rem,3vw,1.75rem);color:#f5d78e;margin-bottom:1.5rem;line-height:1.3}
+.problem p{margin-bottom:1rem;color:#a89878;font-family:-apple-system,sans-serif;font-size:.97rem;line-height:1.7}
+.danger-box{background:rgba(123,26,26,.25);border-left:5px solid #c0392b;padding:16px 22px;margin:24px 0;border-radius:0 6px 6px 0}
+.danger-box p{margin:0;font-weight:700;color:#e8a0a0;font-size:.97rem;font-family:-apple-system,sans-serif}
+
+/* IMG BREAK */
+.img-break{overflow:hidden;max-height:360px}
+.img-break img{width:100%;height:360px;object-fit:cover;display:block;filter:brightness(.75)}
+
+/* STORY */
+.story{background:#111;padding:3.5rem 2rem;border-top:3px solid var(--copper)}
+.story-inner{max-width:720px;margin:0 auto}
+.story-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.75rem;font-family:-apple-system,sans-serif}
+.story h2{font-size:clamp(1.3rem,3vw,1.65rem);color:#e8d8b8;margin-bottom:1.25rem;line-height:1.3}
+.story p{margin-bottom:1rem;color:#a89878;font-family:-apple-system,sans-serif;font-size:.97rem;line-height:1.7}
+.pull-quote{border-left:5px solid var(--gold);padding:16px 22px;background:rgba(201,162,39,.08);margin:24px 0;font-size:1.15rem;font-weight:700;font-style:italic;color:#e8d8b8;border-radius:0 6px 6px 0}
+.story-img-wrap{margin:1.5rem 0;border-radius:6px;overflow:hidden;border:1px solid #2a2a2a}
+.story-img-wrap img{width:100%;max-height:320px;object-fit:cover;display:block}
+
+/* INSIDE / CHAPTERS */
+.inside{background:#0d1520;padding:3.5rem 2rem}
+.inside-inner{max-width:760px;margin:0 auto}
+.inside-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.75rem;font-family:-apple-system,sans-serif}
+.inside h2{font-size:clamp(1.3rem,3vw,1.65rem);color:#e8d8b8;margin-bottom:.5rem;line-height:1.3}
+.inside-sub{color:#7a8898;font-size:.9rem;margin-bottom:1.75rem;font-family:-apple-system,sans-serif;font-style:italic}
+.inside-grid{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:start}
+.book-img img{width:100%;border-radius:6px;box-shadow:-8px 10px 32px rgba(0,0,0,.7)}
+.chapters{display:flex;flex-direction:column;gap:12px}
+.chapter{background:rgba(255,255,255,.04);border-radius:6px;padding:16px 20px;border:1px solid #2a3d50;display:flex;gap:14px;align-items:flex-start}
+.ch-num{width:32px;height:32px;background:var(--copper);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0;font-family:sans-serif}
+.chapter h3{font-size:.9rem;margin-bottom:3px;font-family:-apple-system,sans-serif;color:#e0d0b8;font-weight:700}
+.chapter p{font-size:.82rem;color:#7a8898;margin:0;font-family:-apple-system,sans-serif;font-style:normal}
+
+/* OFFER */
+.offer{background:#0f0f0f;padding:3.5rem 2rem;border-top:1px solid #1a2535}
+.offer-inner{max-width:720px;margin:0 auto;text-align:center}
+.offer-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.75rem;font-family:-apple-system,sans-serif}
+.offer h2{font-size:clamp(1.3rem,3vw,1.65rem);color:#e8d8b8;margin-bottom:.5rem}
+.offer-subtitle{color:#7a8898;font-size:.97rem;margin-bottom:1.75rem;font-family:-apple-system,sans-serif;font-style:italic}
+.value-stack{background:#0d1520;border-radius:8px;overflow:hidden;border:1px solid #2a3d50;margin-bottom:20px;text-align:left}
+.stack-hdr{background:var(--steel);color:#e8d8b8;padding:12px 22px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;font-family:sans-serif}
+.si{display:flex;justify-content:space-between;align-items:center;padding:12px 22px;border-bottom:1px solid #1a2535;font-size:.88rem;font-family:sans-serif}
+.si .sn{flex:1;font-weight:600;color:#c8b898}
+.si .sv{color:#7a8898;font-size:.82rem;white-space:nowrap;margin-left:10px}
+.stack-total{display:flex;justify-content:space-between;padding:12px 22px;background:rgba(30,45,61,.5);font-weight:700;font-size:.97rem;border-bottom:1px solid #2a3d50;font-family:sans-serif;color:#c8b898}
+.today-price{display:flex;justify-content:space-between;padding:16px 22px;font-weight:800;font-size:1.1rem;font-family:sans-serif;color:#f5d78e}
+.today-price .price{color:var(--copper-light);font-size:1.4rem}
+
+/* OPTIN */
+.optin{background:#0a0a0a;padding:4rem 2rem;text-align:center;border-top:2px solid var(--copper)}
+.optin h2{font-size:clamp(1.4rem,3vw,2rem);color:#f5d78e;margin-bottom:.5rem;line-height:1.3}
+.optin-sub{color:#7a6848;font-family:-apple-system,sans-serif;font-size:.95rem;margin-bottom:2rem}
+.form-wrap{max-width:480px;margin:0 auto}
+.price-display{text-align:center;margin-bottom:1.5rem}
+.price-was{color:#9a8060;font-size:.95rem;font-family:-apple-system,sans-serif;text-decoration:line-through;margin-bottom:.25rem}
+.price-now-big{font-size:3rem;font-weight:900;color:#f5d78e;font-family:-apple-system,sans-serif;line-height:1;letter-spacing:-.02em}
+.price-tag-line{color:#c8a870;font-size:.85rem;font-family:-apple-system,sans-serif;margin-top:.25rem;letter-spacing:.04em;text-transform:uppercase}
+.urgency-txt{color:#c0392b;font-weight:700;font-size:.9rem;font-family:-apple-system,sans-serif;margin-bottom:1rem}
+#timer2{color:#f5c842}
+.guarantee-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(74,103,65,.2);border:1px solid rgba(74,103,65,.4);border-radius:4px;padding:.5rem 1rem;margin:1rem auto;font-family:-apple-system,sans-serif;font-size:.82rem;color:#a8c8a0}
+
+/* TESTIMONIALS */
+.proof{background:#0f1520;padding:3rem 2rem;border-top:1px solid #1a2535}
+.proof-inner{max-width:760px;margin:0 auto}
+.proof-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#7a6848;margin-bottom:1.25rem;font-family:-apple-system,sans-serif}
+.proof h2{font-size:clamp(1.2rem,3vw,1.5rem);color:#e8d8b8;margin-bottom:1.5rem;text-align:center}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
+.tcard{background:rgba(255,255,255,.04);border-radius:8px;padding:1.5rem;border:1px solid #2a3040;border-left:3px solid var(--copper)}
+.stars{color:var(--gold);font-size:1rem;margin-bottom:.5rem}
+.tcard blockquote{font-style:italic;font-size:.92rem;color:#c8b898;margin-bottom:.75rem;line-height:1.65}
+.tcard cite{color:var(--copper);font-weight:700;font-style:normal;font-family:-apple-system,sans-serif;font-size:.82rem}
+
+/* AUTHOR */
+.author-sec{background:#111;padding:3rem 2rem;border-top:1px solid #1a1a1a}
+.author-inner{max-width:680px;margin:0 auto;display:grid;grid-template-columns:140px 1fr;gap:32px;align-items:start}
+.author-inner img{width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid var(--copper)}
+.author-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.5rem;font-family:-apple-system,sans-serif}
+.author-inner h3{font-size:1.1rem;color:#e8d8b8;margin-bottom:.5rem}
+.author-inner p{font-size:.9rem;color:#8a9878;font-family:-apple-system,sans-serif;line-height:1.65;margin-bottom:.75rem}
+
+/* FAQ */
+.faq{background:#0d0d0d;padding:3rem 2rem;border-top:1px solid #1a1a1a}
+.faq-inner{max-width:680px;margin:0 auto}
+.faq-inner h2{font-size:1.25rem;color:#e8d8b8;margin-bottom:1.5rem;text-align:center}
+.faq-item{border-bottom:1px solid #1e2d3d;padding:1.25rem 0}
+.faq-item h3{font-size:.95rem;font-family:-apple-system,sans-serif;color:var(--copper-light);margin-bottom:.5rem;font-weight:700}
+.faq-item p{font-size:.88rem;color:#8a9878;font-family:-apple-system,sans-serif;margin:0;line-height:1.65}
+
+/* FOOTER */
+footer{background:#0a0a0a;color:#3a3028;text-align:center;padding:2rem;font-family:-apple-system,sans-serif;font-size:.78rem;border-top:1px solid #151515}
+footer a{color:#4a4030;text-decoration:none}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-copy{padding:44px 1.5rem 28px}
+  .hero-img{height:240px}
+  .inside-grid{grid-template-columns:1fr}
+  .book-img{display:none}
+  .author-inner{grid-template-columns:1fr;text-align:center}
+  .author-inner img{margin:0 auto;display:block}
+  .stat{padding:1.25rem 1.5rem}
+  .stat strong{font-size:1.6rem}
+  .hero h1{font-size:1.55rem}
+}
+@media(max-width:600px){
+  .hero-img{height:200px}
+  .btn-lg{font-size:1rem;padding:18px 28px}
+}
 </style>
 </head>
 <body>
-<div class="banner">🔒 <strong>Special Price:</strong> Full digital access for responsible gun owners — just <strong>$17</strong> — 30-day guarantee.</div>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">⚠️ Intro Price Expires In: <span id="timer">Loading...</span> &mdash; After that, price goes back to $47</div>
+
+<!-- NAV -->
 <nav>
   <a class="nav-brand" href="../index.html">Freeborn Arms</a>
   <a class="nav-link" href="sales.html">Home Defender Course →</a>
 </nav>
-<div class="hero">
-  <img src="images/hero_ai.jpg" alt="Home defense preparation">
-  <div class="hero-overlay">
-    <span class="hero-tag">Freeborn Arms &bull; Home Defense</span>
-    <h1>The 5 Layers of Home Defense That Most Gun Owners Have Never Thought About</h1>
-    <p class="hero-sub">Get a complete 5-layer home defense framework — printable, room-by-room — for just $17 today.</p>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="hero-badge">🎯 Limited-Time Offer &mdash; $17 Today</span>
+      <h1>The 5 Layers of Home Defense Most Gun Owners Have Never Thought About</h1>
+      <p class="hero-sub">A complete, printable home defense framework — room-by-room — built for responsible gun owners who want a real system, not just a firearm.</p>
+      <a class="btn btn-lg" href="#get-it">Yes — Get Instant Access for $17 →</a>
+      <p class="hero-note">One-time payment · Instant digital access · 30-day money-back guarantee</p>
+    </div>
+    <div class="hero-img">
+      <img src="images/hero_ai.jpg" alt="Home defense preparation — Freeborn Arms">
+    </div>
   </div>
-</div>
+</section>
+
+<!-- STAT STRIP -->
 <div class="stat-strip">
   <div class="stat"><strong>1 in 36</strong><span>US homes burglarized annually</span></div>
   <div class="stat"><strong>68%</strong><span>of burglars avoid armed homes</span></div>
   <div class="stat"><strong>90 sec</strong><span>avg rural police response</span></div>
   <div class="stat"><strong>4 min</strong><span>avg suburban police response</span></div>
+</div>
 
-<div class="quick-buy">
-  <div class="quick-buy-inner">
-    <div class="quick-buy-label">Special Offer — Today Only</div>
-    <div class="quick-buy-price">$17</div>
-    <div class="quick-buy-sub">Intro price — today only &bull; 30-day guarantee</div>
-    <a class="optin-btn" href="#get-it">Yes &mdash; Get Instant Access for $17 &rarr;</a>
-  </div>
-</div>
-</div>
+<!-- PROBLEM -->
 <div class="problem">
   <div class="problem-inner">
-    <h2>The uncomfortable truth about home defense: most gun owners are one bad scenario away from being unprepared.</h2>
+    <h2>The uncomfortable truth: most gun owners are one bad scenario away from being unprepared.</h2>
     <p>You have the firearm. You may have taken a class. But home defense isn't a single-layer problem — it's a system. And most people have only thought about the last layer.</p>
-    <p>The five-layer framework used by security professionals — physical hardening, situational awareness, deterrence, defensive positioning, and armed response — exists because each layer stops a threat before it reaches the next one. Most incidents are stopped by layers 1-3, before a firearm is ever needed.</p>
-    <p>This isn't about being paranoid. It's about being prepared with a complete system — so that if something does happen, you're not improvising.</p>
-  
-    <div class="problem-img-wrap"><img src="https://images.pexels.com/photos/6499085/pexels-photo-6499085.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Home security vulnerability" loading="lazy"></div></div>
+    <p>The five-layer framework used by security professionals — physical hardening, situational awareness, deterrence, defensive positioning, and armed response — exists because each layer stops a threat before it reaches the next one.</p>
+    <div class="danger-box">
+      <p>🚨 The average home invasion lasts less than 90 seconds. There's no time to figure it out in the moment.</p>
+    </div>
+    <p>Most incidents are stopped by layers 1–3, before a firearm is ever needed. This isn't about paranoia. It's about having a complete system.</p>
+  </div>
 </div>
+
+<!-- IMAGE BREAK -->
+<div class="img-break">
+  <img src="https://images.pexels.com/photos/6499085/pexels-photo-6499085.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Home security preparation">
+</div>
+
+<!-- STORY -->
 <div class="story">
   <div class="story-inner">
     <div class="story-label">Why I Built This</div>
     <h2>After Two Break-Ins on Our Street, I Realized My "Plan" Was Just a Firearm and Hope</h2>
-    <p>Two years ago, our neighbors were burglarized twice in three months. Both times, it happened in broad daylight — before any armed response would have been relevant. The criminals came in through an unlocked back window, spent 12 minutes inside, and left before anyone knew they were there.</p>
-    <p>After the second one, I did a full threat assessment of my own home. What I found was humbling: I had a great firearm, solid training, and almost no other layers of defense in place. Doors that could be kicked in, windows with no secondary locks, zero exterior lighting, a garage door I'd never thought about. The Home Defender Blueprint is the five-layer system I built after that audit — and it's available free to any responsible gun owner who wants it.</p>
-<div class="story-img-wrap"><img src="https://images.pexels.com/photos/5615665/pexels-photo-5615665.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Home defense preparation" loading="lazy"></div>
-
+    <p>Two years ago, our neighbors were burglarized twice in three months. Both times in broad daylight — before any armed response would have mattered. The criminals came in through an unlocked back window, spent 12 minutes inside, and left before anyone knew.</p>
+    <div class="pull-quote">"I had a great firearm, solid training, and almost no other layers of defense in place."</div>
+    <p>After the second break-in, I did a full threat assessment of my home. What I found was humbling: doors that could be kicked in, windows with no secondary locks, zero exterior lighting, a garage door I'd never thought about as a vulnerability.</p>
+    <p>The Home Defender Blueprint is the five-layer system I built after that audit — now available for any responsible gun owner who wants a real plan.</p>
+    <div class="story-img-wrap">
+      <img src="images/lifestyle_ai.jpg" alt="Family home defense preparation" loading="lazy">
+    </div>
   </div>
 </div>
+
+<!-- INSIDE / CHAPTERS -->
+<div class="inside">
+  <div class="inside-inner">
+    <div class="inside-label">What's Inside</div>
+    <h2>The Home Defender Blueprint — 5 Layers of Protection</h2>
+    <p class="inside-sub">A printable, room-by-room home security framework — complete digital guide for just $17 today.</p>
+    <div class="inside-grid">
+      <div class="book-img">
+        <img src="images/book_cover_ai.jpg" alt="Home Defender Blueprint cover" loading="lazy">
+      </div>
+      <div class="chapters">
+        <div class="chapter">
+          <div class="ch-num">1</div>
+          <div>
+            <h3>Physical Hardening</h3>
+            <p>The 8 vulnerabilities in every home and how to close them for under $200 — doors, windows, locks, garage.</p>
+          </div>
+        </div>
+        <div class="chapter">
+          <div class="ch-num">2</div>
+          <div>
+            <h3>Situational Awareness</h3>
+            <p>A lighting, camera, and perimeter system that makes your home a harder target before anything escalates.</p>
+          </div>
+        </div>
+        <div class="chapter">
+          <div class="ch-num">3</div>
+          <div>
+            <h3>Deterrence</h3>
+            <p>What burglars actually look for when selecting a target — and how to fail their criteria every time.</p>
+          </div>
+        </div>
+        <div class="chapter">
+          <div class="ch-num">4</div>
+          <div>
+            <h3>Defensive Positioning</h3>
+            <p>A room-by-room safe room and retreat-path plan for your specific floor plan — so everyone knows where to go.</p>
+          </div>
+        </div>
+        <div class="chapter">
+          <div class="ch-num">5</div>
+          <div>
+            <h3>Armed Response Protocol</h3>
+            <p>A legally sound, tactically sound home defense response framework for when the other layers aren't enough.</p>
+          </div>
+        </div>
+        <div class="chapter">
+          <div class="ch-num">+</div>
+          <div>
+            <h3>Family Communication Drill</h3>
+            <p>So every member of your household knows their role before anything happens — including the kids.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUE STACK / OFFER -->
 <div class="offer">
   <div class="offer-inner">
-    <div class="offer-label">What's Inside — $17 Full Access</div>
-    <h2>The Home Defender Blueprint: 5 Layers of Protection Most Families Skip</h2>
-    <p class="offer-subtitle">A printable, room-by-room home security framework — complete digital guide for just $17.</p>
-    <ul class="bullets">
-      <li>Layer 1 — Physical hardening: the 8 vulnerabilities in every home and how to close them for under $200</li>
-      <li>Layer 2 — Situational awareness: a lighting, camera, and perimeter system that makes your home a harder target</li>
-      <li>Layer 3 — Deterrence: what burglars actually look for before selecting a target — and how to fail their criteria</li>
-      <li>Layer 4 — Defensive positioning: a room-by-room safe room and retreat-path plan for your specific floor plan</li>
-      <li>Layer 5 — Armed response protocol: a legally sound, tactically sound home defense response framework</li>
-      <li>A family communication drill — so every member of your household knows their role before anything happens</li>
-    </ul>
+    <div class="offer-label">Today's Offer</div>
+    <h2>Everything You Get for $17</h2>
+    <p class="offer-subtitle">Intro price — limited time only. Regular price $47.</p>
+    <div class="value-stack">
+      <div class="stack-hdr">What's Included</div>
+      <div class="si"><span class="sn">Home Defender Blueprint (20-page PDF)</span><span class="sv">Value: $47</span></div>
+      <div class="si"><span class="sn">Room-by-Room Safe Room Planner</span><span class="sv">Value: $17</span></div>
+      <div class="si"><span class="sn">5-Layer Audit Checklist (printable)</span><span class="sv">Value: $12</span></div>
+      <div class="si"><span class="sn">Family Communication Drill Guide</span><span class="sv">Value: $9</span></div>
+      <div class="stack-total"><span>Total Value</span><span>$85</span></div>
+      <div class="today-price"><span>Today's Price</span><span class="price">$17</span></div>
+    </div>
   </div>
 </div>
-<div class="optin" id="get-blueprint">
-  <h2>Build Your 5-Layer Home Defense System Today &mdash; Just $17 &rarr;</h2>
-  <p class="optin-sub">This intro price won&#39;t last. Download instantly and start protecting your home today.</p>
+
+<!-- OPTIN / CTA -->
+<div class="optin" id="get-it">
+  <h2>Build Your 5-Layer Home Defense System — Just $17 →</h2>
+  <p class="optin-sub">Intro price. Download instantly. Start protecting your home today.</p>
   <div class="form-wrap">
     <div class="price-display">
       <p class="price-was">Regular Price: $47</p>
       <p class="price-now-big">$17</p>
       <p class="price-tag-line">One-time payment &bull; Instant access</p>
     </div>
-    <a class="optin-btn" href="thank-you.html">Yes &mdash; Get Instant Access for $17 &rarr;</a>
-    <div style="text-align:center"><span class="guarantee-badge">✓ Secure Checkout &bull; Instant Download &bull; 30-Day Money-Back Guarantee</span></div>
-  </div>
-</div>
-<div class="proof">
-  <div class="proof-inner">
-    <div class="proof-label">From the Community</div>
-    <div class="testimonials">
-      <div class="testimonial"><blockquote>"I thought I had a solid home defense setup. The Layer 1 audit alone identified 6 things I'd completely overlooked. Fixed them all for $140."</blockquote><cite>— Mike D., homeowner, Texas</cite></div>
-      <div class="testimonial"><blockquote>"Finally a resource that treats home defense as a system, not just 'buy a gun and hope.' The safe-room positioning section was eye-opening."</blockquote><cite>— James R., veteran and family man, Georgia</cite></div>
+    <p class="urgency-txt">⏰ This price expires in <span id="timer2">—</span></p>
+    <a class="btn btn-lg" href="thank-you.html">Yes — Get Instant Access for $17 →</a>
+    <div style="text-align:center;margin-top:1rem">
+      <span class="guarantee-badge">✓ Secure Checkout &bull; Instant Download &bull; 30-Day Money-Back Guarantee</span>
     </div>
   </div>
 </div>
+
+<!-- TESTIMONIALS -->
+<div class="proof">
+  <div class="proof-inner">
+    <div class="proof-label">From the Community</div>
+    <h2>What Responsible Gun Owners Are Saying</h2>
+    <div class="tgrid">
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <blockquote>"I thought I had a solid home defense setup. The Layer 1 audit alone identified 6 things I'd completely overlooked. Fixed them all for $140."</blockquote>
+        <cite>— Mike D., homeowner, Texas</cite>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Finally a resource that treats home defense as a system, not just 'buy a gun and hope.' The safe-room positioning section was eye-opening."</blockquote>
+        <cite>— James R., veteran and family man, Georgia</cite>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Did the family drill on a Sunday afternoon. My wife and kids now know exactly what to do. That peace of mind alone was worth way more than $17."</blockquote>
+        <cite>— Tom H., father of three, Ohio</cite>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AUTHOR -->
+<div class="author-sec">
+  <div class="author-inner">
+    <img src="images/author_ai.jpg" alt="Author — Freeborn Arms" loading="lazy">
+    <div>
+      <div class="author-label">About the Author</div>
+      <h3>Built by a Gun Owner, for Gun Owners</h3>
+      <p>After a security audit revealed serious gaps in his own home's defense — despite years of firearms training — the author spent six months researching professional security frameworks and condensed them into this five-layer system.</p>
+      <p>The goal was simple: give responsible gun owners an actionable, printable plan they could implement in a weekend, for under $200 in hardware.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+  <div class="faq-inner">
+    <h2>Common Questions</h2>
+    <div class="faq-item">
+      <h3>Is this for people who already own guns?</h3>
+      <p>Yes, though the first three layers apply to any homeowner regardless of whether they're armed. The framework is most valuable for responsible gun owners who want a complete system around their firearm.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How is this delivered?</h3>
+      <p>Instant digital download — a PDF you can print or view on any device. No physical shipping involved.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What's the guarantee?</h3>
+      <p>30-day money-back guarantee, no questions asked. If you're not satisfied, email us and we'll refund you in full.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How long does it take to implement?</h3>
+      <p>Most people complete the audit and prioritize their Layer 1 and 2 fixes in a single weekend. The full system is designed to be actionable, not academic.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
   &copy; 2025 Freeborn Arms &bull; JA Inc &bull; <a href="../index.html">All Funnels</a> &bull; <a href="sales.html">Home Defender Course</a>
 </footer>
+
+<script>
+(function(){
+  var DUR = 18 * 60; // 18 minutes
+  function startTimer(id, seconds){
+    var el = document.getElementById(id);
+    if(!el) return;
+    // persist across page reloads
+    var key = 'fa_timer_end_' + id;
+    var end = parseInt(sessionStorage.getItem(key) || '0', 10);
+    var now = Math.floor(Date.now() / 1000);
+    if(!end || end < now){ end = now + seconds; sessionStorage.setItem(key, end); }
+    function tick(){
+      var rem = end - Math.floor(Date.now() / 1000);
+      if(rem <= 0){ el.textContent = '00:00'; return; }
+      var m = Math.floor(rem / 60), s = rem % 60;
+      el.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+      setTimeout(tick, 1000);
+    }
+    tick();
+  }
+  startTimer('timer', DUR);
+  startTimer('timer2', DUR);
+})();
+</script>
 </body>
 </html>
