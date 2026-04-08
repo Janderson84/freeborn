@@ -1,95 +1,139 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Free Home Defense Blueprint | Freeborn Arms</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Home Defense Blueprint | Freeborn Arms</title>
 <style>
-:root{--black:#0d0d0d;--dark:#1a1a1a;--steel:#2c3e50;--copper:#b87333;--cream:#f0ede8;--red:#8b1a1a;--text:#1a1a1a}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Georgia,serif;background:var(--cream);color:var(--text);line-height:1.7}
-nav{background:var(--black);padding:1rem 2rem;display:flex;gap:2rem;flex-wrap:wrap;justify-content:center}
-nav a{color:var(--copper);text-decoration:none;font-size:.95rem;letter-spacing:.05em}
-nav a:hover{color:#fff}
-.hero{position:relative;background:var(--black);color:#fff;overflow:hidden}
-.hero-img{width:100%;height:520px;object-fit:cover;opacity:.5;display:block}
-.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center}
-.hero-content h2{font-size:.9rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.75rem}
-.hero-content h1{font-size:2.4rem;line-height:1.25;margin-bottom:1rem;max-width:700px}
-.hero-content p{font-size:1.1rem;max-width:580px;margin:0 auto 2rem;opacity:.9}
-.btn{display:inline-block;background:var(--red);color:#fff;padding:1rem 2.5rem;border-radius:4px;text-decoration:none;font-size:1.1rem;font-weight:bold;border:none;cursor:pointer}
-.btn:hover{background:#6b1010}
-.stat-strip{background:var(--steel);color:#fff;display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;padding:1.5rem 2rem;text-align:center}
-.stat strong{display:block;font-size:1.8rem;color:var(--copper)}
-.section{max-width:760px;margin:0 auto;padding:3rem 2rem}
-.section-title{font-size:1.5rem;color:var(--black);margin-bottom:1.5rem;border-bottom:2px solid var(--copper);padding-bottom:.5rem}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2rem 0}
-.two-col img{width:100%;height:220px;object-fit:cover;border-radius:6px}
-.checklist{list-style:none;margin-bottom:2rem}
-.checklist li{padding:.6rem 0 .6rem 2rem;border-bottom:1px solid #ddd;position:relative}
-.checklist li:before{content:">>>";position:absolute;left:0;color:var(--copper);font-size:.8rem;top:.8rem;font-weight:bold}
-.opt-in{background:var(--black);color:#fff;padding:3rem 2rem;text-align:center}
-.opt-in h2{font-size:1.8rem;color:var(--copper);margin-bottom:.75rem}
-.opt-in p{max-width:560px;margin:0 auto 1.5rem;opacity:.9}
-.form-row{display:flex;gap:.75rem;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
-.form-row input{flex:1;min-width:200px;padding:.85rem 1rem;border:none;border-radius:4px;font-size:1rem}
-.testimonials{display:grid;gap:1.5rem;margin:2rem 0}
-.testimonial{background:#fff;border-radius:6px;padding:1.5rem;border-left:4px solid var(--copper)}
-.testimonial blockquote{font-style:italic;margin-bottom:.75rem}
-.testimonial cite{color:var(--steel);font-weight:bold;font-style:normal}
-.cta-bar{background:var(--steel);color:#fff;padding:2rem;text-align:center}
-.cta-bar p{margin:.75rem 0 1.25rem;opacity:.9}
-.asset-link{display:inline-flex;align-items:center;gap:.5rem;background:#1a2e4a;color:#c9a227;padding:.5rem 1.25rem;border-radius:4px;text-decoration:none;font-size:.9rem;margin-top:1rem}
-footer{background:var(--black);color:var(--copper);text-align:center;padding:1.5rem;font-size:.85rem}
-@media(max-width:600px){.hero-img{height:380px}.hero-content h1{font-size:1.7rem}.two-col{grid-template-columns:1fr}}
-</style></head><body>
-<nav><a href="index.html">Free Blueprint</a><a href="sales.html">Home Defender Course</a><a href="../index.html">All Funnels</a></nav>
+:root{--black:#0d0d0d;--dark:#111;--steel:#1e2d3d;--copper:#b87333;--cream:#f0ede8;--red:#7a1010;--light:#e8e4de}
+body{font-family:Georgia,'Times New Roman',serif;background:var(--black);color:var(--cream);line-height:1.75}
+.banner{background:var(--red);color:#f5d8d8;text-align:center;padding:.55rem 1rem;font-size:.82rem;letter-spacing:.04em;font-family:-apple-system,sans-serif}
+nav{background:#0a0a0a;padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;border-bottom:1px solid #222}
+.nav-brand{color:var(--copper);font-size:1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;font-family:-apple-system,sans-serif}
+nav a.nav-link{color:#888;font-size:.82rem;text-decoration:none;font-family:-apple-system,sans-serif}
+nav a.nav-link:hover{color:var(--copper)}
+.hero{position:relative;height:560px;overflow:hidden}
+.hero img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.55)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.5) 50%,rgba(0,0,0,.15) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:3rem 2.5rem 3.5rem}
+.hero-tag{display:inline-block;background:var(--copper);color:#fff;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .9rem;border-radius:2px;margin-bottom:1rem;font-family:-apple-system,sans-serif;width:fit-content}
+.hero h1{font-size:clamp(1.8rem,4.5vw,3rem);color:#fff;line-height:1.18;max-width:780px;margin-bottom:1rem;text-shadow:0 3px 16px rgba(0,0,0,.8)}
+.hero-sub{color:#b8a890;font-size:1.05rem;max-width:620px;font-family:-apple-system,sans-serif;line-height:1.55}
+.stat-strip{background:var(--steel);display:flex;flex-wrap:wrap;justify-content:center;gap:0;border-top:2px solid var(--copper)}
+.stat{padding:1.5rem 2.5rem;text-align:center;border-right:1px solid #2a3d50}
+.stat:last-child{border-right:none}
+.stat strong{display:block;font-size:2rem;color:var(--copper);font-family:-apple-system,sans-serif;font-weight:800;line-height:1}
+.stat span{font-size:.78rem;color:#8a9aaa;font-family:-apple-system,sans-serif;letter-spacing:.05em;text-transform:uppercase;margin-top:.3rem;display:block}
+.problem{background:#0f0f0f;padding:3.5rem 2rem;border-top:1px solid #1a1a1a}
+.problem-inner{max-width:720px;margin:0 auto}
+.problem h2{font-size:1.55rem;color:#f5d78e;margin-bottom:1.5rem;line-height:1.3}
+.problem p{margin-bottom:1rem;color:#a89878;font-family:-apple-system,sans-serif;font-size:.97rem;line-height:1.65}
+.story{background:#111;padding:3.5rem 2rem;border-top:3px solid var(--copper)}
+.story-inner{max-width:720px;margin:0 auto}
+.story-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.75rem;font-family:-apple-system,sans-serif}
+.story h2{font-size:1.5rem;color:#e8d8b8;margin-bottom:1.5rem;line-height:1.3}
+.story p{margin-bottom:1rem;color:#a89878;font-family:-apple-system,sans-serif;font-size:.97rem;line-height:1.7}
+.offer{background:#0d1520;padding:3.5rem 2rem;border-top:1px solid #1a2535}
+.offer-inner{max-width:720px;margin:0 auto}
+.offer-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.75rem;font-family:-apple-system,sans-serif}
+.offer h2{font-size:1.5rem;color:#e8d8b8;margin-bottom:.5rem}
+.offer-subtitle{color:#7a8898;font-size:.97rem;margin-bottom:1.75rem;font-family:-apple-system,sans-serif;font-style:italic}
+.bullets{list-style:none;display:flex;flex-direction:column;gap:.85rem;margin-bottom:2rem}
+.bullets li{display:flex;gap:.9rem;align-items:flex-start;font-size:.97rem;color:#c8b898;font-family:-apple-system,sans-serif}
+.bullets li::before{content:'▶';color:var(--copper);font-size:.7rem;flex-shrink:0;margin-top:.35rem}
+.optin{background:#0a0a0a;padding:4rem 2rem;text-align:center;border-top:2px solid var(--copper)}
+.optin h2{font-size:1.8rem;color:#f5d78e;margin-bottom:.5rem;line-height:1.3}
+.optin-sub{color:#7a6848;font-family:-apple-system,sans-serif;font-size:.95rem;margin-bottom:2rem}
+.form-wrap{max-width:460px;margin:0 auto}
+.form-wrap input{display:block;width:100%;padding:.95rem 1rem;margin-bottom:.75rem;border:1px solid #333;border-radius:3px;font-size:1rem;font-family:-apple-system,sans-serif;background:#1a1a1a;color:#e8d8b8}
+.optin-btn{display:block;width:100%;background:var(--red);color:#fff;padding:1.15rem;border:none;border-radius:3px;font-size:1.05rem;font-weight:700;font-family:-apple-system,sans-serif;cursor:pointer;text-decoration:none;transition:background .2s;letter-spacing:.03em}
+.optin-btn:hover{background:#5a0808}
+.trust{color:#5a4a3a;font-size:.78rem;margin-top:.75rem;font-family:-apple-system,sans-serif}
+.proof{background:#0f0f0f;padding:3rem 2rem;border-top:1px solid #1a1a1a}
+.proof-inner{max-width:720px;margin:0 auto}
+.proof-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#7a6848;margin-bottom:1.25rem;font-family:-apple-system,sans-serif}
+.testimonials{display:grid;gap:1.25rem}
+@media(min-width:640px){.testimonials{grid-template-columns:1fr 1fr}}
+.testimonial{background:#1a1a1a;border-radius:4px;padding:1.5rem;border-left:3px solid var(--copper)}
+.testimonial blockquote{font-style:italic;font-size:.95rem;color:#c8b898;margin-bottom:.75rem;line-height:1.6}
+.testimonial cite{color:var(--copper);font-weight:700;font-style:normal;font-family:-apple-system,sans-serif;font-size:.82rem}
+footer{background:#0a0a0a;color:#3a3028;text-align:center;padding:2rem;font-family:-apple-system,sans-serif;font-size:.78rem;border-top:1px solid #151515}
+footer a{color:#4a4030;text-decoration:none}
+@media(max-width:600px){.hero{height:380px}.stat{padding:1.25rem 1.5rem}.stat strong{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<div class="banner">⚠ For Responsible, Law-Abiding Gun Owners — Free Download, No Catch</div>
+<nav>
+  <a class="nav-brand" href="../index.html">Freeborn Arms</a>
+  <a class="nav-link" href="sales.html">Home Defender Course →</a>
+</nav>
 <div class="hero">
-  <img class="hero-img" src="images/hero_ai.jpg" alt="Home defense preparation">
-  <div class="hero-content">
-    <h2>Free Download for Responsible Gun Owners</h2>
-    <h1>The Home Defender Blueprint: 5 Layers of Protection Most Families Skip</h1>
-    <p>Get the exact home defense framework used by security professionals &mdash; tailored for law-abiding citizens who refuse to be victims.</p>
-    <a href="#get-blueprint" class="btn">Send Me the Free Blueprint</a>
+  <img src="images/hero_ai.jpg" alt="Home defense preparation">
+  <div class="hero-overlay">
+    <span class="hero-tag">Freeborn Arms &bull; Home Defense</span>
+    <h1>The 5 Layers of Home Defense That Most Gun Owners Have Never Thought About</h1>
+    <p class="hero-sub">Owning a firearm is Layer 5. Here's what comes before it — and why the first four layers are what most criminals actually respond to.</p>
   </div>
 </div>
 <div class="stat-strip">
-  <div class="stat"><strong>1 in 36</strong>US homes burglarized each year</div>
-  <div class="stat"><strong>68%</strong>of burglars avoid armed homes</div>
-  <div class="stat"><strong>90 sec</strong>Average rural police response</div>
+  <div class="stat"><strong>1 in 36</strong><span>US homes burglarized annually</span></div>
+  <div class="stat"><strong>68%</strong><span>of burglars avoid armed homes</span></div>
+  <div class="stat"><strong>90 sec</strong><span>avg rural police response</span></div>
+  <div class="stat"><strong>4 min</strong><span>avg suburban police response</span></div>
 </div>
-<div class="section">
-  <h2 class="section-title">What the Blueprint Covers</h2>
-  <p style="margin-bottom:1.5rem">This is a layered security framework built from real-world threat analysis. Not a pamphlet &mdash; a system.</p>
-  <ul class="checklist">
-    <li>Layer 1: Perimeter hardening &mdash; the 3 entry points burglars always try first</li>
-    <li>Layer 2: Active deterrence &mdash; what works and what gives false confidence</li>
-    <li>Layer 3: Safe room setup &mdash; where your family goes when seconds count</li>
-    <li>Layer 4: Firearm readiness &mdash; storage, access, and the 3am decision tree</li>
-    <li>Layer 5: After the incident &mdash; what to say, what to document, legal basics</li>
-  </ul>
-  <div class="two-col">
-    <img src="images/lifestyle_ai.jpg" alt="Home security">
-    <img src="images/american_scene_ai.jpg" alt="American home">
+<div class="problem">
+  <div class="problem-inner">
+    <h2>The uncomfortable truth about home defense: most gun owners are one bad scenario away from being unprepared.</h2>
+    <p>You have the firearm. You may have taken a class. But home defense isn't a single-layer problem — it's a system. And most people have only thought about the last layer.</p>
+    <p>The five-layer framework used by security professionals — physical hardening, situational awareness, deterrence, defensive positioning, and armed response — exists because each layer stops a threat before it reaches the next one. Most incidents are stopped by layers 1-3, before a firearm is ever needed.</p>
+    <p>This isn't about being paranoid. It's about being prepared with a complete system — so that if something does happen, you're not improvising.</p>
   </div>
 </div>
-<div class="opt-in" id="get-blueprint">
-  <h2>Get Your Free Blueprint</h2>
-  <p>Enter your email and we will send you the complete Home Defender Blueprint PDF plus a bonus 90-second home vulnerability checklist.</p>
-  <form class="form-row" onsubmit="return false">
-    <input type="email" placeholder="Your email address">
-    <button type="submit" class="btn">Send My Blueprint</button>
-  </form>
-  <a href="assets/home-defender-blueprint.html" class="asset-link" target="_blank">&#x1F4CB; Preview the Blueprint (printable)</a>
-  <p style="margin-top:1rem;font-size:.85rem;opacity:.6">For law-abiding gun owners only. No spam. Unsubscribe any time.</p>
-</div>
-<div class="section">
-  <h2 class="section-title">What Responsible Gun Owners Are Saying</h2>
-  <div class="testimonials">
-    <div class="testimonial"><blockquote>I have owned firearms for 20 years and thought I had it figured out. Layer 3 and 4 completely changed how I think about home defense. My family is safer because of it.</blockquote><cite>Rick D., retired deputy sheriff, Texas</cite></div>
-    <div class="testimonial"><blockquote>My wife was skeptical. After working through the blueprint together, she is the one who pushed me to take the full course.</blockquote><cite>Jason W., father of four, Montana</cite></div>
+<div class="story">
+  <div class="story-inner">
+    <div class="story-label">Why I Built This</div>
+    <h2>After Two Break-Ins on Our Street, I Realized My "Plan" Was Just a Firearm and Hope</h2>
+    <p>Two years ago, our neighbors were burglarized twice in three months. Both times, it happened in broad daylight — before any armed response would have been relevant. The criminals came in through an unlocked back window, spent 12 minutes inside, and left before anyone knew they were there.</p>
+    <p>After the second one, I did a full threat assessment of my own home. What I found was humbling: I had a great firearm, solid training, and almost no other layers of defense in place. Doors that could be kicked in, windows with no secondary locks, zero exterior lighting, a garage door I'd never thought about. The Home Defender Blueprint is the five-layer system I built after that audit — and it's available free to any responsible gun owner who wants it.</p>
   </div>
 </div>
-<div class="cta-bar">
-  <h2>Ready to Go Deeper?</h2>
-  <p>The Home Defender Blueprint Course walks you through each layer with step-by-step video instruction, scenario drills, and a printable home security audit.</p>
-  <a href="sales.html" class="btn">See the Full Course &mdash; $97</a>
+<div class="offer">
+  <div class="offer-inner">
+    <div class="offer-label">What's in the Free Blueprint</div>
+    <h2>The Home Defender Blueprint: 5 Layers of Protection Most Families Skip</h2>
+    <p class="offer-subtitle">A printable, room-by-room home security framework — built for law-abiding gun owners, not operators.</p>
+    <ul class="bullets">
+      <li>Layer 1 — Physical hardening: the 8 vulnerabilities in every home and how to close them for under $200</li>
+      <li>Layer 2 — Situational awareness: a lighting, camera, and perimeter system that makes your home a harder target</li>
+      <li>Layer 3 — Deterrence: what burglars actually look for before selecting a target — and how to fail their criteria</li>
+      <li>Layer 4 — Defensive positioning: a room-by-room safe room and retreat-path plan for your specific floor plan</li>
+      <li>Layer 5 — Armed response protocol: a legally sound, tactically sound home defense response framework</li>
+      <li>A family communication drill — so every member of your household knows their role before anything happens</li>
+    </ul>
+  </div>
 </div>
-<footer><p>2025 Freeborn Arms &bull; <a href="index.html" style="color:var(--copper)">Free Blueprint</a> &bull; <a href="../index.html" style="color:var(--copper)">All Funnels</a></p></footer>
-</body></html>
+<div class="optin" id="get-blueprint">
+  <h2>Send Me the Free Home Defender Blueprint</h2>
+  <p class="optin-sub">Enter your name and email. I'll send the complete printable blueprint immediately.</p>
+  <div class="form-wrap">
+    <input type="text" placeholder="Your First Name" />
+    <input type="email" placeholder="Your Email Address" />
+    <a class="optin-btn" href="thank-you.html">Yes — Send Me the Blueprint Now</a>
+    <p class="trust">🔒 No spam. No sharing. For law-abiding gun owners only.</p>
+  </div>
+</div>
+<div class="proof">
+  <div class="proof-inner">
+    <div class="proof-label">From the Community</div>
+    <div class="testimonials">
+      <div class="testimonial"><blockquote>"I thought I had a solid home defense setup. The Layer 1 audit alone identified 6 things I'd completely overlooked. Fixed them all for $140."</blockquote><cite>— Mike D., homeowner, Texas</cite></div>
+      <div class="testimonial"><blockquote>"Finally a resource that treats home defense as a system, not just 'buy a gun and hope.' The safe-room positioning section was eye-opening."</blockquote><cite>— James R., veteran and family man, Georgia</cite></div>
+    </div>
+  </div>
+</div>
+<footer>
+  &copy; 2025 Freeborn Arms &bull; JA Inc &bull; <a href="../index.html">All Funnels</a> &bull; <a href="sales.html">Home Defender Course</a>
+</footer>
+</body>
+</html>
