@@ -25,7 +25,8 @@ h1{font-size:clamp(1.5rem,4vw,2.1rem);color:var(--navy);margin-bottom:1.5rem;lin
 .oto-body{font-family:-apple-system,sans-serif;font-size:.95rem;color:#b8c8d8;line-height:1.65;margin-bottom:1.5rem}
 .oto-bullets{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.75rem}
 .oto-bullets li{display:flex;gap:.75rem;align-items:flex-start;font-size:.95rem;color:#d4c8e0;font-family:-apple-system,sans-serif;line-height:1.55}
-.oto-bullets li::before{content:'&#10003;';background:var(--copper);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;margin-top:.1rem}
+/* Fix: CSS content property does not parse HTML entities — use Unicode escape instead */
+.oto-bullets li::before{content:'\2713';background:var(--copper);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;margin-top:.1rem}
 .vsl-placeholder{background:rgba(0,0,0,.3);border-radius:6px;height:240px;display:flex;align-items:center;justify-content:center;margin-bottom:1.75rem;border:2px dashed rgba(255,255,255,.15)}
 .vsl-placeholder span{color:rgba(255,255,255,.4);font-family:-apple-system,sans-serif;font-size:.9rem}
 .oto-btn{display:block;width:100%;background:var(--copper);color:#fff;font-family:-apple-system,sans-serif;font-size:1rem;font-weight:700;padding:1.1rem;border-radius:4px;text-decoration:none;text-align:center;transition:background .2s;margin-bottom:.75rem}
@@ -52,7 +53,7 @@ footer a{color:#6677aa;text-decoration:none}
     <div class="oto-price">One-time introductory offer &mdash; $497 &bull; Price goes up soon</div>
     <p class="oto-body">This is the full training: six modules, the five income streams in detail, real numbers, real sequences, and everything you need to cross the line. Watch the short video below to see if it's right for you.</p>
     <div class="vsl-placeholder">
-      <span>&#9654; Video — Watch Before You Leave</span>
+      <span>&#9654; Video &mdash; Watch Before You Leave</span>
     </div>
     <ul class="oto-bullets">
       <li>6-module Masterclass covering each of the 5 income streams from setup to scale</li>
@@ -62,10 +63,12 @@ footer a{color:#6677aa;text-decoration:none}
       <li>Bonus: The First Stream Fast-Start (90-min condensed training)</li>
       <li>Bonus: Financially Retired Mindset Sessions (3 audio recordings)</li>
     </ul>
+    <!-- TODO: Replace href with ThriveCart checkout URL once JAI-86 is unblocked -->
     <a class="oto-btn" href="#">Yes &mdash; I Want the Financially Retired Masterclass for $497 &rarr;</a>
     <a class="oto-decline" href="#download">No thanks, just the free blueprint for now</a>
   </div>
 
+  <!-- TODO: Replace href with blueprint PDF URL once file is added to repo -->
   <a class="download-btn" id="download" href="#">&#8595; Access Your Free Blueprint</a>
 </div>
 <footer>
