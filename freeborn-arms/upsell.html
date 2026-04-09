@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Special One-Time Offer | Home Defender Course | Freeborn Arms</title>
+<meta name="description" content="One-time upgrade offer: Add the complete Home Defender Course to your order at a special price. This offer expires in 15 minutes.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0d0d0d;
+  --dark:#111;
+  --steel:#1e2d3d;
+  --copper:#b87333;
+  --copper-light:#d4904a;
+  --cream:#f0ede8;
+  --red:#7a1010;
+  --red-dark:#5a0808;
+  --light:#e8e4de;
+  --gold:#c9a227;
+  --muted:#8a9aaa;
+}
+body{font-family:Georgia,'Times New Roman',serif;background:var(--black);color:var(--cream);line-height:1.75;font-size:17px}
+
+/* TIMER BAR */
+.timer-bar{background:#7a1010;color:#fff;text-align:center;padding:13px 20px;font-size:14px;font-weight:700;font-family:-apple-system,sans-serif;letter-spacing:.02em;position:sticky;top:0;z-index:100}
+.timer-bar .countdown{color:#f5c842;font-size:1.1em;font-weight:900;letter-spacing:.05em}
+.timer-bar.urgent{background:#5a0808;animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.85}}
+
+/* NAV */
+nav{background:#0a0a0a;padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;border-bottom:1px solid #1e2d3d}
+.nav-brand{color:var(--copper);font-size:1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;font-family:-apple-system,sans-serif}
+
+/* HERO */
+.hero{background:linear-gradient(160deg,#0a1218 0%,var(--steel) 100%);padding:3rem 2rem;text-align:center;border-bottom:3px solid var(--copper)}
+.hero-inner{max-width:720px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(184,115,51,.15);border:1px solid var(--copper);color:var(--copper-light);font-size:.72rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;padding:6px 16px;border-radius:3px;margin-bottom:1.25rem;font-family:-apple-system,sans-serif}
+.hero h1{font-size:clamp(1.7rem,4vw,2.6rem);color:#fff;line-height:1.2;margin-bottom:1rem;font-weight:900}
+.hero h1 span{color:var(--gold)}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.75);font-family:-apple-system,sans-serif;line-height:1.6;max-width:580px;margin:0 auto}
+
+/* BODY */
+.body-section{background:#0f0f0f;padding:3rem 2rem;border-top:1px solid #1a1a1a}
+.body-inner{max-width:720px;margin:0 auto}
+.section-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.6rem;font-family:-apple-system,sans-serif}
+h2{font-size:clamp(1.3rem,3vw,1.75rem);color:#e8d8b8;margin-bottom:1.25rem;line-height:1.3}
+p{margin-bottom:1rem;color:#c8b898;font-family:-apple-system,sans-serif;font-size:.97rem;line-height:1.7}
+.pull-quote{border-left:4px solid var(--gold);padding:14px 20px;background:rgba(201,162,39,.07);margin:1.5rem 0;font-size:1.05rem;font-weight:700;font-style:italic;color:#e8d8b8;border-radius:0 5px 5px 0}
+
+/* MODULES */
+.modules{background:#0a0f18;padding:3rem 2rem;border-top:1px solid #1a2a3a}
+.modules-inner{max-width:720px;margin:0 auto}
+.module-grid{display:flex;flex-direction:column;gap:12px;margin-top:1.5rem}
+.module{background:rgba(255,255,255,.03);border:1px solid #2a3d50;border-radius:6px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start}
+.mod-num{width:34px;height:34px;background:var(--copper);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0;font-family:sans-serif}
+.module h3{font-size:.92rem;margin-bottom:3px;font-family:-apple-system,sans-serif;color:#e0d0b8;font-weight:700}
+.module p{font-size:.83rem;color:#7a8898;margin:0;font-family:-apple-system,sans-serif}
+
+/* CTA BOX */
+.cta-section{background:#0a0f18;border-top:3px solid var(--copper);border-bottom:3px solid var(--copper);padding:3.5rem 2rem}
+.cta-inner{max-width:620px;margin:0 auto;text-align:center}
+.cta-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.6rem;font-family:-apple-system,sans-serif}
+.cta-headline{font-size:clamp(1.4rem,3.5vw,2rem);color:#f5d78e;line-height:1.25;margin-bottom:.5rem}
+.price-old{color:#888;font-size:.95rem;font-family:-apple-system,sans-serif;text-decoration:line-through;margin-bottom:.25rem}
+.price-now{font-size:3.5rem;font-weight:900;color:#f5d78e;font-family:-apple-system,sans-serif;line-height:1}
+.price-note{font-size:.85rem;color:#8a9aaa;font-family:-apple-system,sans-serif;margin:.4rem 0 1.75rem}
+.btn-yes{display:block;width:100%;max-width:520px;margin:0 auto;background:var(--red);color:#fff;padding:1.25rem;border:none;border-radius:4px;font-size:1.15rem;font-weight:800;font-family:-apple-system,sans-serif;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;text-align:center;letter-spacing:.02em}
+.btn-yes:hover{background:var(--red-dark);transform:translateY(-2px)}
+.btn-note{font-size:.78rem;color:#7a8898;font-family:-apple-system,sans-serif;margin:.75rem 0 1.5rem;text-align:center}
+.timer-inline{font-size:.9rem;font-family:-apple-system,sans-serif;color:#8a9aaa;margin-bottom:1.75rem;text-align:center}
+.timer-inline .t{color:#f5c842;font-weight:900;font-size:1.05em}
+.decline-link{display:block;text-align:center;font-family:-apple-system,sans-serif;font-size:.82rem;color:#5a6a7a;text-decoration:underline;cursor:pointer;margin-top:.5rem}
+.decline-link:hover{color:#8a9aaa}
+.guarantee{border:1px solid rgba(184,115,51,.3);border-radius:6px;padding:1.25rem 1.5rem;text-align:center;margin-top:1.5rem;background:rgba(184,115,51,.04)}
+.guarantee h3{font-size:.95rem;color:#e8d8b8;font-family:-apple-system,sans-serif;margin-bottom:.35rem;font-weight:700}
+.guarantee p{font-size:.83rem;color:#8a9aaa;margin:0;font-family:-apple-system,sans-serif}
+
+/* BULLETS */
+.bullet-list{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin:1.5rem 0}
+.bullet-list li{display:flex;gap:.85rem;align-items:flex-start;font-size:.95rem;color:#c8b898;font-family:-apple-system,sans-serif}
+.bullet-list li::before{content:'✓';color:var(--copper);font-weight:900;flex-shrink:0;margin-top:.15rem}
+.bullet-list strong{color:#e0d0b8}
+
+footer{background:#0a0a0a;color:#5a6a7a;text-align:center;padding:2rem;font-family:-apple-system,sans-serif;font-size:.8rem;border-top:1px solid #1e2d3d}
+footer a{color:#5a6a7a}
+
+@media(max-width:640px){
+  .hero{padding:2rem 1.25rem}
+  .body-section,.modules,.cta-section{padding:2.5rem 1.25rem}
+}
+</style>
+</head>
+<body>
+
+<div class="timer-bar" id="timerBar">
+  ⚠️ This offer expires in: <span class="countdown" id="countdown">15:00</span> — after that, it's gone forever.
+</div>
+
+<nav>
+  <a class="nav-brand" href="index.html">Freeborn Arms</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">One-Time Offer — This Page Will Not Appear Again</div>
+    <h1>Your Blueprint Is Confirmed.<br><span>Want to Actually Execute It?</span></h1>
+    <p class="hero-sub">You have the framework. The plan. The zones. Now add the 6-module course that turns it into muscle memory — at a price you'll never see again.</p>
+  </div>
+</section>
+
+<section class="body-section">
+  <div class="body-inner">
+    <p class="section-label">The Problem Most People Have</p>
+    <h2>A Plan That Stays on Paper Is Not a Defense Plan</h2>
+    <p>The Home Defender Blueprint gives you the strategy. But strategy alone doesn't prepare your hands, your judgment, or your family for a real threat at 2 AM.</p>
+    <p>Most people read their plan once. Then life gets in the way. Six months later they couldn't tell you where they put it.</p>
+    <div class="pull-quote">"The difference between the people who are prepared and the people who think they are prepared is practice — and a system for building it."</div>
+    <p>The <strong style="color:#e0d0b8">Home Defender Course</strong> is that system. Six focused modules. Each one builds on the last. Designed to be done in a single weekend or one module per week — your call.</p>
+  </div>
+</section>
+
+<section class="modules">
+  <div class="modules-inner">
+    <p class="section-label">What's Inside</p>
+    <h2>6 Modules — Home Defense from Foundation to Execution</h2>
+    <div class="module-grid">
+      <div class="module">
+        <div class="mod-num">1</div>
+        <div>
+          <h3>Home Threat Assessment</h3>
+          <p>Identify your vulnerabilities before an intruder does. Walk your property with a trained eye.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="mod-num">2</div>
+        <div>
+          <h3>Zone Control and Safe Rooms</h3>
+          <p>How to designate, fortify, and get your family to a designated safe position fast — without confusion.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="mod-num">3</div>
+        <div>
+          <h3>Low-Light Navigation</h3>
+          <p>Moving through your home safely in the dark — the skills most homeowners completely overlook.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="mod-num">4</div>
+        <div>
+          <h3>Communication Under Stress</h3>
+          <p>How to coordinate with your family when adrenaline is high and clarity is low.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="mod-num">5</div>
+        <div>
+          <h3>Defensive Firearm Handling at Home</h3>
+          <p>Storage, access, and deployment for home defense — not the range.</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="mod-num">6</div>
+        <div>
+          <h3>Running Your First Family Drill</h3>
+          <p>A complete script and checklist for your first live run-through. Takes 20 minutes. Changes everything.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="body-section" style="border-top:1px solid #1a2a3a">
+  <div class="body-inner">
+    <p class="section-label">Also Included</p>
+    <h2>Bonus Materials</h2>
+    <ul class="bullet-list">
+      <li><strong>Home Hardening Checklist</strong> — room-by-room audit you can complete this weekend</li>
+      <li><strong>Family Drill Script</strong> — run your first live drill in 20 minutes with your household</li>
+      <li><strong>Zone Map Template</strong> — printable floor plan tool for designating safe areas</li>
+      <li><strong>Private Community Access</strong> — ongoing support, Q&amp;As, and peer accountability</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <p class="cta-label">Limited-Time Upgrade</p>
+    <p class="cta-headline">Add the Complete Home Defender Course</p>
+    <p class="price-old">Regular price: $197</p>
+    <p class="price-now">$97</p>
+    <p class="price-note">One-time payment &bull; Instant access &bull; Never charged again</p>
+    <p class="timer-inline">Offer expires in: <span class="t" id="countdown2">15:00</span></p>
+    <a href="https://pixeltrue.thrivecart.com/untitled-product-2/" class="btn-yes">Yes — Add the Course for $97 →</a>
+    <p class="btn-note">Secure checkout &bull; 30-day money-back guarantee &bull; Instant access</p>
+    <div class="guarantee">
+      <h3>30-Day Money-Back Guarantee</h3>
+      <p>Complete the course. If you don't have a significantly better home defense system — and the confidence to back it up — contact us for a full refund. No questions, no hassle.</p>
+    </div>
+    <a class="decline-link" href="downsell.html">No thanks — I don't need the course, just the Blueprint.</a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Freeborn Arms &bull; <a href="index.html">Home Defender Blueprint</a> &bull; <a href="../index.html">All Funnels</a>
+</footer>
+
+<script>
+(function(){
+  var DURATION = 15 * 60; // 15 minutes in seconds
+  var KEY = 'fba_upsell_expire';
+  var stored = localStorage.getItem(KEY);
+  var expireAt;
+  if(stored){
+    expireAt = parseInt(stored,10);
+  } else {
+    expireAt = Date.now() + DURATION * 1000;
+    localStorage.setItem(KEY, expireAt);
+  }
+
+  function fmt(s){
+    var m = Math.floor(s/60);
+    var sec = s % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
+  function tick(){
+    var remaining = Math.max(0, Math.floor((expireAt - Date.now()) / 1000));
+    var str = fmt(remaining);
+    document.getElementById('countdown').textContent = str;
+    document.getElementById('countdown2').textContent = str;
+    if(remaining <= 60){
+      document.getElementById('timerBar').classList.add('urgent');
+    }
+    if(remaining === 0){
+      // Redirect to downsell when timer expires
+      window.location.href = 'downsell.html';
+      return;
+    }
+    setTimeout(tick, 1000);
+  }
+  tick();
+})();
+</script>
+</body>
+</html>

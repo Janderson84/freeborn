@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Wait — Special Offer | Freeborn Arms</title>
+<title>Wait — One More Option | Freeborn Arms</title>
+<meta name="description" content="Not ready for the full course? Get the condensed Home Defense Quick-Start Guide for $27 — our most actionable content in one fast read.">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -15,65 +16,158 @@
   --red:#7a1010;
   --red-dark:#5a0808;
   --gold:#c9a227;
+  --muted:#8a9aaa;
 }
 body{font-family:Georgia,'Times New Roman',serif;background:var(--black);color:var(--cream);line-height:1.75;font-size:17px}
+
+/* TIMER BAR */
+.timer-bar{background:#5a4010;color:#fff;text-align:center;padding:13px 20px;font-size:14px;font-weight:700;font-family:-apple-system,sans-serif;letter-spacing:.02em;position:sticky;top:0;z-index:100}
+.timer-bar .countdown{color:#f5c842;font-size:1.1em;font-weight:900;letter-spacing:.05em}
+.timer-bar.urgent{background:#4a2e0a;animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.85}}
+
 nav{background:#0a0a0a;padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1e2d3d}
 .nav-brand{color:var(--copper);font-size:1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;font-family:-apple-system,sans-serif}
-.hero{background:linear-gradient(160deg,#0a1218 0%,var(--steel) 100%);padding:4rem 2rem 3rem;text-align:center;border-bottom:3px solid var(--copper)}
+
+.hero{background:linear-gradient(160deg,#0a0e12 0%,#1a2030 100%);padding:3rem 2rem;text-align:center;border-bottom:3px solid var(--gold)}
 .hero-inner{max-width:680px;margin:0 auto}
-.badge{display:inline-block;background:rgba(184,115,51,.15);border:1px solid var(--copper);color:var(--copper-light);font-size:.7rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;border-radius:3px;margin-bottom:1.5rem;font-family:-apple-system,sans-serif}
-.hero h1{font-size:clamp(1.6rem,4vw,2.6rem);color:#fff;line-height:1.2;margin-bottom:1rem;font-weight:900}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.4);color:#f5c842;font-size:.72rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;padding:6px 16px;border-radius:3px;margin-bottom:1.25rem;font-family:-apple-system,sans-serif}
+.hero h1{font-size:clamp(1.6rem,4vw,2.4rem);color:#fff;line-height:1.2;margin-bottom:1rem;font-weight:900}
 .hero h1 span{color:var(--gold)}
-.sub{font-size:1rem;color:rgba(255,255,255,.75);font-family:-apple-system,sans-serif;line-height:1.6;margin-bottom:2rem;font-style:italic;max-width:560px;margin-left:auto;margin-right:auto}
-.offer{background:#0f0f0f;padding:3rem 2rem;border-bottom:1px solid #1a1a1a}
-.offer-inner{max-width:620px;margin:0 auto;text-align:center}
-.section-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.5rem;font-family:-apple-system,sans-serif}
-.offer h2{font-size:clamp(1.3rem,3vw,1.8rem);color:#f5d78e;line-height:1.25;margin-bottom:1rem}
-.offer-body{font-size:.96rem;color:#a89878;font-family:-apple-system,sans-serif;line-height:1.65;margin-bottom:1.5rem;max-width:540px;margin-left:auto;margin-right:auto}
-.price-box{background:#0a0f18;border:2px solid var(--copper);border-radius:8px;padding:1.75rem;margin:2rem auto;max-width:420px}
-.was{font-size:.85rem;color:#666;text-decoration:line-through;font-family:-apple-system,sans-serif}
-.price-now{font-size:3rem;font-weight:900;color:#f5d78e;line-height:1;font-family:-apple-system,sans-serif}
-.price-tag{font-size:.85rem;color:#8b7060;font-family:-apple-system,sans-serif;margin-top:.3rem}
-.btn{display:inline-block;padding:18px 40px;font-size:1.05rem;font-weight:800;color:#fff;background:var(--red);border:none;border-radius:4px;cursor:pointer;font-family:-apple-system,sans-serif;letter-spacing:.03em;transition:background .2s,transform .15s;text-align:center;text-decoration:none}
-.btn:hover{background:var(--red-dark);transform:translateY(-2px)}
-.btn-lg{font-size:1.1rem;padding:19px 44px;display:block;max-width:520px;margin:0 auto}
-.skip{display:block;text-align:center;margin-top:1.25rem;font-size:.82rem;color:#555;font-family:-apple-system,sans-serif;cursor:pointer;text-decoration:none}
-.skip:hover{color:#888}
-footer{background:#0a0a0a;border-top:1px solid #1a1a1a;padding:1.5rem 2rem;text-align:center;font-size:.78rem;color:#444;font-family:-apple-system,sans-serif}
-footer a{color:#555;text-decoration:none}
+.hero-sub{font-size:.97rem;color:rgba(255,255,255,.7);font-family:-apple-system,sans-serif;line-height:1.6;max-width:560px;margin:0 auto}
+
+.body-section{background:#0f0f0f;padding:3rem 2rem}
+.body-inner{max-width:680px;margin:0 auto}
+.section-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;font-family:-apple-system,sans-serif}
+h2{font-size:clamp(1.2rem,3vw,1.65rem);color:#e8d8b8;margin-bottom:1.25rem;line-height:1.3}
+p{margin-bottom:1rem;color:#c8b898;font-family:-apple-system,sans-serif;font-size:.97rem;line-height:1.7}
+
+.what-you-get{background:#0a0f18;padding:3rem 2rem;border-top:1px solid #1a2a3a}
+.what-inner{max-width:680px;margin:0 auto}
+.feature-list{list-style:none;display:flex;flex-direction:column;gap:.8rem;margin:1.25rem 0}
+.feature-list li{display:flex;gap:.85rem;align-items:flex-start;font-size:.95rem;color:#c8b898;font-family:-apple-system,sans-serif;line-height:1.5}
+.feature-list li::before{content:'▶';color:var(--gold);font-size:.6rem;flex-shrink:0;margin-top:.45rem}
+.feature-list strong{color:#e0d0b8}
+
+.cta-section{background:#0a0f18;border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);padding:3.5rem 2rem}
+.cta-inner{max-width:580px;margin:0 auto;text-align:center}
+.cta-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;font-family:-apple-system,sans-serif}
+.cta-headline{font-size:clamp(1.3rem,3vw,1.8rem);color:#f5d78e;line-height:1.25;margin-bottom:.5rem}
+.price-old{color:#666;font-size:.93rem;font-family:-apple-system,sans-serif;text-decoration:line-through;margin-bottom:.25rem}
+.price-now{font-size:3.5rem;font-weight:900;color:#f5d78e;font-family:-apple-system,sans-serif;line-height:1}
+.price-note{font-size:.83rem;color:#8a9aaa;font-family:-apple-system,sans-serif;margin:.4rem 0 1.5rem}
+.timer-inline{font-size:.88rem;font-family:-apple-system,sans-serif;color:#8a9aaa;margin-bottom:1.5rem;text-align:center}
+.timer-inline .t{color:#f5c842;font-weight:900}
+.btn-yes{display:block;width:100%;max-width:480px;margin:0 auto;background:#7a6010;color:#f5d78e;padding:1.25rem;border:2px solid var(--gold);border-radius:4px;font-size:1.1rem;font-weight:800;font-family:-apple-system,sans-serif;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;text-align:center;letter-spacing:.02em}
+.btn-yes:hover{background:#9a7a18;transform:translateY(-2px)}
+.btn-note{font-size:.78rem;color:#7a8898;font-family:-apple-system,sans-serif;margin:.75rem 0 1.5rem;text-align:center}
+.decline-link{display:block;text-align:center;font-family:-apple-system,sans-serif;font-size:.82rem;color:#4a5a6a;text-decoration:underline;cursor:pointer;margin-top:.75rem}
+.decline-link:hover{color:#7a8898}
+
+footer{background:#0a0a0a;color:#4a5a6a;text-align:center;padding:2rem;font-family:-apple-system,sans-serif;font-size:.8rem;border-top:1px solid #1e2d3d}
+footer a{color:#4a5a6a}
+
+@media(max-width:640px){
+  .hero,.body-section,.what-you-get,.cta-section{padding:2.5rem 1.25rem}
+}
 </style>
 </head>
 <body>
+
+<div class="timer-bar" id="timerBar">
+  Last chance — this offer disappears in: <span class="countdown" id="countdown">10:00</span>
+</div>
+
 <nav>
   <a class="nav-brand" href="index.html">Freeborn Arms</a>
 </nav>
 
 <section class="hero">
   <div class="hero-inner">
-    <span class="badge">Wait — One More Offer</span>
-    <h1>Okay — What About <span>Half Off?</span></h1>
-    <p class="sub">You passed on the full Home Defender Course. Fair enough. But before you go — what if you could get the most valuable part of it at a fraction of the price?</p>
+    <div class="hero-badge">Wait — Before You Go</div>
+    <h1>Fair enough. <span>Here's a Smaller Option.</span></h1>
+    <p class="hero-sub">Not ready for the full course right now? Get the condensed Home Defense Quick-Start Guide — the most actionable content, distilled into a fast, practical read you can finish in one sitting.</p>
   </div>
 </section>
 
-<section class="offer">
-  <div class="offer-inner">
-    <p class="section-label">Special Downsell Offer</p>
-    <h2>The Quick-Start Home Defense Guide — Just $27</h2>
-    <p class="offer-body">This is the condensed, field-ready version of the full course: the top 3 things you need to do in your home <em>this week</em> to get meaningfully safer. No fluff. No theory. Just the high-leverage moves that matter most.</p>
-    <p class="offer-body">It's a PDF workbook — actionable, printable, and built for the person who wants results without the full curriculum.</p>
-    <div class="price-box">
-      <p class="was">Regular price: $47</p>
-      <p class="price-now">$27</p>
-      <p class="price-tag">One-time payment &bull; Instant download</p>
-    </div>
-    <a href="https://pixeltrue.thrivecart.com/untitled-product-3/" class="btn btn-lg">Yes — Add the Quick-Start Guide for $27 →</a>
-    <a href="confirmation.html" class="skip">No thanks, I'm all set.</a>
+<section class="body-section">
+  <div class="body-inner">
+    <p class="section-label">The Quick-Start Guide</p>
+    <h2>Everything You Need to Build a Real Defense Plan — in 90 Minutes</h2>
+    <p>The Quick-Start Guide condenses the most critical lessons from the full course into a single, practical document. No fluff. No theory. Just the actions that matter most, in the right order.</p>
+    <p>This is for the person who knows they need to be more prepared but doesn't have hours to spend on a full course right now. Get this done this weekend. You'll be ahead of 95% of homeowners.</p>
   </div>
 </section>
 
-<footer id="footer">
-  <p>&copy; 2025 Freeborn Arms &bull; JA Inc &bull; <a href="mailto:support@freebornarms.com">support@freebornarms.com</a></p>
+<section class="what-you-get">
+  <div class="what-inner">
+    <p class="section-label">What's Inside</p>
+    <h2>The Home Defense Quick-Start Guide</h2>
+    <ul class="feature-list">
+      <li><strong>The 5-Layer Home Hardening Framework</strong> — what to fix first, based on how threats actually happen</li>
+      <li><strong>Zone Control Basics</strong> — how to designate and communicate safe areas with your family tonight</li>
+      <li><strong>The First 6 Hours Checklist</strong> — what to do immediately when something feels wrong</li>
+      <li><strong>Safe Room Setup Guide</strong> — what you need, where to put it, how to get there fast</li>
+      <li><strong>The 20-Minute Family Drill</strong> — a simple script to run your first drill this week</li>
+      <li><strong>Low-Light Navigation Basics</strong> — the single most overlooked skill in home defense</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <p class="cta-label">Downsell Offer</p>
+    <p class="cta-headline">Home Defense Quick-Start Guide</p>
+    <p class="price-old">Regular price: $47</p>
+    <p class="price-now">$27</p>
+    <p class="price-note">One-time &bull; PDF download &bull; Instant access</p>
+    <p class="timer-inline">This offer expires in: <span class="t" id="countdown2">10:00</span></p>
+    <a href="https://pixeltrue.thrivecart.com/untitled-product-3/" class="btn-yes">Yes — Get the Quick-Start Guide for $27 →</a>
+    <p class="btn-note">Secure checkout &bull; Instant PDF download &bull; 30-day guarantee</p>
+    <a class="decline-link" href="thank-you.html">No thanks — I only need the free Blueprint.</a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Freeborn Arms &bull; <a href="index.html">Home Defender Blueprint</a> &bull; <a href="../index.html">All Funnels</a>
 </footer>
+
+<script>
+(function(){
+  var DURATION = 10 * 60; // 10 minutes
+  var KEY = 'fba_downsell_expire';
+  var stored = localStorage.getItem(KEY);
+  var expireAt;
+  if(stored){
+    expireAt = parseInt(stored,10);
+  } else {
+    expireAt = Date.now() + DURATION * 1000;
+    localStorage.setItem(KEY, expireAt);
+  }
+
+  function fmt(s){
+    var m = Math.floor(s/60);
+    var sec = s % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
+  function tick(){
+    var remaining = Math.max(0, Math.floor((expireAt - Date.now()) / 1000));
+    var str = fmt(remaining);
+    document.getElementById('countdown').textContent = str;
+    document.getElementById('countdown2').textContent = str;
+    if(remaining <= 60){
+      document.getElementById('timerBar').classList.add('urgent');
+    }
+    if(remaining === 0){
+      // Offer expired — go to final thank-you
+      window.location.href = 'thank-you.html';
+      return;
+    }
+    setTimeout(tick, 1000);
+  }
+  tick();
+})();
+</script>
 </body>
 </html>
