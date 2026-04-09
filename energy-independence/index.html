@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WARNING: Do NOT Pay Another Gas Bill Until You Watch This</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #08102a;
+    --navy-mid: #0e1e45;
+    --navy-light: #162756;
+    --red: #bf1120;
+    --red-bright: #e01428;
+    --gold: #c9960c;
+    --gold-bright: #f0b429;
+    --gold-pale: #f5d87a;
+    --white: #f7f3eb;
+    --cream: #ede8dc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    overflow-x: hidden;
+  }
+
+  /* Stars background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 15% 20%, rgba(249,215,80,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 42% 8%, rgba(249,215,80,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 68% 33%, rgba(249,215,80,0.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 12%, rgba(249,215,80,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 7% 55%, rgba(249,215,80,0.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 61%, rgba(249,215,80,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 77%, rgba(249,215,80,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 74% 88%, rgba(249,215,80,0.25) 0%, transparent 100%),
+      radial-gradient(2px 2px at 55% 45%, rgba(249,215,80,0.2) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Red stripe top bar */
+  .top-bar {
+    background: var(--red);
+    padding: 10px 0;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    position: relative;
+    z-index: 10;
+    border-bottom: 3px solid var(--gold);
+  }
+
+  /* Warning banner */
+  .warning-banner {
+    background: linear-gradient(135deg, #1a0505 0%, #2d0808 50%, #1a0505 100%);
+    border-top: 4px solid var(--red-bright);
+    border-bottom: 4px solid var(--red-bright);
+    padding: 28px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+  }
+
+  .warning-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 10px,
+      rgba(191,17,32,0.06) 10px,
+      rgba(191,17,32,0.06) 20px
+    );
+  }
+
+  .warning-label {
+    display: inline-block;
+    background: var(--red-bright);
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 6px;
+    padding: 4px 24px;
+    margin-bottom: 16px;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    animation: pulse-red 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-red {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+  }
+
+  .warning-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 7vw, 72px);
+    line-height: 1.0;
+    color: var(--white);
+    text-shadow: 0 0 40px rgba(191,17,32,0.6), 2px 2px 0 rgba(0,0,0,0.8);
+    letter-spacing: 2px;
+  }
+
+  .warning-headline span {
+    color: var(--gold-bright);
+    text-shadow: 0 0 30px rgba(240,180,41,0.5), 2px 2px 0 rgba(0,0,0,0.8);
+  }
+
+  /* Hero / VSL section */
+  .hero {
+    padding: 60px 20px 40px;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+  }
+
+  .subheadline {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--cream);
+    margin-bottom: 40px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .subheadline em {
+    color: var(--gold-bright);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  /* VSL Player */
+  .vsl-container {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto 48px;
+  }
+
+  .vsl-player {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    border: 4px solid var(--gold);
+    box-shadow: 0 0 60px rgba(201,150,12,0.3), 0 0 120px rgba(0,0,0,0.8), inset 0 0 40px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .vsl-inner {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #0a1628 0%, #1a2a50 40%, #0d1e3a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .play-button {
+    width: 80px;
+    height: 80px;
+    background: var(--red-bright);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 40px rgba(224,20,40,0.6);
+    transition: transform 0.2s;
+    animation: pulse-play 2.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-play {
+    0%, 100% { box-shadow: 0 0 40px rgba(224,20,40,0.6); transform: scale(1); }
+    50% { box-shadow: 0 0 60px rgba(224,20,40,0.9); transform: scale(1.05); }
+  }
+
+  .play-button svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+    margin-left: 6px;
+  }
+
+  .vsl-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    color: rgba(247,243,235,0.7);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* Gold decorative divider */
+  .gold-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto 48px;
+  }
+
+  .gold-divider::before,
+  .gold-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .gold-divider-star {
+    color: var(--gold);
+    font-size: 20px;
+  }
+
+  /* Benefits section */
+  .benefits {
+    background: linear-gradient(180deg, transparent 0%, rgba(14,30,69,0.8) 20%, rgba(14,30,69,0.8) 80%, transparent 100%);
+    padding: 60px 20px;
+    position: relative;
+    z-index: 5;
+  }
+
+  .benefits-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 5vw, 48px);
+    text-align: center;
+    letter-spacing: 3px;
+    color: var(--gold-bright);
+    margin-bottom: 8px;
+    text-shadow: 0 0 30px rgba(240,180,41,0.3);
+  }
+
+  .section-subtitle {
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    color: var(--cream);
+    opacity: 0.8;
+    font-size: 17px;
+    margin-bottom: 48px;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .benefit-card {
+    background: linear-gradient(135deg, rgba(22,39,86,0.9) 0%, rgba(14,30,69,0.9) 100%);
+    border: 1px solid rgba(201,150,12,0.3);
+    border-left: 4px solid var(--gold);
+    padding: 28px 24px;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-2px);
+    border-left-color: var(--gold-bright);
+    border-color: rgba(240,180,41,0.5);
+  }
+
+  .benefit-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .benefit-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold-bright);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .benefit-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(247,243,235,0.85);
+  }
+
+  /* Social proof */
+  .social-proof {
+    padding: 60px 20px;
+    position: relative;
+    z-index: 5;
+  }
+
+  .testimonials {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .testimonial {
+    background: rgba(8,16,42,0.8);
+    border: 1px solid rgba(201,150,12,0.2);
+    border-top: 3px solid var(--red);
+    padding: 28px 24px;
+    position: relative;
+  }
+
+  .testimonial::before {
+    content: '"';
+    font-family: Georgia, serif;
+    font-size: 80px;
+    color: var(--gold);
+    opacity: 0.2;
+    position: absolute;
+    top: -8px;
+    left: 16px;
+    line-height: 1;
+  }
+
+  .testimonial-text {
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--cream);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .testimonial-author {
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    color: var(--gold-bright);
+    letter-spacing: 1px;
+  }
+
+  .stars {
+    color: var(--gold-bright);
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  /* Savings counter strip */
+  .savings-strip {
+    background: var(--red);
+    padding: 32px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+  }
+
+  .savings-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.04) 40px,
+      rgba(255,255,255,0.04) 41px
+    );
+  }
+
+  .savings-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 10vw, 96px);
+    color: var(--gold-bright);
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+    display: block;
+    line-height: 1;
+  }
+
+  .savings-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: white;
+    opacity: 0.95;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(191,17,32,0.12) 0%, transparent 70%);
+  }
+
+  .cta-eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 20px;
+  }
+
+  .cta-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 6vw, 64px);
+    line-height: 1.05;
+    margin-bottom: 24px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--white);
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: linear-gradient(180deg, #e8c93e 0%, #c9960c 50%, #a07808 100%);
+    color: #08102a;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(20px, 4vw, 32px);
+    letter-spacing: 2px;
+    padding: 22px 60px;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: 0 8px 40px rgba(201,150,12,0.5), 0 4px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+    transition: transform 0.15s, box-shadow 0.15s;
+    position: relative;
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+    animation: glow-cta 3s ease-in-out infinite;
+  }
+
+  @keyframes glow-cta {
+    0%, 100% { box-shadow: 0 8px 40px rgba(201,150,12,0.5), 0 4px 12px rgba(0,0,0,0.5); }
+    50% { box-shadow: 0 8px 60px rgba(240,180,41,0.8), 0 4px 20px rgba(0,0,0,0.5); }
+  }
+
+  .cta-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 60px rgba(201,150,12,0.7), 0 6px 20px rgba(0,0,0,0.6);
+  }
+
+  .cta-subtext {
+    font-size: 15px;
+    color: rgba(247,243,235,0.6);
+    margin-top: 16px;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  /* Guarantee badge */
+  .guarantee {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 40px;
+    border: 3px solid var(--gold);
+    position: relative;
+    text-align: center;
+    z-index: 5;
+    background: rgba(8,16,42,0.6);
+  }
+
+  .guarantee::before {
+    content: '★ 60-DAY GUARANTEE ★';
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+    padding: 4px 20px;
+    white-space: nowrap;
+  }
+
+  .guarantee-shield {
+    font-size: 64px;
+    margin-bottom: 16px;
+    filter: drop-shadow(0 0 20px rgba(201,150,12,0.4));
+  }
+
+  .guarantee-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold-bright);
+    margin-bottom: 12px;
+  }
+
+  .guarantee-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(247,243,235,0.85);
+  }
+
+  /* FAQ */
+  .faq {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    position: relative;
+    z-index: 5;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(201,150,12,0.2);
+    padding: 24px 0;
+  }
+
+  .faq-q {
+    font-family: 'Oswald', sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--gold-pale);
+    margin-bottom: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .faq-q::before {
+    content: 'Q:';
+    color: var(--red-bright);
+    flex-shrink: 0;
+  }
+
+  .faq-a {
+    font-size: 17px;
+    line-height: 1.7;
+    color: rgba(247,243,235,0.8);
+    padding-left: 36px;
+  }
+
+  /* Footer */
+  footer {
+    background: rgba(4,8,20,0.95);
+    border-top: 1px solid rgba(201,150,12,0.2);
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+  }
+
+  footer p {
+    font-size: 13px;
+    color: rgba(247,243,235,0.4);
+    max-width: 700px;
+    margin: 0 auto 8px;
+    line-height: 1.6;
+  }
+
+  footer a {
+    color: rgba(247,243,235,0.5);
+    text-decoration: none;
+  }
+
+  .flag-stripe {
+    height: 6px;
+    background: repeating-linear-gradient(90deg, var(--red) 0px, var(--red) 33.33%, var(--white) 33.33%, var(--white) 66.66%, var(--navy-mid) 66.66%, var(--navy-mid) 100%);
+    margin-bottom: 32px;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">🇺🇸 &nbsp; Breaking Free From Big Oil — One American Family At A Time &nbsp; 🇺🇸</div>
+
+<div class="warning-banner">
+  <div class="warning-label">⚠ WARNING ⚠</div>
+  <h1 class="warning-headline">
+    Do <span>NOT</span> Pay Another Gas Bill<br>Until You Watch This Short Video
+  </h1>
+</div>
+
+<section class="hero">
+  <p class="subheadline">
+    Discover How <em>Everyday American Families</em> Are Quietly Breaking Free from Big Oil<br>
+    and Slashing Their Energy Bills by <em>$200–$400 Per Month</em> —<br>
+    Without Solar Panels or Expensive Renovations
+  </p>
+
+  <div class="vsl-container">
+    <div class="vsl-player">
+      <div class="vsl-inner">
+        <div class="play-button">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <div class="vsl-label">Click to Watch — 10 Minutes</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gold-divider">
+    <span class="gold-divider-star">★</span>
+    <span class="gold-divider-star">★</span>
+    <span class="gold-divider-star">★</span>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="benefits-inner">
+    <h2 class="section-title">What You'll Discover Inside</h2>
+    <p class="section-subtitle">The secrets the energy companies spend millions keeping hidden</p>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🏛️</div>
+        <div class="benefit-title">Government Programs Big Oil Buried</div>
+        <p class="benefit-text">Discover federal and state programs that could put thousands of dollars back in your pocket this year — programs Big Oil has quietly lobbied to keep invisible.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⛽</div>
+        <div class="benefit-title">Cut Gas Bills 15–30% This Week</div>
+        <p class="benefit-text">Legal, documented fuel strategies that work on the vehicle you already drive. No new car. No modifications. Start saving immediately.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">💰</div>
+        <div class="benefit-title">Alternative Fuels at 40–60% Less</div>
+        <p class="benefit-text">Access alternative fuels available right now near you at a fraction of the cost of regular gasoline. Most people have no idea these options exist.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🏠</div>
+        <div class="benefit-title">Eliminate Home Gas Dependency</div>
+        <p class="benefit-text">Step-by-step plan to cut home energy costs in the biggest categories — heating, hot water, cooking — with a clear ROI for every change you make.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📋</div>
+        <div class="benefit-title">The 30-Day Fast Track</div>
+        <p class="benefit-text">No guesswork, no overwhelm — just a clear sequence of actions that compounds your savings month after month, starting with quick wins in week one.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🔒</div>
+        <div class="benefit-title">100% Legal, Available Right Now</div>
+        <p class="benefit-text">No waiting for new technology. No massive upfront investment. No moving off the grid. Everything inside works for regular families in regular homes today.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="savings-strip">
+  <span class="savings-number">$3,200</span>
+  <span class="savings-label">— The average American family's yearly gas spend. Let's change that.</span>
+</div>
+
+<section class="social-proof">
+  <div style="max-width:900px;margin:0 auto;text-align:center">
+    <h2 class="section-title">Real Families. Real Savings.</h2>
+    <p class="section-subtitle">These aren't actors. These are your neighbors.</p>
+  </div>
+  <div class="testimonials">
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">I thought this was going to be one of those things that sounds good but doesn't actually work. It wasn't. I qualified for two programs I'd never heard of and I'm saving $340 a month. I can't believe I didn't know about this sooner.</p>
+      <div class="testimonial-author">— Mark T., Phoenix, AZ</div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">My husband was skeptical. I bought it anyway. Three weeks later he admitted I was right. We've cut our energy spending by almost half and it took maybe two weekends of actual effort.</p>
+      <div class="testimonial-author">— Diane K., Columbus, OH</div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">As someone who's been worried about energy prices for years, this was a relief. Real, practical options — not theory. Not someday technology. Things I could actually do right now.</p>
+      <div class="testimonial-author">— Robert M., Nashville, TN</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-eyebrow">★ LIMITED TIME OFFER ★</div>
+  <h2 class="cta-headline">YES! I Want My Energy Independence Blueprint</h2>
+  <a href="./order.html" class="cta-button">Get Instant Access for $97 →</a>
+  <p class="cta-subtext">🔒 Secure 256-bit SSL Checkout &nbsp;•&nbsp; 60-Day Money-Back Guarantee &nbsp;•&nbsp; Instant Digital Access</p>
+</section>
+
+<div style="padding:0 20px;">
+  <div class="guarantee">
+    <div class="guarantee-shield">🛡️</div>
+    <div class="guarantee-title">60-Day Iron-Clad Money-Back Guarantee</div>
+    <p class="guarantee-text">
+      Try the entire Energy Independence Blueprint for a full 60 days. If you implement what's inside and don't save at least 10 times what you paid — or if you're unsatisfied for any reason whatsoever — email us and we'll refund every single penny. No questions, no hassle, no fine print. We take all the risk so you don't have to.
+    </p>
+  </div>
+</div>
+
+<section class="faq">
+  <h2 class="section-title" style="text-align:center;margin-bottom:40px">Common Questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">I'm not particularly tech-savvy. Is this too complicated for me?</div>
+    <p class="faq-a">Not at all. The Blueprint is written specifically for regular people — not engineers, not policy experts. If you can follow a recipe or set up a new phone, you can implement what's inside.</p>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Do I need to buy expensive equipment or make major home improvements?</div>
+    <p class="faq-a">No. Many of the highest-impact strategies cost nothing upfront — they involve programs you can apply for, options you can access, and changes in how you use what you already have. Some optional upgrades are included for people who want to go further, but they're optional.</p>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">I live in an apartment or rent my home. Can this still help me?</div>
+    <p class="faq-a">Yes. Several modules apply regardless of whether you own or rent. The vehicle and fuel strategies, in particular, apply to anyone who drives.</p>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What if this doesn't work for my situation?</div>
+    <p class="faq-a">You're covered by a 60-day money-back guarantee. If you implement what's in the Blueprint and don't save at least 10x the purchase price, contact us for a full refund. No questions asked.</p>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Why haven't I heard about these options before?</div>
+    <p class="faq-a">That's exactly the right question — and the Blueprint answers it in detail. The short version: the energy industry has powerful financial incentives to keep you paying full price. The information exists. It's just not advertised.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="flag-stripe"></div>
+  <p>© 2024 Energy Independence Blueprint. All Rights Reserved.</p>
+  <p><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a> &nbsp;|&nbsp; <a href="#">Contact</a> &nbsp;|&nbsp; <a href="#">Earnings Disclaimer</a></p>
+  <p style="margin-top:16px;">Results mentioned are not typical. Individual results will vary based on your specific situation, effort applied, and local energy rates. This product is for educational purposes and does not constitute financial or legal advice.</p>
+</footer>
+
+</body>
+</html>

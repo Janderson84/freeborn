@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order — Energy Independence Blueprint</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #08102a;
+    --navy-mid: #0e1e45;
+    --red: #bf1120;
+    --red-bright: #e01428;
+    --gold: #c9960c;
+    --gold-bright: #f0b429;
+    --gold-pale: #f5d87a;
+    --white: #f7f3eb;
+    --cream: #ede8dc;
+    --green: #1a7a3c;
+    --green-bright: #22a050;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f4f1eb;
+    color: #1a1a2e;
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+  }
+
+  .secure-bar {
+    background: var(--green);
+    padding: 10px 20px;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .order-header {
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+    padding: 32px 20px;
+    text-align: center;
+    border-bottom: 4px solid var(--gold);
+  }
+
+  .order-header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 5vw, 52px);
+    color: var(--gold-bright);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .order-header p {
+    font-family: 'Oswald', sans-serif;
+    color: rgba(247,243,235,0.8);
+    font-size: 16px;
+  }
+
+  .order-main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 32px;
+    align-items: start;
+  }
+
+  @media (max-width: 760px) {
+    .order-main { grid-template-columns: 1fr; }
+  }
+
+  /* Form side */
+  .form-section {
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+
+  .form-header {
+    background: var(--navy);
+    padding: 20px 28px;
+    border-bottom: 3px solid var(--gold);
+  }
+
+  .form-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    color: var(--gold-bright);
+    letter-spacing: 1px;
+  }
+
+  .form-header p {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    color: rgba(247,243,235,0.6);
+    margin-top: 4px;
+  }
+
+  .form-body {
+    padding: 32px 28px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #444;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #ddd;
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 17px;
+    color: #222;
+    background: #fafafa;
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus {
+    border-color: var(--gold);
+    background: white;
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 2px solid #f0ece4;
+    margin: 28px 0;
+  }
+
+  .form-section-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card-icons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .card-icon {
+    background: #f0ece4;
+    border: 1px solid #ddd;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-family: 'Oswald', sans-serif;
+    color: #666;
+    letter-spacing: 1px;
+  }
+
+  /* Order bump */
+  .order-bump {
+    margin-top: 24px;
+    background: #fffdf5;
+    border: 3px dashed var(--gold);
+    padding: 24px;
+    position: relative;
+  }
+
+  .order-bump-badge {
+    position: absolute;
+    top: -14px;
+    left: 24px;
+    background: var(--red-bright);
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    padding: 4px 16px;
+  }
+
+  .order-bump-inner {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .bump-checkbox {
+    width: 28px;
+    height: 28px;
+    accent-color: var(--red-bright);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .bump-content h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .bump-content p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.55;
+    margin-bottom: 8px;
+  }
+
+  .bump-price {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--red-bright);
+  }
+
+  .bump-price del {
+    color: #999;
+    font-size: 15px;
+    font-weight: 400;
+    margin-right: 6px;
+  }
+
+  /* Submit button */
+  .submit-button {
+    display: block;
+    width: 100%;
+    background: linear-gradient(180deg, #e8c93e 0%, #c9960c 60%, #a07808 100%);
+    color: var(--navy);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    padding: 22px 40px;
+    border: none;
+    cursor: pointer;
+    margin-top: 28px;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 6px 30px rgba(201,150,12,0.4);
+    animation: glow-btn 3s ease-in-out infinite;
+  }
+
+  @keyframes glow-btn {
+    0%, 100% { box-shadow: 0 6px 30px rgba(201,150,12,0.4); }
+    50% { box-shadow: 0 6px 50px rgba(240,180,41,0.7); }
+  }
+
+  .submit-button:hover { transform: translateY(-2px); }
+
+  .submit-subtext {
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    color: #888;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  /* Summary side */
+  .order-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .summary-card {
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  .summary-card-header {
+    background: var(--navy);
+    padding: 14px 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: var(--gold-bright);
+    text-transform: uppercase;
+  }
+
+  .summary-card-body {
+    padding: 20px;
+  }
+
+  .product-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .product-line:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .product-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .product-desc {
+    font-size: 14px;
+    color: #777;
+  }
+
+  .product-price {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    white-space: nowrap;
+    margin-left: 16px;
+  }
+
+  .total-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--navy);
+  }
+
+  .total-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: var(--white);
+  }
+
+  .total-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--gold-bright);
+  }
+
+  .trust-badges {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .trust-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    padding: 12px 8px;
+    border: 1px solid #eee;
+    background: #fafafa;
+  }
+
+  .trust-badge-icon { font-size: 24px; }
+  .trust-badge-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #555;
+    text-transform: uppercase;
+  }
+
+  .guarantee-mini {
+    padding: 20px;
+    text-align: center;
+    border-top: 3px solid var(--gold);
+    background: #fffdf5;
+  }
+
+  .guarantee-mini h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    color: var(--navy);
+    margin: 8px 0 6px;
+    letter-spacing: 1px;
+  }
+
+  .guarantee-mini p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.55;
+  }
+
+  footer {
+    text-align: center;
+    padding: 32px 20px;
+    border-top: 1px solid #ddd;
+    margin-top: 40px;
+  }
+
+  footer p {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 6px;
+  }
+
+  footer a { color: #999; }
+</style>
+</head>
+<body>
+
+<div class="secure-bar">
+  🔒 &nbsp; 256-BIT SSL SECURE CHECKOUT — YOUR INFORMATION IS PROTECTED
+</div>
+
+<div class="order-header">
+  <h1>You're One Step Away from Energy Independence</h1>
+  <p>Energy Independence Blueprint — Complete 5-Module Digital System</p>
+</div>
+
+<div class="order-main">
+  <!-- Form -->
+  <div class="form-section">
+    <div class="form-header">
+      <h2>Step 1 — Contact Information</h2>
+      <p>Where should we send your access details?</p>
+    </div>
+    <div class="form-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="John">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="john@example.com">
+      </div>
+      <div class="form-group">
+        <label>Phone (optional)</label>
+        <input type="tel" placeholder="(555) 000-0000">
+      </div>
+
+      <hr class="section-divider">
+
+      <div class="form-section-label">
+        💳 Step 2 — Payment Information
+      </div>
+
+      <div class="card-icons">
+        <div class="card-icon">VISA</div>
+        <div class="card-icon">MC</div>
+        <div class="card-icon">AMEX</div>
+        <div class="card-icon">DISC</div>
+      </div>
+
+      <div class="form-group">
+        <label>Card Number</label>
+        <input type="text" placeholder="1234 5678 9012 3456">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Expiry</label>
+          <input type="text" placeholder="MM / YY">
+        </div>
+        <div class="form-group">
+          <label>Security Code</label>
+          <input type="text" placeholder="CVV">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Billing ZIP Code</label>
+        <input type="text" placeholder="12345">
+      </div>
+
+      <!-- Order Bump -->
+      <div class="order-bump">
+        <div class="order-bump-badge">⚡ SPECIAL ONE-TIME OFFER</div>
+        <div class="order-bump-inner">
+          <input type="checkbox" class="bump-checkbox" id="bump">
+          <div class="bump-content">
+            <h3>YES — Add the Energy Independence Toolkit for just $17 more</h3>
+            <p>The Energy Independence Toolkit includes printable worksheets for every module plus a built-in savings calculator that tracks your actual results month by month. It's the hands-on companion to the Blueprint — helps you stay organized, implement faster, and see exactly how much you're saving in real time. Thousands of members use it alongside the Blueprint.</p>
+            <div class="bump-price"><del>$37</del> Just $17 today — check the box above to add it!</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="submit-button" onclick="window.location='./upsell.html'">
+        YES! GIVE ME INSTANT ACCESS →
+      </button>
+      <div class="submit-subtext">
+        🔒 Secure &nbsp;•&nbsp; ✓ 60-Day Guarantee &nbsp;•&nbsp; ⚡ Instant Access
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="order-summary">
+    <div class="summary-card">
+      <div class="summary-card-header">Your Order Summary</div>
+      <div class="summary-card-body">
+        <div class="product-line">
+          <div>
+            <div class="product-name">Energy Independence Blueprint</div>
+            <div class="product-desc">Complete 5-Module Digital System — instant access</div>
+          </div>
+          <div class="product-price" style="text-decoration:line-through;color:#999;font-size:15px">$297</div>
+        </div>
+        <div class="product-line">
+          <div>
+            <div class="product-name" style="color:var(--red)">Today Only</div>
+            <div class="product-desc">Limited time launch price</div>
+          </div>
+          <div class="product-price">$97</div>
+        </div>
+        <div class="product-line" style="opacity:0.5">
+          <div>
+            <div class="product-name">Energy Independence Toolkit</div>
+            <div class="product-desc">Optional add-on (check box)</div>
+          </div>
+          <div class="product-price" style="font-size:16px">+$17</div>
+        </div>
+      </div>
+      <div class="total-line">
+        <span class="total-label">Total Today</span>
+        <span class="total-price">$97</span>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-card-header">Security & Trust</div>
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <div class="trust-badge-icon">🔒</div>
+          <div class="trust-badge-label">SSL Encrypted</div>
+        </div>
+        <div class="trust-badge">
+          <div class="trust-badge-icon">🛡️</div>
+          <div class="trust-badge-label">60-Day Guarantee</div>
+        </div>
+        <div class="trust-badge">
+          <div class="trust-badge-icon">⚡</div>
+          <div class="trust-badge-label">Instant Access</div>
+        </div>
+        <div class="trust-badge">
+          <div class="trust-badge-icon">📱</div>
+          <div class="trust-badge-label">Any Device</div>
+        </div>
+      </div>
+      <div class="guarantee-mini">
+        <div style="font-size:36px">🛡️</div>
+        <h3>60-Day Money-Back Guarantee</h3>
+        <p>If you implement the Blueprint and don't save at least 10x the purchase price — or if you're unsatisfied for any reason — we'll refund your full purchase. No questions asked.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2024 Energy Independence Blueprint. All Rights Reserved.</p>
+  <p><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms</a> &nbsp;|&nbsp; <a href="#">Contact</a></p>
+</footer>
+
+</body>
+</html>

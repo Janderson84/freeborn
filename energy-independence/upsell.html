@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wait — Before You Dive In, Let Us Do The Hard Work For You</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #08102a;
+    --navy-mid: #0e1e45;
+    --red: #bf1120;
+    --red-bright: #e01428;
+    --gold: #c9960c;
+    --gold-bright: #f0b429;
+    --white: #f7f3eb;
+    --cream: #ede8dc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 120% 60% at 50% -10%, rgba(191,17,32,0.2) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 40% at 50% 110%, rgba(201,150,12,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .wait-bar {
+    background: var(--red-bright);
+    padding: 12px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: flash-bar 1.5s ease-in-out infinite;
+  }
+
+  @keyframes flash-bar {
+    0%, 100% { background: var(--red-bright); }
+    50% { background: var(--red); }
+  }
+
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 20px 80px;
+    position: relative;
+    z-index: 5;
+  }
+
+  .eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    letter-spacing: 4px;
+    color: var(--gold-bright);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 7vw, 72px);
+    line-height: 1.0;
+    color: var(--white);
+    margin-bottom: 24px;
+    text-shadow: 0 0 40px rgba(191,17,32,0.4);
+  }
+
+  h1 span { color: var(--gold-bright); }
+
+  .subtitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(17px, 2.5vw, 22px);
+    color: rgba(247,243,235,0.85);
+    line-height: 1.5;
+    margin-bottom: 48px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Video placeholder */
+  .video-box {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto 48px;
+    aspect-ratio: 16/9;
+    background: #000;
+    border: 4px solid var(--gold);
+    box-shadow: 0 0 60px rgba(201,150,12,0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .video-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #0a1628 0%, #1d2f58 50%, #0a1628 100%);
+  }
+
+  .play-ring {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid var(--gold-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 40px rgba(240,180,41,0.3);
+    animation: ring-pulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes ring-pulse {
+    0%, 100% { box-shadow: 0 0 40px rgba(240,180,41,0.3); }
+    50% { box-shadow: 0 0 70px rgba(240,180,41,0.6); }
+  }
+
+  .play-ring svg {
+    width: 36px;
+    height: 36px;
+    fill: var(--gold-bright);
+    margin-left: 6px;
+  }
+
+  .video-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: rgba(247,243,235,0.6);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Body copy */
+  .body-copy {
+    text-align: left;
+    max-width: 680px;
+    margin: 0 auto 40px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(247,243,235,0.85);
+  }
+
+  .body-copy p { margin-bottom: 20px; }
+
+  .body-copy em {
+    color: var(--gold-bright);
+    font-style: italic;
+  }
+
+  .body-copy strong {
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  /* Offer box */
+  .offer-box {
+    background: rgba(14,30,69,0.8);
+    border: 2px solid rgba(201,150,12,0.4);
+    border-top: 4px solid var(--gold);
+    padding: 40px;
+    margin-bottom: 48px;
+    text-align: left;
+  }
+
+  .offer-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(24px, 4vw, 40px);
+    color: var(--gold-bright);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .offer-includes {
+    list-style: none;
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .offer-includes li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 17px;
+    color: var(--cream);
+    line-height: 1.5;
+  }
+
+  .offer-includes li::before {
+    content: '✓';
+    color: var(--gold-bright);
+    font-weight: bold;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .price-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 32px 0;
+  }
+
+  .old-price {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    color: rgba(247,243,235,0.4);
+    text-decoration: line-through;
+  }
+
+  .new-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 10vw, 80px);
+    color: var(--gold-bright);
+    text-shadow: 0 0 30px rgba(240,180,41,0.3);
+    line-height: 1;
+  }
+
+  .new-price sup {
+    font-size: 0.4em;
+    vertical-align: super;
+  }
+
+  /* Yes / No buttons */
+  .decision-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .btn-yes {
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    background: linear-gradient(180deg, #e8c93e 0%, #c9960c 60%, #a07808 100%);
+    color: var(--navy);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(22px, 4vw, 34px);
+    letter-spacing: 2px;
+    padding: 24px 40px;
+    text-decoration: none;
+    cursor: pointer;
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+    box-shadow: 0 8px 40px rgba(201,150,12,0.5);
+    transition: transform 0.15s, box-shadow 0.15s;
+    animation: glow-yes 2.5s ease-in-out infinite;
+  }
+
+  @keyframes glow-yes {
+    0%, 100% { box-shadow: 0 8px 40px rgba(201,150,12,0.5); }
+    50% { box-shadow: 0 8px 60px rgba(240,180,41,0.8); }
+  }
+
+  .btn-yes:hover { transform: translateY(-3px); }
+
+  .btn-no {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    color: rgba(247,243,235,0.4);
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+
+  .btn-no:hover { color: rgba(247,243,235,0.7); }
+
+  .guarantee-note {
+    margin-top: 24px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    color: rgba(247,243,235,0.5);
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wait-bar">⚠ WAIT — Your Order Is Being Processed. Read This Important Message Before You Continue</div>
+
+<main>
+  <div class="eyebrow">★ Exclusive One-Time Offer ★</div>
+  <h1>Let Us Do The <span>Hard Work</span><br>For You...</h1>
+  <p class="subtitle">
+    You Just Made a Smart Decision. Now Let Our Energy Independence Specialists Review Your Specific Situation and Tell You Exactly Which Strategies Will Save You the Most Money — Fast.
+  </p>
+
+  <div class="video-box">
+    <div class="play-ring">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+    <div class="video-label">Watch This 2-Minute Message</div>
+  </div>
+
+  <div class="body-copy">
+    <p>The Blueprint gives you everything you need to cut your energy costs significantly.</p>
+    <p>But here's the truth: the people who save the most — and save it the fastest — are the ones who don't have to figure out where to start.</p>
+    <p>Because even with a complete roadmap, there's still a question that slows most people down:</p>
+    <p><em>"Which of these strategies makes the most sense for MY situation?"</em></p>
+    <p>Your home is different from your neighbor's. Your commute is different. Your vehicle is different. Your state has different programs, different options, different incentives.</p>
+    <p>That's why we created the <strong>Done-With-You Energy Audit</strong>.</p>
+    <p>Here's how it works:</p>
+    <p><strong>Step 1 — You fill out our detailed Energy Profile.</strong> Tell us about your home, your vehicles, your current energy costs, and your goals. Takes about 15 minutes.</p>
+    <p><strong>Step 2 — Our specialists analyze your profile.</strong> Using the same research that went into the Blueprint, plus our constantly updated database of state and local programs, our team identifies the top 3–5 strategies most likely to produce the biggest savings for your specific situation.</p>
+    <p><strong>Step 3 — You receive your personalized Energy Action Plan.</strong> A clear, prioritized document showing exactly what to do, in what order, with all the relevant links, forms, and resources pre-filled for your location.</p>
+    <p><strong>Step 4 — 60-minute implementation call.</strong> You get on a call with one of our specialists. They walk you through your plan, answer every question, and make sure you leave with total clarity on your next steps.</p>
+    <p>Most people who go through the Done-With-You Audit are implementing their first strategy within 48 hours of the call.</p>
+  </div>
+
+  <div class="offer-box">
+    <div class="offer-title">Done-With-You Energy Audit & Implementation Call</div>
+    <p style="font-size:17px;color:rgba(247,243,235,0.8);text-align:center;margin-bottom:8px;">
+      This is the fastest path to maximum savings — personalized for your home, your vehicles, and your state.
+    </p>
+
+    <ul class="offer-includes">
+      <li>Full analysis of your home's energy profile based on your bills and our detailed questionnaire</li>
+      <li>Personalized ranked list of the top 3–5 savings strategies for your specific situation</li>
+      <li>60-minute private implementation call with a certified energy advisor — ask anything</li>
+      <li>Written action plan delivered within 48 hours so you have a clear roadmap to follow</li>
+      <li>Identification of every state and federal rebate you currently qualify for</li>
+      <li>30-day follow-up email support to keep you on track</li>
+    </ul>
+
+    <div class="price-display">
+      <div class="old-price">Regular $997</div>
+      <div class="new-price"><sup>$</sup>497</div>
+    </div>
+    <p style="text-align:center;font-family:'Oswald',sans-serif;font-size:15px;color:rgba(247,243,235,0.5);">One-time upgrade — this offer is only available on this page, right now</p>
+  </div>
+
+  <div class="decision-section">
+    <a href="./thank-you.html" class="btn-yes">YES — Add the Done-With-You Energy Audit for $497 →</a>
+    <button class="btn-no" onclick="window.location='./downsell.html'">
+      No thanks — I'll figure out which strategies to prioritize on my own
+    </button>
+    <div class="guarantee-note">🛡️ All purchases covered by our 60-Day Money-Back Guarantee</div>
+  </div>
+</main>
+
+</body>
+</html>

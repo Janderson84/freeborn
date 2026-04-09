@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Okay — Fair Enough. But Before You Go...</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #08102a;
+    --navy-mid: #0e1e45;
+    --red: #bf1120;
+    --red-bright: #e01428;
+    --gold: #c9960c;
+    --gold-bright: #f0b429;
+    --white: #f7f3eb;
+    --cream: #ede8dc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse 100% 50% at 50% 0%, rgba(201,150,12,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .top-bar {
+    background: linear-gradient(90deg, var(--navy-mid), rgba(201,150,12,0.15), var(--navy-mid));
+    border-bottom: 2px solid rgba(201,150,12,0.3);
+    padding: 12px 20px;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: var(--gold-bright);
+  }
+
+  main {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 60px 20px 80px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+  }
+
+  .eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: rgba(247,243,235,0.6);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 7vw, 68px);
+    line-height: 1.0;
+    margin-bottom: 24px;
+    color: var(--white);
+  }
+
+  h1 span { color: var(--gold-bright); }
+
+  .hook-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(18px, 3vw, 24px);
+    color: rgba(247,243,235,0.85);
+    line-height: 1.5;
+    margin-bottom: 48px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Inner Circle card */
+  .offer-card {
+    background: linear-gradient(145deg, rgba(22,39,86,0.95) 0%, rgba(14,30,69,0.95) 100%);
+    border: 2px solid rgba(201,150,12,0.4);
+    border-top: 4px solid var(--gold-bright);
+    padding: 48px 40px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offer-card::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(201,150,12,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+    padding: 6px 24px;
+    margin-bottom: 24px;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  .offer-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 5vw, 48px);
+    color: var(--gold-bright);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .offer-tagline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 17px;
+    color: rgba(247,243,235,0.7);
+    margin-bottom: 36px;
+    font-style: italic;
+  }
+
+  .perks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+
+  .perks li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    font-size: 17px;
+    color: var(--cream);
+    line-height: 1.5;
+  }
+
+  .perk-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .pricing {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 12px;
+    margin: 32px 0 8px;
+  }
+
+  .first-month {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    color: var(--gold-bright);
+    background: rgba(240,180,41,0.1);
+    border: 1px solid rgba(240,180,41,0.3);
+    padding: 6px 16px;
+  }
+
+  .monthly-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 9vw, 72px);
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .monthly-price sup { font-size: 0.4em; vertical-align: super; }
+  .monthly-price sub {
+    font-size: 0.35em;
+    vertical-align: baseline;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    opacity: 0.7;
+  }
+
+  .price-note {
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    color: rgba(247,243,235,0.5);
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+  }
+
+  .btn-yes {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto 16px;
+    background: linear-gradient(180deg, #e8c93e 0%, #c9960c 60%, #a07808 100%);
+    color: var(--navy);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(20px, 4vw, 30px);
+    letter-spacing: 2px;
+    padding: 22px 40px;
+    text-decoration: none;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    box-shadow: 0 6px 30px rgba(201,150,12,0.4);
+    transition: transform 0.15s;
+    cursor: pointer;
+  }
+
+  .btn-yes:hover { transform: translateY(-2px); }
+
+  .cancel-note {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    color: rgba(247,243,235,0.45);
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+  }
+
+  .btn-no {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    color: rgba(247,243,235,0.35);
+    text-decoration: underline;
+    background: none;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+
+  .btn-no:hover { color: rgba(247,243,235,0.6); }
+
+  /* Testimonial strip */
+  .testimonial-strip {
+    background: rgba(14,30,69,0.6);
+    border: 1px solid rgba(201,150,12,0.2);
+    padding: 28px 32px;
+    margin-top: 48px;
+    font-style: italic;
+    font-size: 17px;
+    color: rgba(247,243,235,0.8);
+    line-height: 1.6;
+    position: relative;
+    text-align: left;
+  }
+
+  .testimonial-strip::before {
+    content: '"';
+    font-size: 72px;
+    color: var(--gold);
+    opacity: 0.15;
+    position: absolute;
+    top: -8px;
+    left: 12px;
+    font-family: Georgia;
+    line-height: 1;
+  }
+
+  .t-author {
+    margin-top: 12px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    color: var(--gold-bright);
+    font-style: normal;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">★ &nbsp; EXCLUSIVE MEMBER OFFER — READ BEFORE LEAVING &nbsp; ★</div>
+
+<main>
+  <div class="eyebrow">Okay — Fair Enough. But Before You Go...</div>
+  <h1>Get Ongoing Expert Guidance for Less Than <span>One Tank of Gas</span></h1>
+  <p class="hook-text">
+    The full Done-With-You Audit isn't for everyone — and that's okay. But we've found the people who get the best long-term results are the ones who stay connected as programs change, new options become available, and energy prices keep shifting.
+  </p>
+
+  <div class="offer-card">
+    <div class="badge">★ SPECIAL MEMBER OFFER ★</div>
+    <div class="offer-name">Energy Independence Inner Circle</div>
+    <div class="offer-tagline">The monthly membership for families committed to breaking free from Big Oil — with 10,000+ members and growing</div>
+
+    <ul class="perks">
+      <li>
+        <div class="perk-icon">📬</div>
+        <div><strong>Monthly Energy Independence Briefing</strong> — a curated roundup of new government programs, updated incentives, and emerging options — reviewed and explained by our research team in plain English</div>
+      </li>
+      <li>
+        <div class="perk-icon">🎙️</div>
+        <div><strong>Member Q&A Call</strong> — live monthly call where you can ask our specialists your specific questions and get real answers</div>
+      </li>
+      <li>
+        <div class="perk-icon">👥</div>
+        <div><strong>Community Access</strong> — connect with 10,000+ families actively implementing energy independence strategies, sharing what's working, and helping each other navigate the process</div>
+      </li>
+      <li>
+        <div class="perk-icon">🏆</div>
+        <div><strong>New Strategy Modules</strong> — every few months we add new training based on what's working right now</div>
+      </li>
+      <li>
+        <div class="perk-icon">🔔</div>
+        <div><strong>Priority Support</strong> — members get fast-track access to our support team for any questions that come up during implementation</div>
+      </li>
+    </ul>
+
+    <div class="pricing">
+      <div class="first-month">FIRST MONTH FREE</div>
+      <div>then</div>
+      <div class="monthly-price"><sup>$</sup>27<sub>/mo</sub></div>
+    </div>
+    <p class="price-note">Less than a single tank of gas for most families. Cancel anytime — no contracts, no hassle.</p>
+
+    <a href="./thank-you.html" class="btn-yes">YES — Start My Free Month in the Inner Circle →</a>
+    <div class="cancel-note">Cancel anytime before the trial ends — you won't be charged</div>
+    <button class="btn-no" onclick="window.location='./thank-you.html'">No thank you — I don't want the community or monthly updates</button>
+  </div>
+
+  <div class="testimonial-strip">
+    The Inner Circle is worth 10x the price. Every month I get new tips that actually work — last month's rebate alert saved me $420. I've been a member for 8 months and I've never once thought about canceling.
+    <div class="t-author">— Patricia W., Member since January &nbsp;·&nbsp; ★★★★★</div>
+  </div>
+</main>
+
+</body>
+</html>

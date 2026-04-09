@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Magnet PDF Design — 5 Ways to Cut Your Gas Bill This Week</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #2a2a2a;
+    font-family: 'Crimson Pro', Georgia, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 40px 20px;
+  }
+
+  .page-label {
+    color: rgba(255,255,255,0.5);
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    align-self: flex-start;
+    margin-left: auto;
+    margin-right: auto;
+    width: 720px;
+    max-width: 100%;
+  }
+
+  /* PDF Pages */
+  .pdf-page {
+    width: 720px;
+    max-width: 100%;
+    background: #08102a;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.6);
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 8.5 / 11;
+  }
+
+  /* ========== COVER PAGE ========== */
+  .cover {
+    background: linear-gradient(160deg, #08102a 0%, #0e1e45 50%, #08102a 100%);
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 20%, rgba(191,17,32,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 50% 90%, rgba(201,150,12,0.1) 0%, transparent 60%);
+  }
+
+  .cover-red-band {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 12px;
+    background: #bf1120;
+  }
+
+  .cover-gold-band {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: #c9960c;
+  }
+
+  .cover-bottom-band {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 12px;
+    background: #bf1120;
+  }
+
+  .cover-bottom-gold {
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: #c9960c;
+  }
+
+  .cover-stars {
+    position: absolute;
+    top: 32px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 6px;
+    color: rgba(201,150,12,0.6);
+  }
+
+  .cover-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 60px 80px;
+    text-align: center;
+    z-index: 2;
+  }
+
+  .cover-eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(11px, 2vw, 16px);
+    letter-spacing: 4px;
+    color: #c9960c;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    border-top: 1px solid rgba(201,150,12,0.4);
+    border-bottom: 1px solid rgba(201,150,12,0.4);
+    padding: 8px 0;
+  }
+
+  .cover-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 14vw, 120px);
+    color: #f0b429;
+    line-height: 0.9;
+    text-shadow: 0 0 40px rgba(240,180,41,0.3), 4px 4px 0 rgba(0,0,0,0.5);
+    margin-bottom: 0;
+  }
+
+  .cover-ways {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 5vw, 42px);
+    color: #f7f3eb;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+  }
+
+  .cover-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 700;
+    line-height: 1.3;
+    color: #f7f3eb;
+    margin-bottom: 8px;
+    max-width: 440px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(13px, 2vw, 17px);
+    color: rgba(247,243,235,0.6);
+    max-width: 420px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+  }
+
+  .cover-brand {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(10px, 1.5vw, 13px);
+    letter-spacing: 3px;
+    color: rgba(201,150,12,0.6);
+    text-transform: uppercase;
+    border-top: 1px solid rgba(201,150,12,0.3);
+    padding-top: 16px;
+  }
+
+  /* Decorative eagle/shield placeholder */
+  .cover-emblem {
+    font-size: clamp(36px, 6vw, 52px);
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(201,150,12,0.3));
+  }
+
+  /* ========== CONTENT PAGES ========== */
+  .content-page {
+    background: #f4f1eb;
+    color: #1a1a2e;
+  }
+
+  .page-header {
+    background: linear-gradient(135deg, #08102a 0%, #0e1e45 100%);
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 4px solid #c9960c;
+  }
+
+  .page-header-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #f0b429;
+  }
+
+  .page-header-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: rgba(247,243,235,0.5);
+  }
+
+  .page-body {
+    padding: 36px 40px 40px;
+    height: calc(100% - 78px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tip-number-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .tip-num {
+    background: #bf1120;
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    flex-shrink: 0;
+  }
+
+  .tip-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #bf1120;
+    text-transform: uppercase;
+  }
+
+  .tip-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 5vw, 42px);
+    color: #08102a;
+    letter-spacing: 1px;
+    line-height: 1.05;
+    margin-bottom: 16px;
+    border-bottom: 3px solid #c9960c;
+    padding-bottom: 16px;
+  }
+
+  .tip-intro {
+    font-size: clamp(14px, 2vw, 17px);
+    line-height: 1.7;
+    color: #2a2a3e;
+    margin-bottom: 24px;
+  }
+
+  .tip-intro strong { color: #bf1120; }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex: 1;
+  }
+
+  .checklist li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 12px 16px;
+    background: white;
+    border: 1px solid #e0dcd2;
+    border-left: 4px solid #c9960c;
+    font-size: clamp(12px, 1.8vw, 15px);
+    color: #2a2a3e;
+    line-height: 1.5;
+  }
+
+  .check-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #c9960c;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Savings highlight */
+  .savings-highlight {
+    background: linear-gradient(135deg, #08102a 0%, #0e1e45 100%);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: auto;
+  }
+
+  .savings-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 5vw, 42px);
+    color: #f0b429;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .savings-desc {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(11px, 1.8vw, 14px);
+    color: rgba(247,243,235,0.7);
+    line-height: 1.4;
+  }
+
+  /* ========== CTA BACK PAGE ========== */
+  .cta-page {
+    background: linear-gradient(160deg, #08102a 0%, #0e1e45 60%, #08102a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 100% 80% at 50% 50%, rgba(191,17,32,0.12) 0%, transparent 70%);
+  }
+
+  .cta-page-top-band {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: repeating-linear-gradient(90deg, #bf1120 0px, #bf1120 33.33%, #f7f3eb 33.33%, #f7f3eb 66.66%, #08102a 66.66%, #08102a 100%);
+  }
+
+  .cta-page-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .cta-pre {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(11px, 2vw, 14px);
+    letter-spacing: 4px;
+    color: #c9960c;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .cta-page-h {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(30px, 6vw, 52px);
+    color: #f7f3eb;
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+
+  .cta-page-h span { color: #f0b429; }
+
+  .cta-page-body {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(14px, 2.5vw, 18px);
+    color: rgba(247,243,235,0.75);
+    line-height: 1.55;
+    max-width: 480px;
+    margin: 0 auto 36px;
+  }
+
+  .cta-url-box {
+    background: rgba(201,150,12,0.1);
+    border: 2px solid #c9960c;
+    padding: 16px 32px;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+
+  .cta-url {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(18px, 3vw, 26px);
+    color: #f0b429;
+    letter-spacing: 2px;
+  }
+
+  .cta-page-sub {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(11px, 1.8vw, 14px);
+    color: rgba(247,243,235,0.4);
+    letter-spacing: 1px;
+    margin-top: 8px;
+  }
+
+  .cta-guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(11px, 1.8vw, 14px);
+    color: rgba(247,243,235,0.5);
+    letter-spacing: 1px;
+  }
+
+  .designer-note {
+    color: rgba(255,255,255,0.3);
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== COVER PAGE ===== -->
+<div class="page-label">PAGE 1 — COVER</div>
+<div class="pdf-page cover">
+  <div class="cover-red-band"></div>
+  <div class="cover-gold-band"></div>
+  <div class="cover-bottom-band"></div>
+  <div class="cover-bottom-gold"></div>
+
+  <div class="cover-stars">★ &nbsp; ★ &nbsp; ★ &nbsp; ★ &nbsp; ★ &nbsp; ★ &nbsp; ★ &nbsp; ★ &nbsp; ★</div>
+
+  <div class="cover-content">
+    <div class="cover-eyebrow">Free Report from Energy Independence Blueprint</div>
+    <div class="cover-emblem">🦅</div>
+    <div class="cover-number">5</div>
+    <div class="cover-ways">WAYS TO</div>
+    <div class="cover-title">Cut Your Gas Bill This Week</div>
+    <div class="cover-subtitle">
+      That Your Energy Company Hopes You Never Find Out
+    </div>
+    <div class="cover-brand">EnergyIndependenceBlueprint.com</div>
+  </div>
+</div>
+
+<!-- ===== TIP 1 ===== -->
+<div class="page-label">PAGE 2 — TIP 1</div>
+<div class="pdf-page content-page">
+  <div class="page-header">
+    <div class="page-header-logo">Energy Independence Blueprint</div>
+    <div class="page-header-num">Free Report — Page 2</div>
+  </div>
+  <div class="page-body">
+    <div class="tip-number-badge">
+      <div class="tip-num">1</div>
+      <div class="tip-label">The Phantom Drain</div>
+    </div>
+    <div class="tip-title">Stop the Phantom Energy Drain<br>in 10 Minutes</div>
+    <p class="tip-intro">
+      Right now, your home has dozens of devices quietly draining energy even when "off." The energy industry calls this <strong>vampire load</strong> — and it costs the average household $200–$400 per year without them even knowing.
+    </p>
+    <ul class="checklist">
+      <li><div class="check-box"></div>Unplug or use smart strips on TVs, game consoles, and cable boxes when not in use</li>
+      <li><div class="check-box"></div>Identify your top 3 "always-on" appliances using a $15 plug-in meter (find them fast)</li>
+      <li><div class="check-box"></div>Switch to LED bulbs in high-use areas — they use 75% less energy than incandescent</li>
+      <li><div class="check-box"></div>Set your water heater to 120°F — most are shipped at 140°F (unnecessary and expensive)</li>
+      <li><div class="check-box"></div>Check and replace HVAC filters — dirty filters increase energy use by 15%</li>
+    </ul>
+    <div class="savings-highlight">
+      <div class="savings-amount">$200–$400</div>
+      <div class="savings-desc">Estimated annual savings from eliminating phantom loads — most households see results within 30 days</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TIP 2 ===== -->
+<div class="page-label">PAGE 3 — TIP 2</div>
+<div class="pdf-page content-page">
+  <div class="page-header">
+    <div class="page-header-logo">Energy Independence Blueprint</div>
+    <div class="page-header-num">Free Report — Page 3</div>
+  </div>
+  <div class="page-body">
+    <div class="tip-number-badge">
+      <div class="tip-num">2</div>
+      <div class="tip-label">The Negotiation Trick</div>
+    </div>
+    <div class="tip-title">The $0 Negotiation Trick Most<br>Homeowners Don't Know</div>
+    <p class="tip-intro">
+      Your energy company doesn't advertise this, but most utility providers have <strong>budget billing, discount programs, and low-income rate reductions</strong> available to customers who simply ask. One phone call can change your rate permanently.
+    </p>
+    <ul class="checklist">
+      <li><div class="check-box"></div>Call your utility provider and ask specifically: "What bill assistance or rate reduction programs am I eligible for?"</li>
+      <li><div class="check-box"></div>Request a free "energy audit" — many utilities offer this and will identify your biggest cost drivers</li>
+      <li><div class="check-box"></div>Ask about "budget billing" to smooth out seasonal spikes into a predictable monthly amount</li>
+      <li><div class="check-box"></div>Mention any financial hardship — hardship rates exist in 34 states and are rarely advertised</li>
+      <li><div class="check-box"></div>Ask about off-peak pricing plans — shifting usage to off-peak hours can reduce bills by 20%</li>
+    </ul>
+    <div class="savings-highlight">
+      <div class="savings-amount">$180–$600</div>
+      <div class="savings-desc">The average savings from qualifying for utility programs — one phone call, zero cost</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TIP 3 ===== -->
+<div class="page-label">PAGE 4 — TIP 3</div>
+<div class="pdf-page content-page">
+  <div class="page-header">
+    <div class="page-header-logo">Energy Independence Blueprint</div>
+    <div class="page-header-num">Free Report — Page 4</div>
+  </div>
+  <div class="page-body">
+    <div class="tip-number-badge">
+      <div class="tip-num">3</div>
+      <div class="tip-label">Energy Vampires</div>
+    </div>
+    <div class="tip-title">The Energy Vampire Audit —<br>Find Your 3 Biggest Drains</div>
+    <p class="tip-intro">
+      Most homes have 3 appliances responsible for 60–70% of their entire energy bill. <strong>Find them and you find the money.</strong> This simple audit takes under an hour and can dramatically cut costs.
+    </p>
+    <ul class="checklist">
+      <li><div class="check-box"></div>Heating/cooling: your #1 cost — check insulation, seal air leaks around doors and windows with $10 of weatherstripping</li>
+      <li><div class="check-box"></div>Water heater: wrap it in an insulating blanket (one-time cost ~$30, saves ~$50/year)</li>
+      <li><div class="check-box"></div>Refrigerator: clean coils from dust, ensure door seals are airtight, and keep it at 37–38°F</li>
+      <li><div class="check-box"></div>Washer/dryer: wash in cold water (same clean, 90% less energy), clean dryer lint trap after every load</li>
+      <li><div class="check-box"></div>Install a programmable or smart thermostat — set it back 7–10°F for 8 hours/day to save 10% per year</li>
+    </ul>
+    <div class="savings-highlight">
+      <div class="savings-amount">$300–$700</div>
+      <div class="savings-desc">Typical annual savings from addressing the top 3 energy vampires in your home</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TIP 4 ===== -->
+<div class="page-label">PAGE 5 — TIP 4</div>
+<div class="pdf-page content-page">
+  <div class="page-header">
+    <div class="page-header-logo">Energy Independence Blueprint</div>
+    <div class="page-header-num">Free Report — Page 5</div>
+  </div>
+  <div class="page-body">
+    <div class="tip-number-badge">
+      <div class="tip-num">4</div>
+      <div class="tip-label">Unclaimed Rebates</div>
+    </div>
+    <div class="tip-title">How to Qualify for State &amp; Federal<br>Energy Rebates (Most Go Unclaimed)</div>
+    <p class="tip-intro">
+      The federal government and all 50 states offer energy efficiency rebates and tax credits. <strong>The average eligible household leaves $420 unclaimed every year</strong> simply because they don't know where to look.
+    </p>
+    <ul class="checklist">
+      <li><div class="check-box"></div>Visit energystar.gov/rebate-finder — enter your zip code for every rebate currently available in your area</li>
+      <li><div class="check-box"></div>Claim the Residential Clean Energy Credit (26–30% federal tax credit on qualifying improvements)</li>
+      <li><div class="check-box"></div>Check if you qualify for the Energy Efficient Home Improvement Credit — up to $3,200 per year</li>
+      <li><div class="check-box"></div>Look up your state's weatherization assistance program — income-qualified households get free upgrades</li>
+      <li><div class="check-box"></div>Ask your utility if they offer rebates on smart thermostats, LED kits, or efficient appliances (most do)</li>
+    </ul>
+    <div class="savings-highlight">
+      <div class="savings-amount">$420–$3,200</div>
+      <div class="savings-desc">In available rebates and tax credits most eligible homeowners never claim — yours may already be waiting</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TIP 5 ===== -->
+<div class="page-label">PAGE 6 — TIP 5</div>
+<div class="pdf-page content-page">
+  <div class="page-header">
+    <div class="page-header-logo">Energy Independence Blueprint</div>
+    <div class="page-header-num">Free Report — Page 6</div>
+  </div>
+  <div class="page-body">
+    <div class="tip-number-badge">
+      <div class="tip-num">5</div>
+      <div class="tip-label">The Starter Move</div>
+    </div>
+    <div class="tip-title">The #1 Alternative Energy Starter<br>Move (No Panels Required)</div>
+    <p class="tip-intro">
+      Most people think energy independence requires solar panels and a $30,000 investment. The truth? The biggest gains come from <strong>community solar subscriptions</strong> — a program that lets you benefit from solar power without installing anything.
+    </p>
+    <ul class="checklist">
+      <li><div class="check-box"></div>Search "community solar [your state]" — available in 40+ states with no installation required</li>
+      <li><div class="check-box"></div>Enroll in a community solar program and receive credits directly on your utility bill</li>
+      <li><div class="check-box"></div>Consider a group purchasing program for home efficiency upgrades — reduces costs 10–30% vs. individual purchase</li>
+      <li><div class="check-box"></div>Look into net metering rules in your state — if you ever add any generation, you can sell back excess</li>
+      <li><div class="check-box"></div>Join a community energy cooperative — bulk purchasing of electricity at wholesale rates</li>
+    </ul>
+    <div class="savings-highlight">
+      <div class="savings-amount">$500–$1,500</div>
+      <div class="savings-desc">Annual savings reported by households enrolled in community solar — with zero upfront cost or equipment</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CTA BACK PAGE ===== -->
+<div class="page-label">PAGE 7 — BACK / CTA PAGE</div>
+<div class="pdf-page cta-page">
+  <div class="cta-page-top-band"></div>
+  <div class="cta-page-content">
+    <div class="cta-pre">★ Ready to Go Further? ★</div>
+    <h2 class="cta-page-h">
+      These 5 Tips Are Just<br>the <span>Beginning</span>
+    </h2>
+    <p class="cta-page-body">
+      The full Energy Independence Blueprint contains 47 strategies, the complete rebate database, a step-by-step implementation system, and everything you need to slash your energy costs by $200–$400 per month — permanently.
+    </p>
+    <div class="cta-url-box">
+      <div class="cta-url">EnergyIndependenceBlueprint.com</div>
+    </div>
+    <div class="cta-page-sub">Get the full Blueprint for just $97 — 60-day money-back guarantee</div>
+    <div class="cta-guarantee">
+      🛡️ &nbsp; 60-Day Iron-Clad Money-Back Guarantee &nbsp; · &nbsp; Instant Digital Access
+    </div>
+  </div>
+</div>
+
+<p class="designer-note">DESIGN FILE — Lead Magnet PDF · Energy Independence Blueprint · 7 Pages (Cover + 5 Tips + CTA)</p>
+
+</body>
+</html>
