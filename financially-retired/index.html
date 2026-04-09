@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Financially Retired Blueprint — Free Download | Freeborn</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--cream:#FAF7F0;--navy:#1B2A4A;--copper:#B87333;--gold:#C9A84C;--charcoal:#2C2C2C;--dark-copper:#A0622A;--forest:#4a6741;--light-navy:#f0f3f8;--dark:#0d1a2e}
+body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:var(--charcoal);line-height:1.75}
+.banner{background:var(--navy);color:#d4c8a0;text-align:center;padding:.6rem 1rem;font-size:.85rem;letter-spacing:.04em;font-family:-apple-system,sans-serif}
+.banner strong{color:var(--gold)}
+nav{background:var(--dark);padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.nav-brand{color:var(--copper);font-size:1.05rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-family:-apple-system,sans-serif}
+nav a.nav-link{color:#8899aa;font-size:.82rem;text-decoration:none;font-family:-apple-system,sans-serif}
+nav a.nav-link:hover{color:var(--copper)}
+.hero{position:relative;min-height:540px;background:linear-gradient(135deg,#0a1628 0%,#1B2A4A 60%,#0d2240 100%);display:flex;flex-direction:column;justify-content:flex-end}
+.hero-overlay{padding:3rem 2rem 3.5rem;max-width:780px;margin:0 auto;width:100%}
+.hero-tag{display:inline-block;background:var(--copper);color:#fff;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;padding:.3rem .9rem;border-radius:2px;margin-bottom:1.25rem;font-family:-apple-system,sans-serif}
+.hero h1{font-size:clamp(1.9rem,5vw,3.1rem);color:#fff;line-height:1.15;margin-bottom:1rem}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero-sub{color:#b8c8d8;font-size:1.1rem;max-width:580px;font-family:-apple-system,sans-serif;line-height:1.55;margin-bottom:2rem}
+.hero-cta{display:inline-block;background:var(--copper);color:#fff;font-family:-apple-system,sans-serif;font-size:1.05rem;font-weight:700;padding:1rem 2rem;border-radius:4px;text-decoration:none;transition:background .2s}
+.hero-cta:hover{background:var(--dark-copper)}
+.trust-bar{background:rgba(255,255,255,.06);border-top:1px solid rgba(255,255,255,.1);padding:1rem 2rem;display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+.trust-item{color:rgba(250,247,240,.5);font-size:.78rem;font-family:-apple-system,sans-serif;letter-spacing:.05em;text-transform:uppercase}
+.define{background:#fff;padding:3.5rem 2rem;border-top:4px solid var(--copper)}
+.define-inner{max-width:700px;margin:0 auto;text-align:center}
+.section-label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.75rem;font-family:-apple-system,sans-serif}
+.define h2{font-size:1.7rem;color:var(--navy);margin-bottom:1.25rem;line-height:1.3}
+.define p{font-size:1rem;color:#3a3a4a;margin-bottom:1rem;font-family:-apple-system,sans-serif;line-height:1.7}
+.define blockquote{border-left:4px solid var(--gold);padding:1rem 1.5rem;margin:2rem 0;background:var(--light-navy);border-radius:0 6px 6px 0;font-style:italic;font-size:1.1rem;color:var(--navy);text-align:left}
+.bullets-section{background:var(--light-navy);padding:3.5rem 2rem}
+.bullets-inner{max-width:700px;margin:0 auto}
+.bullets-inner h2{font-size:1.55rem;color:var(--navy);margin-bottom:1.5rem;line-height:1.3}
+.bullets{list-style:none;display:flex;flex-direction:column;gap:1rem}
+.bullets li{display:flex;gap:1rem;align-items:flex-start;font-size:.97rem;color:#2a2a3a;font-family:-apple-system,sans-serif;line-height:1.6}
+.bullets li .chk{background:var(--forest);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;flex-shrink:0;margin-top:.1rem}
+.bullets li strong{color:var(--navy)}
+.optin{background:var(--navy);padding:4.5rem 2rem;text-align:center}
+.optin-inner{max-width:500px;margin:0 auto}
+.optin h2{font-size:1.9rem;color:#fff;margin-bottom:.6rem;line-height:1.25}
+.optin-sub{color:#8899bb;font-family:-apple-system,sans-serif;font-size:.97rem;margin-bottom:2rem;line-height:1.5}
+.form-wrap input{display:block;width:100%;padding:1rem 1.1rem;margin-bottom:.75rem;border:none;border-radius:4px;font-size:1rem;font-family:-apple-system,sans-serif;background:#fff;color:#1a1a2a}
+.optin-btn{display:block;width:100%;background:var(--copper);color:#fff;padding:1.15rem;border:none;border-radius:4px;font-size:1.05rem;font-weight:700;font-family:-apple-system,sans-serif;cursor:pointer;text-decoration:none;transition:background .2s;letter-spacing:.02em}
+.optin-btn:hover{background:var(--dark-copper)}
+.trust-note{color:#6677aa;font-size:.78rem;margin-top:.75rem;font-family:-apple-system,sans-serif}
+.credibility{background:#fff;padding:3.5rem 2rem;border-top:1px solid rgba(27,42,74,.1)}
+.cred-inner{max-width:700px;margin:0 auto}
+.cred-inner p{font-size:.97rem;color:#3a3a4a;font-family:-apple-system,sans-serif;line-height:1.7;margin-bottom:1rem}
+footer{background:var(--dark);color:#4a5a6a;text-align:center;padding:2.5rem;font-family:-apple-system,sans-serif;font-size:.8rem}
+footer a{color:#6677aa;text-decoration:none}
+footer a:hover{color:var(--copper)}
+@media(max-width:600px){.hero h1{font-size:1.7rem}.trust-bar{gap:1.25rem}.optin h2{font-size:1.5rem}}
+</style>
+</head>
+<body>
+<div class="banner">Free Download &mdash; <strong>The Financially Retired Blueprint</strong> &mdash; No credit card required</div>
+<nav>
+  <a class="nav-brand" href="../index.html">Freeborn</a>
+  <a class="nav-link" href="../index.html">&#8592; All Funnels</a>
+</nav>
+<div class="hero">
+  <div class="hero-overlay">
+    <span class="hero-tag">Freeborn &bull; Financial Independence</span>
+    <h1>Get the Free Blueprint:<br>How to Become <em>Financially Retired</em><br>in the Next 3&ndash;5 Years</h1>
+    <p class="hero-sub">Financially Retired means your passive income exceeds your living expenses &mdash; so work becomes optional, not mandatory. This blueprint shows you exactly how to get there.</p>
+    <a class="hero-cta" href="#optin">Send Me the Free Blueprint &rarr;</a>
+  </div>
+  <div class="trust-bar">
+    <span class="trust-item">&#10003; Free &mdash; no credit card</span>
+    <span class="trust-item">&#10003; Instant access</span>
+    <span class="trust-item">&#10003; No spam, ever</span>
+  </div>
+</div>
+<div class="define">
+  <div class="define-inner">
+    <div class="section-label">What This Means</div>
+    <h2>Financially Retired Doesn't Mean You Stop Working</h2>
+    <p>It means you never <em>have</em> to again.</p>
+    <p>Your mortgage. Your groceries. Your car payment. Your kids' activities. Your vacations. All of it &mdash; covered. Not by your job. By income streams that run while you sleep.</p>
+    <blockquote>"When your passive income exceeds your living expenses, work becomes a choice. And choices are powerful."</blockquote>
+    <p>Most people spend 40 years working toward retirement. This blueprint shows you a system most people never see &mdash; one that gets you there in 3&ndash;5 years, without quitting your job first.</p>
+  </div>
+</div>
+<div class="bullets-section">
+  <div class="bullets-inner">
+    <h2>Inside the Financially Retired Blueprint, You'll Discover:</h2>
+    <ul class="bullets">
+      <li><span class="chk">&#10003;</span><span><strong>The 5-income-stream system</strong> that lets you build passive income in parallel &mdash; without quitting your job or gambling your savings</span></li>
+      <li><span class="chk">&#10003;</span><span><strong>Which stream to build first</strong> based on your current skills, time, and starting resources (not everyone starts in the same place)</span></li>
+      <li><span class="chk">&#10003;</span><span><strong>The single number you need to hit</strong> to become financially retired &mdash; and a simple way to track your progress month by month</span></li>
+      <li><span class="chk">&#10003;</span><span><strong>Why most passive income advice fails</strong> &mdash; and the one mindset shift that separates people who actually get there from those who stay stuck</span></li>
+      <li><span class="chk">&#10003;</span><span><strong>A realistic 3&ndash;5 year roadmap</strong> with the exact sequence most people follow to cross the line from &ldquo;earning to survive&rdquo; to &ldquo;earning to be free&rdquo;</span></li>
+    </ul>
+  </div>
+</div>
+<div class="optin" id="optin">
+  <div class="optin-inner">
+    <h2>Where Should I Send the Blueprint?</h2>
+    <p class="optin-sub">Enter your name and email below and I'll send you the Financially Retired Blueprint instantly &mdash; plus a short video walking you through the core system.</p>
+    <div class="form-wrap">
+      <input type="text" placeholder="First Name" />
+      <input type="email" placeholder="Email Address" />
+      <a class="optin-btn" href="thank-you.html">Send Me the Free Blueprint &rarr;</a>
+    </div>
+    <p class="trust-note">No spam. No pitch disguised as a freebie. Just the blueprint.</p>
+  </div>
+</div>
+<div class="credibility">
+  <div class="cred-inner">
+    <div class="section-label">About This Blueprint</div>
+    <p>This blueprint is built on the same 5-stream system used to reach financial retirement &mdash; the month passive income crossed living expenses and work became optional, not mandatory.</p>
+    <p>This isn't a guru program. There's no lifestyle to sell. Five specific income streams were built, the math was run every month, and the line was crossed. Inside the blueprint, you'll find the system, the sequence, and the number you're building toward &mdash; so you can do the same.</p>
+  </div>
+</div>
+<footer>
+  &copy; 2025 Freeborn &bull; JA Inc Internal &bull;
+  <a href="../index.html">All Funnels</a>
+</footer>
+</body>
+</html>
