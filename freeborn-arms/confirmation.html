@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>You're All Set | Freeborn Arms</title>
+<meta name="description" content="Your order is complete. Here's everything you purchased and how to access it.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0d0d0d;
+  --steel:#1e2d3d;
+  --copper:#b87333;
+  --copper-light:#d4904a;
+  --cream:#f0ede8;
+  --gold:#c9a227;
+  --muted:#8a9aaa;
+}
+body{font-family:Georgia,'Times New Roman',serif;background:var(--black);color:var(--cream);line-height:1.75;font-size:17px}
+
+nav{background:#0a0a0a;padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1e2d3d}
+.nav-brand{color:var(--copper);font-size:1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;font-family:-apple-system,sans-serif}
+
+.confirm{background:linear-gradient(160deg,#0a1218 0%,var(--steel) 100%);padding:4rem 2rem 3rem;text-align:center;border-bottom:3px solid var(--copper)}
+.confirm-inner{max-width:640px;margin:0 auto}
+.check-circle{width:72px;height:72px;background:rgba(184,115,51,.15);border:2px solid var(--copper);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:2rem}
+.confirm-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(184,115,51,.12);border:1px solid var(--copper);color:var(--copper-light);font-size:.72rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;padding:6px 16px;border-radius:3px;margin-bottom:1.25rem;font-family:-apple-system,sans-serif}
+.confirm h1{font-size:clamp(1.8rem,4vw,2.6rem);color:#fff;line-height:1.2;margin-bottom:1rem;font-weight:900}
+.confirm-sub{font-size:.97rem;color:rgba(255,255,255,.7);font-family:-apple-system,sans-serif;line-height:1.6}
+
+.order-summary{background:#0f0f0f;padding:3rem 2rem;border-top:1px solid #1a1a1a}
+.order-inner{max-width:640px;margin:0 auto}
+.section-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:.75rem;font-family:-apple-system,sans-serif}
+h2{font-size:clamp(1.2rem,3vw,1.6rem);color:#e8d8b8;margin-bottom:1.25rem;line-height:1.3}
+.order-item{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid #1e2d3d;gap:1rem}
+.order-item:last-child{border-bottom:none}
+.item-name{font-size:.95rem;font-family:-apple-system,sans-serif;color:#e0d0b8;font-weight:600}
+.item-sub{font-size:.8rem;color:#7a8898;margin-top:.2rem}
+.item-price{font-size:1rem;font-weight:700;color:var(--copper-light);font-family:-apple-system,sans-serif;white-space:nowrap}
+.access-note{background:rgba(184,115,51,.06);border:1px solid rgba(184,115,51,.2);border-radius:6px;padding:1rem 1.25rem;margin-top:1.5rem;display:flex;gap:.75rem;align-items:flex-start}
+.access-icon{font-size:1.25rem;flex-shrink:0}
+.access-note h3{font-size:.88rem;color:#f5d78e;font-family:-apple-system,sans-serif;font-weight:700;margin-bottom:.25rem}
+.access-note p{font-size:.82rem;color:#8a9aaa;margin:0;font-family:-apple-system,sans-serif;line-height:1.5}
+
+.next-steps{background:#0a0f18;padding:3rem 2rem;border-top:1px solid #1a2a3a}
+.next-inner{max-width:640px;margin:0 auto}
+.step-list{list-style:none;display:flex;flex-direction:column;gap:1rem;margin-top:1.25rem}
+.step-list li{display:flex;gap:1rem;align-items:flex-start;font-family:-apple-system,sans-serif;font-size:.95rem;color:#c8b898;line-height:1.55}
+.step-num{width:28px;height:28px;background:var(--copper);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0;font-family:sans-serif;margin-top:.05rem}
+.step-list strong{color:#e0d0b8}
+
+.more-funnels{background:#0f0f0f;padding:3rem 2rem;border-top:1px solid #1a1a1a;text-align:center}
+.more-inner{max-width:640px;margin:0 auto}
+.more-inner p{color:#8a9aaa;font-family:-apple-system,sans-serif;font-size:.93rem;margin-bottom:1.5rem}
+.btn-secondary{display:inline-block;background:transparent;color:var(--copper);padding:12px 28px;border:1px solid var(--copper);border-radius:4px;font-size:.93rem;font-weight:700;font-family:-apple-system,sans-serif;text-decoration:none;transition:background .2s,color .2s}
+.btn-secondary:hover{background:var(--copper);color:#fff}
+
+footer{background:#0a0a0a;color:#4a5a6a;text-align:center;padding:2rem;font-family:-apple-system,sans-serif;font-size:.8rem;border-top:1px solid #1e2d3d}
+footer a{color:#4a5a6a}
+
+@media(max-width:640px){
+  .confirm,.order-summary,.next-steps,.more-funnels{padding:2.5rem 1.25rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">Freeborn Arms</a>
+</nav>
+
+<section class="confirm">
+  <div class="confirm-inner">
+    <div class="check-circle">✓</div>
+    <div class="confirm-badge">Order Complete</div>
+    <h1>You're All Set — Check Your Email</h1>
+    <p class="confirm-sub">Your purchase is confirmed and your access details are on their way. Check your inbox (and your spam folder, just in case) for an email from Freeborn Arms.</p>
+  </div>
+</section>
+
+<section class="order-summary">
+  <div class="order-inner">
+    <p class="section-label">Your Order</p>
+    <h2>Here's What You Purchased</h2>
+    <div class="order-item">
+      <div>
+        <div class="item-name">Home Defender Blueprint</div>
+        <div class="item-sub">Instant PDF download &bull; Lifetime access</div>
+      </div>
+      <div class="item-price">$17</div>
+    </div>
+    <div class="order-item">
+      <div>
+        <div class="item-name">Home Defender Course</div>
+        <div class="item-sub">6 modules &bull; Bonus materials &bull; Community access</div>
+      </div>
+      <div class="item-price">$97</div>
+    </div>
+    <div class="access-note">
+      <div class="access-icon">📧</div>
+      <div>
+        <h3>Check Your Inbox</h3>
+        <p>Access links for all your purchases are in your confirmation email. If you don't see it within a few minutes, check your spam or promotions folder.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="next-steps">
+  <div class="next-inner">
+    <p class="section-label">What to Do Now</p>
+    <h2>Your First 24 Hours</h2>
+    <ol class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div><strong>Read the Blueprint tonight.</strong> It's a fast read — most people finish it in one sitting. Start with the Threat Assessment section on page 3.</div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div><strong>Walk your home with fresh eyes.</strong> Use the zone map template to mark your safe areas and identify your two biggest vulnerabilities.</div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div><strong>Start Module 1 of the Course.</strong> It's 20 minutes. You'll leave with a clear action list and a new way of seeing your home.</div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div><strong>Schedule your first family drill.</strong> The drill script is in Module 6. Pick a weekend date now and put it on the calendar.</div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="more-funnels">
+  <div class="more-inner">
+    <p class="section-label" style="color:var(--gold)">While You're Here</p>
+    <h2 style="color:#e8d8b8;margin-bottom:.75rem">Explore More Freeborn Guides</h2>
+    <p>From bug-out planning to grid-down preparedness — explore the complete library of free and premium Freeborn guides.</p>
+    <a class="btn-secondary" href="../index.html">Browse All Freeborn Funnels →</a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Freeborn Arms &bull; <a href="index.html">Home Defender Blueprint</a> &bull; <a href="../index.html">All Funnels</a>
+</footer>
+</body>
+</html>
