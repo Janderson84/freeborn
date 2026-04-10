@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VSL Script — Energy Independence Blueprint</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #0a0e1a;
+    color: #e8e0cc;
+    line-height: 1.8;
+    font-size: 18px;
+  }
+  header {
+    background: #0d1225;
+    border-bottom: 3px solid #c9973a;
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  header a {
+    color: #c9973a;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+  }
+  header a:hover { text-decoration: underline; }
+  header span { color: #4a5568; }
+  header h1 {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #e8e0cc;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .hero {
+    background: linear-gradient(135deg, #0d1225 0%, #1a2040 100%);
+    border-bottom: 1px solid #1e2a4a;
+    padding: 60px 40px 50px;
+    text-align: center;
+  }
+  .hero .badge {
+    display: inline-block;
+    background: #c9973a;
+    color: #0a0e1a;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .hero h2 {
+    font-family: Arial, sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .hero h2 span { color: #c9973a; }
+  .hero p {
+    color: #9aabbf;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .toc {
+    background: #0d1225;
+    border: 1px solid #1e2a4a;
+    border-radius: 4px;
+    padding: 28px 36px;
+    max-width: 700px;
+    margin: 40px auto;
+  }
+  .toc h3 {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #c9973a;
+    margin-bottom: 16px;
+  }
+  .toc a {
+    display: block;
+    color: #9aabbf;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 5px 0;
+    border-bottom: 1px solid #1e2a4a;
+  }
+  .toc a:last-child { border-bottom: none; }
+  .toc a:hover { color: #c9973a; }
+  .toc .ts {
+    display: inline-block;
+    background: #1e2a4a;
+    color: #c9973a;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-right: 10px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.05em;
+  }
+  .content {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .content h2 {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #c9973a;
+    margin: 60px 0 30px;
+    padding-top: 40px;
+    border-top: 1px solid #1e2a4a;
+  }
+  .content h2:first-child { border-top: none; margin-top: 0; padding-top: 0; }
+  .content h3 {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 40px 0 16px;
+    padding: 10px 16px;
+    background: #0d1225;
+    border-left: 4px solid #c9973a;
+    border-radius: 0 3px 3px 0;
+  }
+  .content .ts-badge {
+    display: inline-block;
+    background: #1e2a4a;
+    color: #c9973a;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 2px;
+    margin-right: 10px;
+    font-family: 'Courier New', monospace;
+  }
+  .content p {
+    margin-bottom: 18px;
+    color: #d4c9b0;
+  }
+  .content p strong { color: #ffffff; }
+  .stage {
+    background: #0d1225;
+    border: 1px dashed #2a3a5a;
+    border-radius: 3px;
+    padding: 10px 16px;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #6a8aa8 !important;
+    font-style: italic;
+  }
+  .label {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #c9973a !important;
+    text-transform: uppercase;
+    margin: 28px 0 8px !important;
+  }
+  hr, p:has(> *:only-child:empty) { display: none; }
+  p:empty { display: none; }
+  .divider {
+    border: none;
+    border-top: 1px solid #1e2a4a;
+    margin: 40px 0;
+  }
+  footer {
+    background: #0d1225;
+    border-top: 1px solid #1e2a4a;
+    text-align: center;
+    padding: 30px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #4a5568;
+  }
+  footer a { color: #c9973a; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="../index.html">← Funnel Hub</a>
+  <span>/</span>
+  <a href="index.html">Energy Independence</a>
+  <span>/</span>
+  <h1>VSL Script</h1>
+</header>
+
+<div class="hero">
+  <div class="badge">Internal Creative Asset</div>
+  <h2>Energy Independence Blueprint<br><span>VSL Script</span></h2>
+  <p>10-minute video sales letter script — voiceover copy, stage directions, and offer stack</p>
+</div>
+
+<div class="content">
+
+  <div class="toc" style="margin-left:0;margin-right:0;">
+    <h3>Script Sections</h3>
+    <a href="#hook"><span class="ts">0:00–0:45</span> Hook — Gas Price Shock</a>
+    <a href="#story"><span class="ts">0:45–4:00</span> Story — The Discovery</a>
+    <a href="#epiphany"><span class="ts">4:00–6:00</span> Epiphany — The Hidden System</a>
+    <a href="#offer"><span class="ts">6:00–8:00</span> Offer — The Blueprint</a>
+    <a href="#close"><span class="ts">8:00–10:00</span> Stack, Close &amp; CTA</a>
+  </div>
+
+  <h3 id="hook"><span class="ts-badge">0:00–0:45</span> HOOK</h3>
+
+  <p class="stage">[OPEN on footage of gas station prices — $4.89, $5.12, $5.49 per gallon flashing across pumps]</p>
+
+  <p>VO: Right now, at this very moment, Big Oil is taking money directly out of your pocket.</p>
+
+  <p>Not some abstract Wall Street thing. Your actual wallet. Every single week.</p>
+
+  <p>The average American family is spending <strong>$3,200 a year</strong> just on gas. That's $267 every month — gone. Poof. Handed straight to the same companies that have been price-gouging you for decades.</p>
+
+  <p>And here's what makes me furious: it doesn't have to be this way.</p>
+
+  <p>Because right now — buried in government programs, buried in research that Big Oil has spent billions lobbying to keep quiet — there are legitimate, legal ways that ordinary families are slashing their energy costs by $200, $300, even $400 a month.</p>
+
+  <p>And most people have no idea these options even exist.</p>
+
+  <p>My name is [NAME], and in the next 10 minutes I'm going to show you exactly what they don't want you to know.</p>
+
+  <hr class="divider">
+
+  <h3 id="story"><span class="ts-badge">0:45–4:00</span> STORY</h3>
+
+  <p class="stage">[Cut to: kitchen table, bills spread out, relatable family setting]</p>
+
+  <p>Four years ago, I was exactly where you might be right now.</p>
+
+  <p>I was driving 40 minutes each way to work. Commuting. Hauling the kids to school. Making the grocery runs. Doing all the normal things that normal people do — and watching my gas bill climb every single month.</p>
+
+  <p>I remember the moment it really hit me. I filled up my truck — a regular Tuesday, nothing special — and it was <strong>$112</strong>. For one fill-up. I sat in that gas station parking lot and I did the math on my phone. I was spending over $400 a month on gas alone. That's a car payment. That's half a mortgage payment. That's a family vacation.</p>
+
+  <p>I started digging. I figured, there has to be something. Some program, some technology, some option that regular people aren't being told about.</p>
+
+  <p>What I found shocked me.</p>
+
+  <p>There are <strong>federal and state programs</strong> designed specifically to help families reduce energy costs — programs that have been on the books for years, some with hundreds of millions of dollars allocated — that barely anyone uses. Not because they're hard to qualify for. But because the energy companies don't exactly run Super Bowl ads telling you about them.</p>
+
+  <p>There are <strong>vehicle modification approaches</strong> — completely legal, documented by independent engineers — that can improve fuel efficiency by 15-30% on vehicles you already own.</p>
+
+  <p>There are <strong>alternative fuel options</strong> that are available right now, at stations near you, at a fraction of the cost of regular gasoline — options your dealer probably never mentioned.</p>
+
+  <p>And there are <strong>home energy strategies</strong> that eliminate the gas dependency entirely for the biggest consumption categories most families have.</p>
+
+  <p>I spent 18 months going deep on all of this. Interviewing engineers. Talking to families who'd gotten their energy bills under control. Consulting with people who worked inside the energy industry and had watched these solutions get buried, suppressed, or simply ignored.</p>
+
+  <p>I put everything I found into a single, step-by-step blueprint.</p>
+
+  <hr class="divider">
+
+  <h3 id="epiphany"><span class="ts-badge">4:00–6:00</span> EPIPHANY</h3>
+
+  <p class="stage">[Cut to: simple whiteboard or graphics showing the "hidden system"]</p>
+
+  <p>Here's what I eventually realized — and this is the part that should make you angry.</p>
+
+  <p>The reason most people don't know about these options isn't because they're complicated. It's not because they require a PhD or a massive upfront investment.</p>
+
+  <p>It's because an industry that generates <strong>$200 billion in profit every year</strong> has a very strong financial incentive to make sure you keep paying full price at the pump.</p>
+
+  <p>Think about it. If even 10% of American families cut their gas spending in half, that's tens of billions of dollars that doesn't flow to Big Oil. So those companies spend lavishly on lobbying, on advertising, on making sure the alternatives stay invisible.</p>
+
+  <p>The government programs get buried in bureaucratic language. The technology improvements get dismissed as "fringe." The alternative options get crowded out by marketing budgets that dwarf the GDP of small countries.</p>
+
+  <p>But here's the thing: the information exists. The programs exist. The options are real.</p>
+
+  <p>You just need someone to cut through the noise and show you exactly what's available, how to qualify, and how to implement it — in plain English, without requiring you to become an engineer or a policy expert.</p>
+
+  <p>That's what the <strong>Energy Independence Blueprint</strong> does.</p>
+
+  <hr class="divider">
+
+  <h3 id="offer"><span class="ts-badge">6:00–8:00</span> OFFER</h3>
+
+  <p class="stage">[Cut to: product reveal — clean mockup of the Blueprint]</p>
+
+  <p>The Energy Independence Blueprint is a complete, step-by-step system for dramatically reducing what you spend on gas and energy — using options that exist right now, that are completely legal, and that work for regular families in regular homes driving regular vehicles.</p>
+
+  <p>Here's what's inside:</p>
+
+  <p class="label">Module 1: The Government Loophole Map</p>
+  <p>A complete breakdown of every federal and state program available to reduce your energy costs — including exact eligibility requirements and step-by-step application instructions. Most people who qualify for these programs never apply because they don't know they exist.</p>
+
+  <p class="label">Module 2: The Fuel Efficiency Playbook</p>
+  <p>Legal, documented modifications and driving strategies that can reduce your gas consumption by 15-30% — starting this week, with no expensive equipment.</p>
+
+  <p class="label">Module 3: The Alternative Fuel Advantage</p>
+  <p>How to identify and access alternative fuel options in your area that cost 40-60% less than regular gasoline — and which vehicles can use them.</p>
+
+  <p class="label">Module 4: Home Energy Liberation</p>
+  <p>The top home energy changes that eliminate gas dependency for common household uses — heating, hot water, cooking — with a clear ROI breakdown for each.</p>
+
+  <p class="label">Module 5: The 30-Day Fast Track</p>
+  <p>A step-by-step 30-day plan to implement the Blueprint — with quick wins in the first week and long-term savings compounding from there.</p>
+
+  <p>This is the complete system. Everything you need to start cutting your energy costs immediately.</p>
+
+  <hr class="divider">
+
+  <h3 id="close"><span class="ts-badge">8:00–10:00</span> STACK, CLOSE &amp; CTA</h3>
+
+  <p class="stage">[Cut to: value stack graphic]</p>
+
+  <p>Now here's what the Energy Independence Blueprint is worth.</p>
+
+  <p>The Government Loophole Map alone — if it qualifies you for even one federal program — could be worth $500, $1,000, even $3,000 or more in direct savings. Real value: <strong>$297</strong>.</p>
+
+  <p>The Fuel Efficiency Playbook — if it saves you just 15% on gas — saves the average family over $480 a year. Every year. Real value: <strong>$197</strong>.</p>
+
+  <p>The Alternative Fuel Advantage — families who've made this switch save an average of $150-$200 per month. Real value: <strong>$197</strong>.</p>
+
+  <p>The Home Energy Liberation module — the average household that implements these changes cuts energy bills by $100-$200 per month. Real value: <strong>$247</strong>.</p>
+
+  <p>The 30-Day Fast Track — a done-for-you action plan so you don't have to figure out the order or the timing. Real value: <strong>$97</strong>.</p>
+
+  <p>Total real value: <strong>over $1,000</strong>.</p>
+
+  <p>But you're not going to pay $1,000. You're not going to pay $500. You're not even going to pay $200.</p>
+
+  <p>Because right now, for people who act today, the complete Energy Independence Blueprint is just <strong>$97</strong>.</p>
+
+  <p>And it comes with a <strong>60-day money-back guarantee</strong>. If you go through the Blueprint, implement what's inside, and you don't save at least 10 times what you paid — you get every penny back. No questions. No hassle.</p>
+
+  <p>At $97, with a 60-day guarantee, you're literally risking nothing.</p>
+
+  <p>But here's why you need to act right now: this price will not last. Energy prices are not going down. Every week you wait is another week of paying full price for something you don't have to pay full price for.</p>
+
+  <p>Click the button below right now. Get instant access to the Energy Independence Blueprint. Start cutting your energy costs this week.</p>
+
+  <p>Click the button now.</p>
+
+</div>
+
+<footer>
+  Internal creative asset — Freeborn / Energy Independence funnel &bull; <a href="../index.html">Funnel Hub</a>
+</footer>
+
+</body>
+</html>
