@@ -56,6 +56,33 @@ footer{background:#1a1208;color:#888;text-align:center;padding:2rem;font-family:
     </ul>
     <a class="oto-btn" href="https://pixeltrue.thrivecart.com/home-defender-blueprint/">Yes &mdash; Add the Home Defender Blueprint for $17</a>
     <a class="oto-decline" href="#download">No thanks, I only want the free guide</a>
+
+  <div class="oto" id="oto2" style="background:#2A1A08">
+    <div class="oto-hook">ONE MORE THING — SPECIAL OFFER</div>
+    <h2>Stay Grid-Ready Year-Round — Join the Freeborn Inner Circle</h2>
+    <div class="oto-price">$39/month — cancel anytime</div>
+    <ul class="oto-bullets">
+      <li>Monthly power &amp; energy field guide — solar, batteries, backup systems</li>
+      <li>Private community: share what works in real grid-down scenarios</li>
+      <li>Live monthly Q&amp;A with the Freeborn preparedness team</li>
+      <li>Every new Freeborn resource the moment it's published</li>
+    </ul>
+    <a class="oto-btn" href="#">Yes — Add the Inner Circle for $39/mo</a>
+    <a class="oto-decline" href="#" id="oto2-decline">No thanks, the free checklist is enough for me</a>
+  </div>
+
+  <div class="oto" id="downsell" style="display:none;background:#2A1A08">
+    <div class="oto-hook">WAIT — A BETTER ENTRY POINT</div>
+    <h2>Try the Inner Circle Free for 14 Days — Then Just $39/Month</h2>
+    <div class="oto-price">$1 today, then $39/month — cancel before day 14 and pay nothing more</div>
+    <ul class="oto-bullets">
+      <li>Full access to every grid-down and off-grid guide in the library</li>
+      <li>Community of families who've lived through real outages — ask them anything</li>
+      <li>Cancel any time before day 14. No questions asked.</li>
+    </ul>
+    <a class="oto-btn" href="#">Yes — Start My 14-Day Trial for $1</a>
+    <a class="oto-decline" href="#download">No thanks, I'll stick with the free checklist</a>
+  </div>
   </div>
 
   <a class="download-btn" id="download" href="#">&#8595; Access Your Free Grid-Down Checklist</a>
@@ -70,5 +97,21 @@ footer{background:#1a1208;color:#888;text-align:center;padding:2rem;font-family:
 <footer>
   &copy; 2025 Freeborn &bull; <a href="/" style="color:#666">All Funnels</a>
 </footer>
+
+<script>
+(function(){
+  var oto2 = document.getElementById('oto2');
+  var downsell = document.getElementById('downsell');
+  var decline = document.getElementById('oto2-decline');
+  if(decline){
+    decline.addEventListener('click', function(e){
+      e.preventDefault();
+      if(oto2) oto2.style.display = 'none';
+      if(downsell) downsell.style.display = 'block';
+      downsell.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  }
+})();
+</script>
 </body>
 </html>

@@ -66,6 +66,33 @@ footer a{color:#6677aa;text-decoration:none}
     <!-- TODO: Replace href with ThriveCart checkout URL once JAI-86 is unblocked -->
     <a class="oto-btn" href="#">Yes &mdash; I Want the Financially Retired Masterclass for $497 &rarr;</a>
     <a class="oto-decline" href="#download">No thanks, just the free blueprint for now</a>
+
+  <div class="oto" id="oto2" style="background:#2A1A08">
+    <div class="oto-hook">ONE MORE THING — SPECIAL OFFER</div>
+    <h2>Build the Life Every Month — Join the Freeborn Inner Circle</h2>
+    <div class="oto-price">$39/month — cancel anytime</div>
+    <ul class="oto-bullets">
+      <li>Monthly field guide: income freedom, asset building, and off-grid financial independence</li>
+      <li>Private community of people actively building financially-free, self-reliant lives</li>
+      <li>Live monthly Q&amp;A — get answers on your specific situation, not generic advice</li>
+      <li>First access to every new Freeborn resource on money, homesteading, and freedom</li>
+    </ul>
+    <a class="oto-btn" href="#">Yes — Add the Inner Circle for $39/mo</a>
+    <a class="oto-decline" href="#" id="oto2-decline">No thanks, the free blueprint is enough to start</a>
+  </div>
+
+  <div class="oto" id="downsell" style="display:none;background:#2A1A08">
+    <div class="oto-hook">WAIT — A BETTER ENTRY POINT</div>
+    <h2>Try the Inner Circle Free for 14 Days — Then Just $39/Month</h2>
+    <div class="oto-price">$1 today, then $39/month — cancel before day 14 and pay nothing more</div>
+    <ul class="oto-bullets">
+      <li>Full access to every financial freedom and homestead guide in the Freeborn library</li>
+      <li>See how other members are building toward the same life you want</li>
+      <li>Cancel any time before day 14. One click. Done.</li>
+    </ul>
+    <a class="oto-btn" href="#">Yes — Start My 14-Day Trial for $1</a>
+    <a class="oto-decline" href="#download">No thanks, I'll work through the free blueprint first</a>
+  </div>
   </div>
 
   <!-- TODO: Replace href with blueprint PDF URL once file is added to repo -->
@@ -74,5 +101,21 @@ footer a{color:#6677aa;text-decoration:none}
 <footer>
   &copy; 2025 Freeborn &bull; <a href="../index.html">All Funnels</a>
 </footer>
+
+<script>
+(function(){
+  var oto2 = document.getElementById('oto2');
+  var downsell = document.getElementById('downsell');
+  var decline = document.getElementById('oto2-decline');
+  if(decline){
+    decline.addEventListener('click', function(e){
+      e.preventDefault();
+      if(oto2) oto2.style.display = 'none';
+      if(downsell) downsell.style.display = 'block';
+      downsell.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  }
+})();
+</script>
 </body>
 </html>
