@@ -6,32 +6,42 @@
 <title>Thank You | The Modern Homestead Skills Roadmap | Freeborn</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Georgia,'Times New Roman',serif;background:#f5f0e8;color:#1a1a0f;line-height:1.7}
+body{font-family:Georgia,'Times New Roman',serif;background:#f5f0e8;color:#1a1a0f;line-height:1.7;font-size:1.1rem}
 .header{background:#1a1208;padding:1.5rem 2rem;text-align:center}
 .header .brand{color:#b87333;font-family:-apple-system,sans-serif;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase}
 .check{font-size:4rem;text-align:center;margin:3rem auto 1rem;display:block}
-.container{max-width:620px;margin:0 auto;padding:3rem 1.5rem;text-align:center}
-h1{font-size:clamp(1.5rem,4vw,2.2rem);color:#1a1208;margin-bottom:1.5rem;line-height:1.3}
-.body-text{font-size:1.05rem;color:#3a3020;margin-bottom:1.5rem;text-align:left}
-.download-btn{display:inline-block;background:#b87333;color:#fff;font-family:-apple-system,sans-serif;font-size:1.1rem;font-weight:700;padding:1.1rem 2.5rem;border-radius:6px;text-decoration:none;margin:1.5rem 0;transition:background .2s}
+.container{max-width:660px;margin:0 auto;padding:3rem 1.5rem;text-align:center}
+h1{font-size:clamp(1.7rem,4.5vw,2.5rem);color:#1a1208;margin-bottom:1.5rem;line-height:1.25}
+.body-text{font-size:1.1rem;color:#3a3020;margin-bottom:1.5rem;text-align:left;line-height:1.75}
+.download-btn{display:inline-block;background:#b87333;color:#fff;font-family:-apple-system,sans-serif;font-size:1.15rem;font-weight:700;padding:1.1rem 2.5rem;border-radius:6px;text-decoration:none;margin:1.5rem 0;transition:background .2s}
 .download-btn:hover{background:#9a6020}
 .divider{border:none;border-top:1px solid #d4c9b0;margin:2.5rem 0}
 .next-up{background:#fff;border:1px solid #d4c9b0;border-radius:10px;padding:2rem;text-align:left;margin-top:1rem}
 .next-label{font-family:-apple-system,sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#888;margin-bottom:.5rem}
 .next-title{font-size:1.2rem;font-weight:700;color:#1a1208;margin-bottom:.5rem}
-.next-desc{font-size:.95rem;color:#3a3020;margin-bottom:1rem}
+.next-desc{font-size:1rem;color:#3a3020;margin-bottom:1rem;line-height:1.65}
 .next-btn{display:inline-block;background:#1a1208;color:#b87333;font-family:-apple-system,sans-serif;font-size:.9rem;font-weight:700;padding:.75rem 1.5rem;border-radius:6px;text-decoration:none;border:1px solid #b87333}
 footer{background:#1a1208;color:#888;text-align:center;padding:2rem;font-family:-apple-system,sans-serif;font-size:.8rem;margin-top:3rem}
 
-.oto{background:#1B2A4A;color:#FAF7F0;border-radius:10px;padding:2rem 1.5rem;margin:2rem 0;text-align:left}
+/* VSL Placeholder */
+.vsl-placeholder{background:#e8e2d8;border:2px dashed #b87333;border-radius:10px;padding:3rem 1.5rem;margin:2rem 0;text-align:center}
+.vsl-placeholder-label{font-family:-apple-system,sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#b87333;margin-bottom:.75rem}
+.vsl-placeholder-icon{font-size:3rem;margin-bottom:.75rem;display:block}
+.vsl-placeholder-text{font-family:-apple-system,sans-serif;font-size:.95rem;color:#6a5a40;line-height:1.5}
+
+/* OTO */
+.oto{background:#1B2A4A;color:#FAF7F0;border-radius:10px;padding:2.25rem 2rem;margin:2rem 0;text-align:left}
 .oto-hook{font-family:-apple-system,sans-serif;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:#C9A84C;margin-bottom:.75rem}
-.oto h2{font-size:1.4rem;color:#FAF7F0;margin-bottom:.3rem;line-height:1.3}
-.oto-price{font-family:-apple-system,sans-serif;font-size:.95rem;color:#B87333;font-weight:700;margin-bottom:1.25rem}
-.oto-bullets{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.5rem}
-.oto-bullets li{display:flex;gap:.75rem;align-items:flex-start;font-size:.95rem;color:#d4c8b0;font-family:-apple-system,sans-serif}
-.oto-bullets li::before{content:'✓';background:#B87333;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;margin-top:.1rem}
-.oto-btn{display:block;width:100%;background:#B87333;color:#fff;font-family:-apple-system,sans-serif;font-size:1rem;font-weight:700;padding:1rem;border-radius:6px;text-decoration:none;text-align:center;transition:background .2s;margin-bottom:.75rem}
+.oto h2{font-size:clamp(1.35rem,3.5vw,1.75rem);color:#FAF7F0;margin-bottom:.5rem;line-height:1.3}
+.oto-subhead{font-family:-apple-system,sans-serif;font-size:1rem;color:#c9bda0;margin-bottom:1rem;line-height:1.55;font-style:italic}
+.oto-price{font-family:-apple-system,sans-serif;font-size:1.1rem;color:#B87333;font-weight:700;margin-bottom:1.25rem}
+.price-big{font-size:1.75rem;font-weight:900}
+.oto-bullets{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.75rem}
+.oto-bullets li{display:flex;gap:.75rem;align-items:flex-start;font-size:1rem;color:#d4c8b0;font-family:-apple-system,sans-serif;line-height:1.5}
+.oto-bullets li::before{content:'✓';background:#B87333;color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0;margin-top:.15rem}
+.oto-btn{display:block;width:100%;background:#B87333;color:#fff;font-family:-apple-system,sans-serif;font-size:1.1rem;font-weight:700;padding:1.1rem;border-radius:6px;text-decoration:none;text-align:center;transition:background .2s;margin-bottom:.75rem}
 .oto-btn:hover{background:#A0622A}
+.oto-microcopy{display:block;text-align:center;font-family:-apple-system,sans-serif;font-size:.8rem;color:#8899aa;margin-bottom:1rem}
 .oto-decline{display:block;text-align:center;font-family:-apple-system,sans-serif;font-size:.78rem;color:#8899aa;text-decoration:none}
 .oto-decline:hover{color:#aab8c4}
 </style>
@@ -42,76 +52,45 @@ footer{background:#1a1208;color:#888;text-align:center;padding:2rem;font-family:
 </div>
 <div class="container">
   <span class="check">&#10003;</span>
-  <h1>Your Freeborn Skills Ladder Is On Its Way</h1>
-  <p class="body-text">Check your inbox — <strong>The Freeborn Skills Ladder</strong> is headed to you right now.<br><br>While you wait: most people start with the wrong skill and burn out fast. In your first email, I'll show you the one skill that unlocks every other homesteading competency — and why starting here gives you momentum that lasts.<br><br>Look for an email from <strong>Freeborn</strong> in the next few minutes.</p>
-    <div class="oto">
-    <div style="text-align:center;margin-bottom:1.25rem"><img src="../freeborn-arms/images/book_cover_ai.jpg" alt="Home Defender Blueprint" style="max-width:220px;width:100%;border-radius:6px;box-shadow:0 4px 16px rgba(0,0,0,.35)"></div>
-    <div class="oto-hook">Wait — before you go...</div>
-    <h2>The Freeborn Arms Home Defender Blueprint</h2>
-    <div class="oto-price">One-time offer &mdash; $17</div>
-    <ul class="oto-bullets">
-      <li>Home defense strategies for a grid-down scenario — when 911 doesn't come</li>
-      <li>How to protect your family without law enforcement present</li>
-      <li>Exactly what to do in the first 6 hours of a civil emergency</li>
-    </ul>
-    <a class="oto-btn" href="https://pixeltrue.thrivecart.com/home-defender-blueprint/">Yes &mdash; Add the Home Defender Blueprint for $17</a>
-    <a class="oto-decline" href="#download">No thanks, I only want the free guide</a>
+  <h1>You Just Made the Best Decision of Your Year. Now Let&rsquo;s Make Sure It Pays Off.</h1>
+  <p class="body-text">Check your inbox &mdash; <strong>The Freeborn Skills Ladder</strong> is headed to you right now.<br><br>While you wait: most people start with the wrong skill and burn out fast. In your first email, I&rsquo;ll show you the one skill that unlocks every other homesteading competency &mdash; and why starting here gives you momentum that lasts.<br><br>Look for an email from <strong>Freeborn</strong> in the next few minutes.</p>
 
-  <div class="oto" id="oto2" style="background:#2A1A08">
-    <div class="oto-hook">ONE MORE THING — SPECIAL OFFER</div>
-    <h2>Level Up Every Month — The Freeborn Inner Circle Adds a New Skill Every 30 Days</h2>
-    <div class="oto-price">$39/month — cancel anytime</div>
-    <ul class="oto-bullets">
-      <li>Monthly deep-dive skills field guide — one new homestead skill per month, done right</li>
-      <li>Private community of people actually building the lifestyle — not just reading about it</li>
-      <li>Live monthly Q&amp;A to work through your specific challenges</li>
-      <li>Early access to every new Freeborn resource the moment it goes live</li>
-    </ul>
-    <a class="oto-btn" href="#">Yes — Add the Inner Circle for $39/mo</a>
-    <a class="oto-decline" href="#" id="oto2-decline">No thanks, the free roadmap is enough to start</a>
+  <!-- VSL Placeholder — James will record a 3–5 min video to drop in here -->
+  <div class="vsl-placeholder">
+    <div class="vsl-placeholder-label">Video coming soon</div>
+    <span class="vsl-placeholder-icon">&#9654;</span>
+    <div class="vsl-placeholder-text">A short message from James — watch before you go.<br><em>(Video will appear here once recorded)</em></div>
   </div>
 
-  <div class="oto" id="downsell" style="display:none;background:#2A1A08">
-    <div class="oto-hook">WAIT — A BETTER ENTRY POINT</div>
-    <h2>Try the Inner Circle Free for 14 Days — Then Just $39/Month</h2>
-    <div class="oto-price">$1 today, then $39/month — cancel before day 14 and pay nothing more</div>
+  <!-- OTO1: Home Setting Course -->
+  <div class="oto">
+    <div class="oto-hook">Before You Close This Page&hellip;</div>
+    <h2>Add 12 Hours of Hands-On Training for Less Than Dinner Out</h2>
+    <div class="oto-subhead">The Home Setting Course teaches you exactly how to set appointments from home &mdash; the same skills that full-time closers charge thousands to learn.</div>
+    <div class="oto-price">One-time offer &mdash; <span class="price-big">$27</span></div>
     <ul class="oto-bullets">
-      <li>Two weeks to explore the full library and meet the community</li>
-      <li>See exactly which skills to tackle first based on your situation</li>
-      <li>No commitment. Cancel before day 14 and you pay nothing more.</li>
+      <li>12 hours of step-by-step video training you can start tonight</li>
+      <li>How to set quality appointments that actually close</li>
+      <li>The exact talk tracks, objection handles, and tonality that get callbacks</li>
+      <li>Build a skill that pays you from your laptop &mdash; anywhere, anytime</li>
+      <li>Go from zero to confident setter faster than any coaching program at 10x the price</li>
     </ul>
-    <a class="oto-btn" href="#">Yes — Start My 14-Day Trial for $1</a>
-    <a class="oto-decline" href="#download">No thanks, I'll work through the free roadmap first</a>
-  </div>
+    <a class="oto-btn" href="#">Yes &mdash; Add the Home Setting Course for $27</a>
+    <div class="oto-microcopy">One-time charge. No subscription. Watch on any device, any time.</div>
+    <a class="oto-decline" href="#download">No thanks, I&rsquo;ll skip the training for now</a>
   </div>
 
   <a class="download-btn" id="download" href="#">&#8595; Access Your Free Freeborn Skills Ladder</a>
   <hr class="divider">
   <div class="next-up">
-    <div class="next-label">While You're Here</div>
+    <div class="next-label">While You&rsquo;re Here</div>
     <div class="next-title">Food Preservation Mastery</div>
-    <p class="next-desc">You have the skills roadmap. Now learn to preserve everything you grow — so nothing from your garden ever goes to waste.</p>
-    <a class="next-btn" href="/funnel-3b/index.html">Get the Free Preservation Primer →</a>
+    <p class="next-desc">You have the skills roadmap. Now learn to preserve everything you grow &mdash; so nothing from your garden ever goes to waste.</p>
+    <a class="next-btn" href="/funnel-3b/index.html">Get the Free Preservation Primer &rarr;</a>
   </div>
 </div>
 <footer>
   &copy; 2025 Freeborn &bull; <a href="/" style="color:#666">All Funnels</a>
 </footer>
-
-<script>
-(function(){
-  var oto2 = document.getElementById('oto2');
-  var downsell = document.getElementById('downsell');
-  var decline = document.getElementById('oto2-decline');
-  if(decline){
-    decline.addEventListener('click', function(e){
-      e.preventDefault();
-      if(oto2) oto2.style.display = 'none';
-      if(downsell) downsell.style.display = 'block';
-      downsell.scrollIntoView({behavior:'smooth', block:'start'});
-    });
-  }
-})();
-</script>
 </body>
 </html>
