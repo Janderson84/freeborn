@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed — Energy Independence Blueprint</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+Pro:wght@400;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg: #f5f7f2; --fg: #161e2e; --accent: #1e4d7b; --accent-dark: #0f2d4f;
+  --cta-bg: #d4622a; --cta-fg: #ffffff; --highlight: #d6eaf8;
+  --card: #ffffff; --muted: #5a6475; --success: #15803d;
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Serif Pro', Georgia, serif;
+  --font-ui: 'Inter', -apple-system, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 19px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+h1,h2,h3 { font-family: var(--font-head); line-height: 1.15; letter-spacing: -0.01em; }
+h1 { font-size: clamp(28px, 4.4vw, 48px); font-weight: 700; margin-bottom: 16px; }
+h2 { font-size: clamp(22px, 3vw, 34px); font-weight: 700; margin: 36px 0 14px; }
+h3 { font-size: clamp(17px, 2vw, 22px); font-weight: 700; margin: 20px 0 8px; }
+p { margin-bottom: 16px; }
+a { color: var(--accent); }
+.cta { display: inline-block; background: var(--cta-bg); color: var(--cta-fg); font-family: var(--font-ui); font-weight: 800; font-size: 18px; padding: 18px 32px; border: none; border-radius: 6px; text-decoration: none; letter-spacing: 0.02em; text-transform: uppercase; cursor: pointer; box-shadow: 0 4px 0 rgba(0,0,0,0.15); }
+.cta-row { text-align: center; margin: 32px 0; }
+.card { background: var(--card); border: 1px solid rgba(0,0,0,0.07); border-radius: 10px; padding: 28px; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.checklist { list-style: none; padding: 0; }
+.checklist li { position: relative; padding: 10px 0 10px 34px; border-bottom: 1px dashed rgba(0,0,0,0.08); }
+.checklist li:last-child { border-bottom: 0; }
+.checklist li::before { content: "✓"; position: absolute; left: 0; top: 10px; width: 24px; height: 24px; background: var(--success); color: #fff; border-radius: 50%; text-align: center; font-size: 13px; line-height: 24px; font-weight: 700; }
+.footer { padding: 48px 0 32px; text-align: center; color: var(--muted); font-family: var(--font-ui); font-size: 13px; }
+.footer a { color: var(--muted); }
+.success-banner { background: var(--success); color: #fff; text-align: center; padding: 18px 24px; }
+.success-banner p { margin: 0; font-family: var(--font-ui); font-weight: 700; font-size: 18px; }
+.confirm-hero { padding: 64px 0 40px; text-align: center; }
+.confirm-hero .checkmark { width: 72px; height: 72px; background: var(--success); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; font-size: 36px; color: #fff; }
+.next-steps { counter-reset: steps; list-style: none; padding: 0; }
+.next-steps li { position: relative; padding: 12px 0 12px 52px; border-bottom: 1px dashed rgba(0,0,0,0.08); counter-increment: steps; }
+.next-steps li:last-child { border-bottom: 0; }
+.next-steps li::before { content: counter(steps); position: absolute; left: 0; top: 12px; width: 32px; height: 32px; background: var(--accent); color: #fff; border-radius: 50%; text-align: center; font-family: var(--font-ui); font-size: 15px; line-height: 32px; font-weight: 800; }
+@media (max-width: 600px) { body { font-size: 17px; } .confirm-hero { padding: 40px 0 28px; } }
+</style>
+</head>
+<body>
+  <div class="success-banner"><p>✓ Your order is confirmed. Check your email for your receipt and download links.</p></div>
+  <main>
+    <section class="confirm-hero">
+      <div class="wrap">
+        <div class="checkmark">✓</div>
+        <h1>You're in. Let's get you saving money.</h1>
+        <p style="color: var(--muted); font-size: 21px; max-width: 560px; margin: 0 auto;">Your Energy Independence Blueprint is ready for instant download. Everything you purchased is in your inbox right now.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="card">
+          <h3 style="margin-top: 0;">What you purchased</h3>
+          <ul class="checklist">
+            <li>Energy Independence Blueprint — Digital Edition (PDF + ebook)</li>
+            <li>30-Day Fast Track Implementation Plan</li>
+            <li>State-by-State Program Directory</li>
+            <li>Alternative Fuel Supplier Map</li>
+            <li>Vehicle Fuel Strategy Worksheet</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top: 0;">Your next steps</h3>
+          <ol class="next-steps">
+            <li><strong>Check your inbox</strong> — Your receipt and download links are there now. Check spam if you don't see it within 5 minutes.</li>
+            <li><strong>Download the Blueprint</strong> — Save it to your phone and your desktop so it's always accessible.</li>
+            <li><strong>Open the 30-Day Fast Track</strong> — This is your implementation plan. Read Day 1–3 tonight. You can start applying for programs by tomorrow morning.</li>
+            <li><strong>Do the first thing on Day 1</strong> — Even if it's small. The families who see results fastest are the ones who take one action before they close their laptop.</li>
+          </ol>
+        </div>
+
+        <div class="card" style="background: #eef4fb; border-color: var(--accent);">
+          <h3 style="color: var(--accent); margin-top: 0;">Your first quick win</h3>
+          <p>Open the Blueprint to Chapter 2. On page 24, you'll find the LIHEAP pre-qualification form link. It takes 8 minutes to fill out. Average approved benefit: $300–$500 per year. Do that tonight.</p>
+        </div>
+
+        <div class="cta-row">
+          <a class="cta" href="/downloads/">Go to My Downloads →</a>
+        </div>
+
+        <hr style="border: 0; height: 1px; background: rgba(0,0,0,0.08); margin: 44px 0;">
+
+        <h2>Questions about your order?</h2>
+        <p>Email us at <a href="mailto:support@freebornmedia.com">support@freebornmedia.com</a> and we'll get back to you within one business day. Include your order number from your receipt.</p>
+        <p style="color: var(--muted); font-size: 16px;">If you purchased the Physical Book add-on, it ships within 3–5 business days. You'll receive a separate shipping confirmation email with tracking.</p>
+        <p style="color: var(--muted); font-size: 16px;">If you purchased a Strategy Session, you'll receive a scheduling link within 24 hours to book your 45-minute call.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap">
+        <p>© 2026 Freeborn Media. All rights reserved.</p>
+        <p style="margin-top: 8px;"><a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms</a> · <a href="mailto:support@freebornmedia.com">Contact Support</a></p>
+        <p style="margin-top: 12px; font-size: 11px;">Results are not typical. Educational material only. See full disclaimer at checkout.</p>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

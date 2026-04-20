@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freeborn Insiders Membership — OTO 3 — Energy Independence Blueprint</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+Pro:wght@400;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg: #f5f7f2; --fg: #161e2e; --accent: #1e4d7b; --accent-dark: #0f2d4f;
+  --cta-bg: #d4622a; --cta-fg: #ffffff; --highlight: #d6eaf8;
+  --card: #ffffff; --muted: #5a6475;
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Serif Pro', Georgia, serif;
+  --font-ui: 'Inter', -apple-system, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 19px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+h1,h2,h3 { font-family: var(--font-head); line-height: 1.15; letter-spacing: -0.01em; }
+h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 700; margin-bottom: 20px; }
+h2 { font-size: clamp(24px, 3.4vw, 38px); font-weight: 700; margin: 36px 0 16px; }
+h3 { font-size: clamp(18px, 2.2vw, 24px); font-weight: 700; margin: 20px 0 8px; }
+p { margin-bottom: 18px; }
+a { color: var(--accent); }
+mark { background: var(--highlight); padding: 0 3px; border-radius: 2px; }
+.cta { display: inline-block; background: var(--cta-bg); color: var(--cta-fg); font-family: var(--font-ui); font-weight: 800; font-size: 20px; padding: 20px 36px; border: none; border-radius: 6px; text-decoration: none; letter-spacing: 0.02em; text-transform: uppercase; cursor: pointer; box-shadow: 0 4px 0 rgba(0,0,0,0.15); transition: transform .05s, box-shadow .05s; }
+.cta:hover { transform: translateY(1px); box-shadow: 0 2px 0 rgba(0,0,0,0.12); }
+.cta--lg { font-size: 22px; padding: 24px 44px; }
+.cta-row { text-align: center; margin: 36px 0; }
+.sub { color: var(--muted); font-family: var(--font-ui); font-size: 14px; margin-top: 10px; }
+.pill { display: inline-block; background: var(--accent); color: #fff; font-family: var(--font-ui); font-weight: 700; font-size: 12px; padding: 6px 12px; border-radius: 999px; letter-spacing: 0.08em; text-transform: uppercase; }
+.card { background: var(--card); border: 1px solid rgba(0,0,0,0.07); border-radius: 10px; padding: 28px; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.divider { border: 0; height: 1px; background: rgba(0,0,0,0.08); margin: 44px 0; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { position: relative; padding: 10px 0 10px 34px; border-bottom: 1px dashed rgba(0,0,0,0.08); }
+.checklist li:last-child { border-bottom: 0; }
+.checklist li::before { content: "✓"; position: absolute; left: 0; top: 10px; width: 24px; height: 24px; background: var(--accent); color: #fff; border-radius: 50%; text-align: center; font-size: 13px; line-height: 24px; font-weight: 700; }
+.guarantee { border: 3px dashed var(--accent); padding: 24px; margin: 32px 0; border-radius: 8px; text-align: center; }
+.guarantee h3 { margin-top: 0; color: var(--accent); }
+.eyebrow { font-family: var(--font-ui); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; font-weight: 700; }
+.hero { padding: 80px 0 60px; text-align: center; }
+.hero .lede { font-size: 21px; color: var(--muted); max-width: 680px; margin: 0 auto 28px; }
+.footer { padding: 48px 0 32px; text-align: center; color: var(--muted); font-family: var(--font-ui); font-size: 13px; }
+.footer a { color: var(--muted); }
+.skip-link { font-family: var(--font-ui); font-size: 14px; color: var(--muted); text-decoration: underline; }
+
+/* Membership opt-out checkbox */
+.membership-box { border: 3px solid var(--accent); border-radius: 8px; background: #eef4fb; padding: 28px; margin: 28px 0; }
+.membership-box-header { font-family: var(--font-ui); font-weight: 800; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.membership-box label { display: flex; gap: 14px; align-items: flex-start; cursor: pointer; }
+.membership-box input[type="checkbox"] { width: 22px; height: 22px; min-width: 22px; margin-top: 4px; accent-color: var(--accent); cursor: pointer; }
+.membership-box .opt-text strong { font-family: var(--font-ui); font-size: 17px; color: var(--fg); }
+.membership-box .opt-text p { font-size: 15px; color: var(--muted); margin: 6px 0 0; font-family: var(--font-ui); line-height: 1.5; }
+.membership-box .opt-text .uncheck-note { color: #b45309; font-weight: 700; margin-top: 10px; font-size: 14px; }
+
+@media (max-width: 600px) { body { font-size: 17px; } .cta { width: 100%; display: block; text-align: center; } .hero { padding: 48px 0 36px; } }
+</style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">One-Time Offer · OTO 3 of 4 · This Page Only</div>
+        <h1>Stay ahead of every rate hike, every new program, every trick they don't want you to know.</h1>
+        <p class="lede">The Freeborn Insiders Membership delivers new energy-saving strategies, government program alerts, and member Q&amp;As every month — for just $17/month. Cancel anytime.</p>
+
+        <div class="card" style="text-align: left;">
+          <span class="pill">Freeborn Insiders — $17/month</span>
+          <h3 style="margin-top: 14px;">What you get as a member:</h3>
+          <ul class="checklist" style="margin-top: 16px;">
+            <li><strong>Monthly Strategy Dispatch</strong> — A new energy-saving deep-dive every month. New programs, updated rates, seasonal tactics.</li>
+            <li><strong>Program Alert Emails</strong> — We monitor federal and state program databases and email you the moment something new opens in your state.</li>
+            <li><strong>Members-Only Q&amp;A Archive</strong> — Searchable archive of 800+ questions answered by our team, covering every scenario from renters to off-grid homesteaders.</li>
+            <li><strong>New Guide Access</strong> — Every new book we publish goes to members first, free, before it hits the store.</li>
+            <li><strong>Price Negotiation Templates</strong> — Monthly updated scripts for negotiating utility rates, insurance premiums, and fuel contracts.</li>
+          </ul>
+        </div>
+
+        <!-- AUTO-CHECKED MEMBERSHIP OPT-OUT -->
+        <div class="membership-box">
+          <div class="membership-box-header">✓ Membership Added to Your Order</div>
+          <label>
+            <input type="checkbox" id="membership-optin" checked>
+            <div class="opt-text">
+              <strong>Yes — include Freeborn Insiders Membership at $17/month</strong>
+              <p>Your first month is charged today along with your other purchases. You'll be billed $17 automatically each month. Cancel anytime from your account dashboard — no questions asked.</p>
+              <p class="uncheck-note">Uncheck this box to remove the membership from your order.</p>
+            </div>
+          </label>
+        </div>
+
+        <div class="guarantee">
+          <h3>Cancel Anytime — No Questions Asked</h3>
+          <p>There's no minimum commitment. Log in, click cancel, and you're done. You keep everything you've downloaded. We don't chase you, we don't make it hard.</p>
+        </div>
+
+        <div class="cta-row">
+          <a class="cta cta--lg" href="/oto4-coaching/" id="membership-cta">Continue to Next Step →</a>
+          <div class="sub" id="membership-sub">Membership included at $17/month · Cancel anytime</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap">
+        <p>© 2026 Freeborn Media · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></p>
+        <p style="margin-top: 8px; font-size: 11px;">OTO 3 · Freeborn Insiders Membership · $17/month · Cancel anytime</p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const membershipCheck = document.getElementById('membership-optin');
+    const membershipCta = document.getElementById('membership-cta');
+    const membershipSub = document.getElementById('membership-sub');
+    function updateMembership() {
+      if (membershipCheck.checked) {
+        membershipSub.textContent = 'Membership included at $17/month · Cancel anytime';
+      } else {
+        membershipSub.textContent = 'Membership removed · Click to continue without it';
+      }
+    }
+    membershipCheck.addEventListener('change', updateMembership);
+  </script>
+</body>
+</html>
