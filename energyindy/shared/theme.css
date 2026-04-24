@@ -1,0 +1,75 @@
+/* Freeborn funnel — shared theme tokens */
+:root {
+  /* Version A — The Warning (patriotic bold) */
+  --a-paper: #f5efe2;
+  --a-paper-2: #ece3cf;
+  --a-ink: #14161f;
+  --a-ink-2: #2a2e3d;
+  --a-navy: #0f2033;
+  --a-navy-2: #1a3150;
+  --a-red: #a4182a;
+  --a-red-dark: #7a1220;
+  --a-gold: #b08525;
+  --a-gold-2: #8a6719;
+  --a-cream: #faf6ea;
+  --a-rule: #3a322320;
+
+  /* Version B — The Letter (authoritative sales letter) */
+  --b-paper: #faf7ef;
+  --b-paper-2: #f2ecdd;
+  --b-ink: #1a1410;
+  --b-ink-2: #3a2f26;
+  --b-red: #8a1420;
+  --b-red-ink: #6a1018;
+  --b-mute: #6b5a48;
+  --b-rule: #1a141020;
+}
+
+html, body { margin: 0; padding: 0; }
+* { box-sizing: border-box; }
+
+/* Shared placeholder styling (stripes with monospace label) */
+.ph {
+  position: relative;
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(20,22,31,0.06) 0 8px,
+    rgba(20,22,31,0.02) 8px 16px
+  );
+  background-color: rgba(20,22,31,0.04);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(20,22,31,0.55);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid rgba(20,22,31,0.12);
+}
+.ph.dark {
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255,255,255,0.08) 0 8px,
+    rgba(255,255,255,0.02) 8px 16px
+  );
+  background-color: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.6);
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* Underline/rule utility */
+.rule-red { border: 0; border-top: 3px solid var(--a-red); margin: 0; }
+.rule-ink { border: 0; border-top: 1px solid rgba(20,22,31,0.25); margin: 0; }
+
+/* Checkbox / radio look for order bumps */
+.orderbump {
+  border: 2px dashed var(--a-red);
+  background: #fff8e3;
+  padding: 18px 20px;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.orderbump input[type=checkbox] {
+  width: 22px; height: 22px; margin-top: 2px; accent-color: var(--a-red);
+}
+
+/* Button reset */
+button { font: inherit; cursor: pointer; border: 0; background: none; }

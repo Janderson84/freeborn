@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Freeborn · Energy Independence Funnel</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400;1,700&family=Oswald:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="shared/theme.css" />
+
+<style>
+  body {
+    margin: 0;
+    background: #1a1a1a;
+    font-family: "Libre Caslon Text", Georgia, serif;
+  }
+
+  /* Funnel path display (chrome, above the design) */
+  .fb-chrome {
+    position: sticky; top: 0; z-index: 50;
+    background: #111;
+    color: #e6e0d1;
+    padding: 10px 18px;
+    display: flex; gap: 10px; align-items: center;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #333;
+  }
+  .fb-chrome .brand {
+    font-family: Oswald, Impact, sans-serif;
+    font-size: 13px; letter-spacing: 0.3em; color: #e6b44c;
+    margin-right: 6px;
+  }
+  .fb-seg {
+    display: inline-flex; gap: 2px; margin-left: auto;
+    border: 1px solid #333;
+  }
+  .fb-seg button {
+    background: transparent; color: #aaa; padding: 6px 12px;
+    font: inherit; cursor: pointer; border: 0;
+    letter-spacing: 0.12em;
+  }
+  .fb-seg button.active { background: #e6b44c; color: #111; }
+
+  .fb-path {
+    display: inline-flex; gap: 8px; align-items: center; flex-wrap: wrap;
+  }
+  .fb-path button {
+    background: transparent; border: 1px solid #333; color: #aaa;
+    padding: 4px 10px; cursor: pointer; font: inherit;
+    letter-spacing: 0.14em;
+  }
+  .fb-path button.active { background: #fff; color: #111; border-color: #fff; }
+  .fb-path button:hover:not(.active) { border-color: #666; color: #fff; }
+  .fb-path span.sep { color: #555; }
+
+  /* Tweaks panel */
+  .tweaks {
+    position: fixed; right: 16px; bottom: 16px; z-index: 60;
+    width: 320px;
+    background: #0f0f0f; color: #f2ebd8;
+    border: 1px solid #2a2a2a;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6);
+  }
+  .tweaks h4 {
+    margin: 0; padding: 12px 14px;
+    border-bottom: 1px solid #222;
+    font-family: Oswald, Impact, sans-serif;
+    font-size: 13px; letter-spacing: 0.3em; color: #e6b44c;
+  }
+  .tweaks .body { padding: 12px 14px; display: grid; gap: 14px; }
+  .tweaks label { display: block; }
+  .tweaks .lbl {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #888; margin-bottom: 6px;
+  }
+  .tweaks .row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tweaks .row button {
+    background: #1a1a1a; color: #ccc; border: 1px solid #2a2a2a;
+    padding: 6px 10px; cursor: pointer; font: inherit;
+  }
+  .tweaks .row button.active { background: #e6b44c; color: #111; border-color: #e6b44c; }
+  .tweaks input[type=range] { width: 100%; }
+  .tweaks .toggle {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+</style>
+
+<script type="application/json" id="__edit_mode_defaults">
+{}
+</script>
+</head>
+<body>
+
+<template id="__bundler_thumbnail" data-bg-color="#14161f">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#14161f"/>
+    <rect x="0" y="0" width="1200" height="8" fill="#e6b44c"/>
+    <rect x="0" y="792" width="1200" height="8" fill="#e6b44c"/>
+    <g transform="translate(600 400)" text-anchor="middle" font-family="Georgia, serif" fill="#f2ebd8">
+      <text y="-40" font-size="34" font-style="italic" fill="#e6b44c" letter-spacing="12">FREEBORN</text>
+      <text y="28" font-size="72" font-style="italic" font-weight="700">Energy</text>
+      <text y="100" font-size="72" font-style="italic" font-weight="700" fill="#b1233a">Independence</text>
+      <text y="170" font-size="18" letter-spacing="6" fill="#e6b44c" font-family="monospace">LOADING FUNNEL…</text>
+    </g>
+  </svg>
+</template>
+<div id="app"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="shared/common.jsx"></script>
+<script type="text/babel" src="versions/a_vsl.jsx"></script>
+<script type="text/babel" src="versions/a_rest.jsx"></script>
+<script type="text/babel" src="versions/b_all.jsx"></script>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "version": "a",
+  "price": 17,
+  "timer": true,
+  "stack": true,
+  "testimonials": 12
+}/*EDITMODE-END*/;
+
+const STEPS = ['vsl', 'checkout', 'oto1', 'oto2', 'thanks'];
+const STEP_LABELS = { vsl: 'VSL', checkout: 'Checkout', oto1: 'OTO1 · Audit', oto2: 'OTO2 · Club', thanks: 'Thanks' };
+
+function App() {
+  const { values, update, open, available } = useTweaks(TWEAK_DEFAULTS);
+  const [step, setStep] = React.useState(() => {
+    try { return localStorage.getItem('fb_step') || 'vsl'; } catch (e) { return 'vsl'; }
+  });
+
+  React.useEffect(() => {
+    try { localStorage.setItem('fb_step', step); } catch (e) {}
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [step]);
+
+  const version = values.version === 'b' ? 'b' : 'a';
+
+  function next() {
+    const i = STEPS.indexOf(step);
+    setStep(STEPS[Math.min(STEPS.length - 1, i + 1)]);
+  }
+  function restart() { setStep('vsl'); }
+
+  const Screens = version === 'a' ? {
+    vsl: <VersionA_VSL values={values} onGo={() => setStep('checkout')} />,
+    checkout: <VersionA_Checkout values={values} onGo={() => setStep('oto1')} />,
+    oto1: <VersionA_OTO1 values={values} onYes={() => setStep('oto2')} onNo={() => setStep('oto2')} />,
+    oto2: <VersionA_OTO2 onYes={() => setStep('thanks')} onNo={() => setStep('thanks')} />,
+    thanks: <VersionA_Thanks onRestart={restart} />
+  } : {
+    vsl: <VersionB_VSL values={values} onGo={() => setStep('checkout')} />,
+    checkout: <VersionB_Checkout values={values} onGo={() => setStep('oto1')} />,
+    oto1: <VersionB_OTO1 onYes={() => setStep('oto2')} onNo={() => setStep('oto2')} />,
+    oto2: <VersionB_OTO2 onYes={() => setStep('thanks')} onNo={() => setStep('thanks')} />,
+    thanks: <VersionB_Thanks onRestart={restart} />
+  };
+
+  return (
+    <>
+      {/* Chrome */}
+      <div className="fb-chrome">
+        <span className="brand">FREEBORN</span>
+        <span style={{ color: '#666' }}>·</span>
+        <span style={{ color: '#888' }}>Funnel prototype</span>
+
+        <div className="fb-path" style={{ marginLeft: 18 }}>
+          {STEPS.map((s, i) => (
+            <React.Fragment key={s}>
+              <button
+                className={step === s ? 'active' : ''}
+                onClick={() => setStep(s)}>
+                {String(i + 1).padStart(2, '0')} {STEP_LABELS[s]}
+              </button>
+              {i < STEPS.length - 1 && <span className="sep">→</span>}
+            </React.Fragment>
+          ))}
+        </div>
+
+        <div className="fb-seg">
+          <button className={version === 'a' ? 'active' : ''}
+                  onClick={() => update({ version: 'a' })}>A · The Warning</button>
+          <button className={version === 'b' ? 'active' : ''}
+                  onClick={() => update({ version: 'b' })}>B · The Letter</button>
+        </div>
+      </div>
+
+      {/* Screen */}
+      <div key={version + '-' + step}>
+        {Screens[step]}
+      </div>
+
+      {/* Tweaks */}
+      {available && open && (
+        <div className="tweaks">
+          <h4>TWEAKS</h4>
+          <div className="body">
+            <div>
+              <div className="lbl">Design direction</div>
+              <div className="row">
+                <button className={version === 'a' ? 'active' : ''}
+                        onClick={() => update({ version: 'a' })}>A · Warning</button>
+                <button className={version === 'b' ? 'active' : ''}
+                        onClick={() => update({ version: 'b' })}>B · Letter</button>
+              </div>
+            </div>
+
+            <div>
+              <div className="lbl">Price point</div>
+              <div className="row">
+                {[7, 17, 27, 37].map(p => (
+                  <button key={p} className={values.price === p ? 'active' : ''}
+                          onClick={() => update({ price: p })}>${p}</button>
+                ))}
+              </div>
+            </div>
+
+            <div className="toggle">
+              <span className="lbl" style={{ margin: 0 }}>Urgency timer</span>
+              <div className="row">
+                <button className={values.timer ? 'active' : ''} onClick={() => update({ timer: true })}>ON</button>
+                <button className={!values.timer ? 'active' : ''} onClick={() => update({ timer: false })}>OFF</button>
+              </div>
+            </div>
+
+            <div className="toggle">
+              <span className="lbl" style={{ margin: 0 }}>Value stack</span>
+              <div className="row">
+                <button className={values.stack ? 'active' : ''} onClick={() => update({ stack: true })}>ON</button>
+                <button className={!values.stack ? 'active' : ''} onClick={() => update({ stack: false })}>OFF</button>
+              </div>
+            </div>
+
+            <div>
+              <div className="lbl">Testimonials ({values.testimonials})</div>
+              <input type="range" min="1" max="12" step="1" value={values.testimonials}
+                     onChange={e => update({ testimonials: parseInt(e.target.value, 10) })} />
+            </div>
+
+            <button
+              onClick={() => {
+                localStorage.removeItem('fb_vsl_cd');
+                location.reload();
+              }}
+              style={{
+                background: '#1a1a1a', color: '#e6b44c', border: '1px solid #333',
+                padding: '8px 10px', cursor: 'pointer', fontFamily: 'inherit',
+                letterSpacing: '0.14em', fontSize: 10, textTransform: 'uppercase'
+              }}
+            >↻ Reset timers & cache</button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('app')).render(<App />);
+</script>
+
+</body>
+</html>

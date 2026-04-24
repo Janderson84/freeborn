@@ -1,0 +1,1345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Freeborn · Checkout (B)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400;1,700&family=Oswald:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+/* Freeborn funnel — shared theme tokens */
+:root {
+  /* Version A — The Warning (patriotic bold) */
+  --a-paper: #f5efe2;
+  --a-paper-2: #ece3cf;
+  --a-ink: #14161f;
+  --a-ink-2: #2a2e3d;
+  --a-navy: #0f2033;
+  --a-navy-2: #1a3150;
+  --a-red: #a4182a;
+  --a-red-dark: #7a1220;
+  --a-gold: #b08525;
+  --a-gold-2: #8a6719;
+  --a-cream: #faf6ea;
+  --a-rule: #3a322320;
+
+  /* Version B — The Letter (authoritative sales letter) */
+  --b-paper: #faf7ef;
+  --b-paper-2: #f2ecdd;
+  --b-ink: #1a1410;
+  --b-ink-2: #3a2f26;
+  --b-red: #8a1420;
+  --b-red-ink: #6a1018;
+  --b-mute: #6b5a48;
+  --b-rule: #1a141020;
+}
+
+html, body { margin: 0; padding: 0; }
+* { box-sizing: border-box; }
+
+/* Shared placeholder styling (stripes with monospace label) */
+.ph {
+  position: relative;
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(20,22,31,0.06) 0 8px,
+    rgba(20,22,31,0.02) 8px 16px
+  );
+  background-color: rgba(20,22,31,0.04);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(20,22,31,0.55);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid rgba(20,22,31,0.12);
+}
+.ph.dark {
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255,255,255,0.08) 0 8px,
+    rgba(255,255,255,0.02) 8px 16px
+  );
+  background-color: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.6);
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* Underline/rule utility */
+.rule-red { border: 0; border-top: 3px solid var(--a-red); margin: 0; }
+.rule-ink { border: 0; border-top: 1px solid rgba(20,22,31,0.25); margin: 0; }
+
+/* Checkbox / radio look for order bumps */
+.orderbump {
+  border: 2px dashed var(--a-red);
+  background: #fff8e3;
+  padding: 18px 20px;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.orderbump input[type=checkbox] {
+  width: 22px; height: 22px; margin-top: 2px; accent-color: var(--a-red);
+}
+
+/* Button reset */
+button { font: inherit; cursor: pointer; border: 0; background: none; }
+
+
+  .fb-funnel-nav {
+    position: fixed; left: 14px; bottom: 14px; z-index: 70;
+    background: rgba(15,15,15,0.95); color: #e6e0d1;
+    border: 1px solid #2a2a2a;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 8px 10px; display: flex; gap: 6px; align-items: center;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.6);
+  }
+  .fb-funnel-nav a {
+    color: #aaa; text-decoration: none; padding: 4px 8px;
+    border: 1px solid #2a2a2a;
+  }
+  .fb-funnel-nav a:hover { color: #fff; border-color: #555; }
+  .fb-funnel-nav a.active { background: #e6b44c; color: #111; border-color: #e6b44c; }
+  .fb-funnel-nav .sep { color: #555; }
+  .fb-funnel-nav .ver {
+    color: #e6b44c; font-family: Oswald, Impact, sans-serif;
+    letter-spacing: 0.24em; margin-right: 6px;
+  }
+
+body { margin: 0; font-family: "Libre Caslon Text", Georgia, serif; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="fb-funnel-nav">
+    <span class="ver">B · Letter</span>
+    <a href="b-01-vsl.html">VSL</a><span class="sep">›</span><a href="b-02-checkout.html" class="active">Checkout</a><span class="sep">›</span><a href="b-03-oto1.html">OTO1</a><span class="sep">›</span><a href="b-04-oto2.html">OTO2</a><span class="sep">›</span><a href="b-05-thanks.html">Thanks</a>
+    <span class="sep">|</span>
+    <a href="a-02-checkout.html">See A</a>
+  </div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel">
+/* Shared components for the Freeborn funnel prototype */
+
+const { useState, useEffect, useRef } = React;
+
+/* ---------- countdown hook ---------- */
+function useCountdown(initialSeconds = 15 * 60, storageKey = 'fb_cd') {
+  const [remaining, setRemaining] = useState(() => {
+    try {
+      const saved = localStorage.getItem(storageKey);
+      if (saved) {
+        const { endAt } = JSON.parse(saved);
+        const left = Math.max(0, Math.floor((endAt - Date.now()) / 1000));
+        if (left > 0) return left;
+      }
+    } catch (e) {}
+    const endAt = Date.now() + initialSeconds * 1000;
+    try { localStorage.setItem(storageKey, JSON.stringify({ endAt })); } catch (e) {}
+    return initialSeconds;
+  });
+
+  useEffect(() => {
+    const t = setInterval(() => setRemaining(r => (r > 0 ? r - 1 : 0)), 1000);
+    return () => clearInterval(t);
+  }, []);
+
+  const m = String(Math.floor(remaining / 60)).padStart(2, '0');
+  const s = String(remaining % 60).padStart(2, '0');
+  return { remaining, mm: m, ss: s };
+}
+
+/* ---------- stars ---------- */
+function Stars({ color = '#b08525', size = 14 }) {
+  return (
+    <span aria-hidden="true" style={{ color, letterSpacing: '4px', fontSize: size, lineHeight: 1 }}>
+      ★★★★★
+    </span>
+  );
+}
+
+/* ---------- placeholder image ---------- */
+function PH({ label, h = 160, w, dark = false, style = {} }) {
+  return (
+    <div
+      className={'ph ' + (dark ? 'dark' : '')}
+      style={{ height: h, width: w || '100%', ...style }}
+    >
+      {label}
+    </div>
+  );
+}
+
+/* ---------- nav across funnel steps ---------- */
+function StepNav({ theme = 'a', step, total = 4 }) {
+  const isA = theme === 'a';
+  const base = isA ? '#0f2033' : '#1a1410';
+  const accent = isA ? '#a4182a' : '#8a1420';
+  const dots = Array.from({ length: total });
+  return (
+    <div style={{
+      display: 'flex', gap: 8, alignItems: 'center', justifyContent: 'center',
+      padding: '10px 16px',
+      fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+      fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
+      color: base, opacity: 0.75
+    }}>
+      <span>Step {step} of {total}</span>
+      <span style={{ display: 'inline-flex', gap: 4, marginLeft: 8 }}>
+        {dots.map((_, i) => (
+          <span key={i} style={{
+            width: 22, height: 3,
+            background: i < step ? accent : 'rgba(0,0,0,0.15)'
+          }} />
+        ))}
+      </span>
+    </div>
+  );
+}
+
+/* ---------- bottom / footer ---------- */
+function Footer({ theme = 'a' }) {
+  const isA = theme === 'a';
+  const ink = isA ? '#2a2e3d' : '#3a2f26';
+  const paper = isA ? '#ece3cf' : '#f2ecdd';
+  return (
+    <footer style={{
+      background: paper, color: ink,
+      padding: '36px 24px 48px',
+      fontFamily: '"Libre Caslon Text", Georgia, serif',
+      fontSize: 13, lineHeight: 1.6, textAlign: 'center'
+    }}>
+      <div style={{
+        fontFamily: 'Oswald, Impact, sans-serif',
+        fontSize: 20, letterSpacing: '0.3em', marginBottom: 8
+      }}>FREEBORN</div>
+      <div style={{ opacity: 0.75, fontSize: 12, maxWidth: 680, margin: '0 auto 14px' }}>
+        Results mentioned are not typical. Individual results will vary based on your specific situation,
+        effort applied, and local energy rates. This product is for educational purposes and does not
+        constitute financial or legal advice.
+      </div>
+      <div style={{
+        fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+        fontSize: 11, letterSpacing: '0.1em', opacity: 0.6
+      }}>
+        © 2026 FREEBORN · PRIVACY · TERMS · CONTACT · EARNINGS DISCLAIMER
+      </div>
+    </footer>
+  );
+}
+
+/* ---------- Tweaks host protocol ---------- */
+function useTweaks(defaults) {
+  const [values, setValues] = useState(defaults);
+  const [open, setOpen] = useState(false);
+  const [available, setAvailable] = useState(false);
+
+  useEffect(() => {
+    function onMsg(e) {
+      if (!e.data || typeof e.data !== 'object') return;
+      if (e.data.type === '__activate_edit_mode') setOpen(true);
+      if (e.data.type === '__deactivate_edit_mode') setOpen(false);
+    }
+    window.addEventListener('message', onMsg);
+    setAvailable(true);
+    try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch (e) {}
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  function update(patch) {
+    setValues(v => ({ ...v, ...patch }));
+    try {
+      window.parent.postMessage({
+        type: '__edit_mode_set_keys',
+        edits: patch
+      }, '*');
+    } catch (e) {}
+  }
+
+  return { values, update, open, available };
+}
+
+Object.assign(window, { useCountdown, Stars, PH, StepNav, Footer, useTweaks });
+
+
+/* --- b_all.jsx --- */
+/* Version B — "The Letter" — Full funnel (VSL, Checkout, OTO1, OTO2, Thanks) */
+const { useState: useStateB } = React;
+
+/* ---------- shared bits ---------- */
+function BHeader() {
+  return (
+    <div style={{
+      background: 'var(--b-paper-2)', padding: '18px 24px',
+      borderBottom: '1px solid rgba(0,0,0,0.15)',
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between'
+    }}>
+      <div style={{
+        fontFamily: '"IBM Plex Serif", Georgia, serif',
+        fontSize: 22, fontWeight: 600, letterSpacing: '0.04em',
+        color: 'var(--b-ink)'
+      }}>
+        Freeborn<span style={{ color: 'var(--b-red)' }}>.</span>
+      </div>
+      <div style={{
+        fontFamily: 'ui-monospace, Menlo, monospace',
+        fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase',
+        color: 'var(--b-mute)'
+      }}>
+        An open letter to American families
+      </div>
+    </div>
+  );
+}
+
+function BFooter() {
+  return (
+    <footer style={{
+      background: 'var(--b-paper-2)', padding: '36px 24px 48px', textAlign: 'center',
+      fontFamily: '"IBM Plex Serif", Georgia, serif', fontSize: 13, color: 'var(--b-ink-2)'
+    }}>
+      <div style={{
+        fontSize: 18, letterSpacing: '0.04em', marginBottom: 8, fontWeight: 600
+      }}>
+        Freeborn<span style={{ color: 'var(--b-red)' }}>.</span>
+      </div>
+      <div style={{ maxWidth: 640, margin: '0 auto 14px', opacity: 0.7, fontSize: 12, lineHeight: 1.6 }}>
+        Results are not typical. Individual results will vary. This product is for educational
+        purposes and does not constitute financial or legal advice.
+      </div>
+      <div style={{
+        fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 10,
+        letterSpacing: '0.14em', opacity: 0.55
+      }}>
+        © 2026 FREEBORN · PRIVACY · TERMS · CONTACT · EARNINGS
+      </div>
+    </footer>
+  );
+}
+
+/* ============================================================
+   B-01 VSL / Sales Letter
+   ============================================================ */
+function VersionB_VSL({ values, onGo }) {
+  const { mm, ss } = useCountdown(15 * 60, 'fb_vsl_cd');
+  const [playing, setPlaying] = useStateB(false);
+  const price = values.price || 17;
+  const showTimer = values.timer !== false;
+  const showStack = values.stack !== false;
+  const testimonialCount = values.testimonials || 12;
+
+  const testimonials = [
+    { q: "Two programs I'd never heard of. Saving $340 a month. I can't believe I didn't know about this sooner.", n: "Mark T.", l: "Phoenix, AZ" },
+    { q: "My husband was skeptical. I bought it anyway. Three weeks later he admitted I was right.", n: "Diane K.", l: "Columbus, OH" },
+    { q: "Real, practical options — not theory. Things I could actually do right now.", n: "Robert M.", l: "Nashville, TN" },
+    { q: "I'm on a fixed income and every dollar counts. The first module paid for this ten times over.", n: "Janet S.", l: "Harrisburg, PA" },
+    { q: "Practical, patriotic, no fluff. My son and I sat down, followed the plan, our numbers dropped the first month.", n: "David R.", l: "Boise, ID" },
+    { q: "I was paying $480 in gas and electric. After the Blueprint, $210. Same house, same family. Math just works.", n: "Carlos V.", l: "San Antonio, TX" },
+    { q: "I've bought a lot of 'online guides' that were garbage. This one names programs by name and actually moves the needle.", n: "Beth H.", l: "Grand Rapids, MI" },
+    { q: "My daughter sent me the link thinking I'd laugh. I didn't. Now she asks me for advice.", n: "Ralph D.", l: "Scranton, PA" },
+    { q: "Household of five. Winter wrecked us. We got through January $380 under last year's bill. That's real money.", n: "Kaylee P.", l: "Sioux Falls, SD" },
+    { q: "Small business owner. Applied the commercial rate strategy to my shop. Paid for itself in a weekend.", n: "Tony R.", l: "Jacksonville, FL" },
+    { q: "Veteran on a pension. I don't like being taken advantage of. This felt like someone finally leveled with me.", n: "Walter J.", l: "Lubbock, TX" },
+    { q: "I wanted to prove it was a scam. I couldn't. My bill last month was the lowest in four years.", n: "Stephanie O.", l: "Greensboro, NC" }
+  ].slice(0, testimonialCount);
+
+  return (
+    <div data-screen-label="B-01 VSL" style={{
+      background: 'var(--b-paper)', color: 'var(--b-ink)',
+      fontFamily: '"IBM Plex Serif", Georgia, serif',
+      minHeight: '100vh'
+    }}>
+      <BHeader />
+
+      {/* Kicker bar */}
+      <div style={{
+        textAlign: 'center', padding: '18px 20px',
+        borderBottom: '1px solid rgba(0,0,0,0.1)',
+        fontFamily: 'ui-monospace, Menlo, monospace',
+        fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase',
+        color: 'var(--b-red)'
+      }}>
+        —— A personal letter from J. Anderson, Freeborn ——
+      </div>
+
+      {/* The Letter hero */}
+      <section style={{ maxWidth: 760, margin: '0 auto', padding: '48px 28px 24px' }}>
+        <div style={{
+          fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+          letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--b-mute)',
+          marginBottom: 20
+        }}>
+          Columbus, Ohio · Tuesday morning
+        </div>
+
+        <h1 style={{
+          fontFamily: '"IBM Plex Serif", Georgia, serif',
+          fontWeight: 600, fontSize: 'clamp(34px, 4.6vw, 54px)',
+          lineHeight: 1.1, letterSpacing: '-0.01em',
+          margin: '0 0 18px', textWrap: 'balance'
+        }}>
+          If your gas bill has you up at night, this is for you.
+        </h1>
+
+        <p style={{ fontSize: 'clamp(17px, 1.7vw, 21px)', lineHeight: 1.6, margin: '0 0 14px' }}>
+          Dear friend,
+        </p>
+        <p style={{ fontSize: 'clamp(17px, 1.7vw, 20px)', lineHeight: 1.65, margin: '0 0 14px' }}>
+          In the next <b>ten minutes</b>, I'm going to show you exactly how regular American
+          families are cutting their energy bills by <b style={{ color: 'var(--b-red)' }}>$200–$400 every single month</b> —
+          without solar panels, without expensive renovations, and without waiting on some
+          politician in Washington to do the right thing.
+        </p>
+        <p style={{ fontSize: 'clamp(17px, 1.7vw, 20px)', lineHeight: 1.65, margin: '0 0 14px' }}>
+          Big Oil has spent <i>millions</i> making sure you never find out about what's in this
+          presentation. That should tell you everything you need to know.
+        </p>
+        <p style={{
+          fontSize: 'clamp(17px, 1.7vw, 20px)', lineHeight: 1.65,
+          margin: '0 0 8px',
+          borderLeft: '3px solid var(--b-red)', paddingLeft: 18,
+          fontStyle: 'italic', color: 'var(--b-ink-2)'
+        }}>
+          Turn your sound on, hit play, and watch the whole thing. It'll change how you
+          look at your next utility bill — I promise.
+        </p>
+      </section>
+
+      {/* VSL player */}
+      <section style={{ maxWidth: 920, margin: '12px auto 0', padding: '0 20px' }}>
+        <div style={{
+          position: 'relative', aspectRatio: '16 / 9',
+          background: '#0a0a0a',
+          border: '1px solid rgba(0,0,0,0.4)',
+          boxShadow: '0 30px 60px -30px rgba(0,0,0,0.45)'
+        }}>
+          <div style={{ position: 'absolute', inset: 0,
+            background: '#0a0a0a',
+            backgroundImage: 'repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 10px, rgba(255,255,255,0.01) 10px 20px)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center'
+          }}>
+            <div style={{
+              position: 'absolute', top: 16, left: 18, color: 'rgba(255,255,255,0.85)',
+              fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 10,
+              letterSpacing: '0.2em', textTransform: 'uppercase'
+            }}>▸ Presentation · 10:42</div>
+            <div style={{
+              color: '#fff', textAlign: 'center',
+              fontFamily: '"IBM Plex Serif", Georgia, serif', padding: '0 40px'
+            }}>
+              <div style={{ fontSize: 'clamp(18px, 2.4vw, 30px)', fontStyle: 'italic', opacity: 0.9 }}>
+                “The Energy Independence Presentation”
+              </div>
+              <div style={{
+                marginTop: 10, fontFamily: 'ui-monospace, Menlo, monospace',
+                fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', opacity: 0.6
+              }}>
+                Sound is on · Do not refresh
+              </div>
+            </div>
+
+            {!playing && (
+              <button onClick={() => setPlaying(true)}
+                style={{ position: 'absolute', inset: 0, background: 'transparent' }}>
+                <span style={{
+                  width: 88, height: 88, borderRadius: '50%',
+                  background: 'var(--b-red)',
+                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                  boxShadow: '0 0 0 8px rgba(138,20,32,0.22), 0 0 0 20px rgba(138,20,32,0.1)'
+                }}>
+                  <span style={{
+                    borderLeft: '22px solid #fff',
+                    borderTop: '14px solid transparent',
+                    borderBottom: '14px solid transparent',
+                    marginLeft: 6
+                  }} />
+                </span>
+              </button>
+            )}
+            {playing && (
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0,
+                background: 'rgba(0,0,0,0.65)', padding: '10px 14px', color: '#fff',
+                fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+                display: 'flex', gap: 10, alignItems: 'center'
+              }}>
+                <span style={{ width: 10, height: 10, background: 'var(--b-red)' }} />
+                <span>PLAYING · 00:12 / 10:42</span>
+                <div style={{ flex: 1, height: 2, background: 'rgba(255,255,255,0.2)' }}>
+                  <div style={{ width: '2%', height: '100%', background: 'var(--b-red)' }} />
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Body of letter */}
+      <section style={{ maxWidth: 760, margin: '36px auto 0', padding: '0 28px' }}>
+        <p style={{ fontSize: 18, lineHeight: 1.7, margin: '0 0 14px' }}>
+          My name is <b>J. Anderson</b>, and I built Freeborn after watching my mother — a
+          63-year-old widow on a fixed income — sit at the kitchen table and try not to
+          cry over her utility bill.
+        </p>
+        <p style={{ fontSize: 18, lineHeight: 1.7, margin: '0 0 14px' }}>
+          I'm not an activist. I'm not a politician. I'm a guy who got sick of watching
+          Americans get squeezed by the same handful of companies, year after year,
+          while the news told us there was nothing we could do about it.
+        </p>
+        <p style={{ fontSize: 18, lineHeight: 1.7, margin: '0 0 14px' }}>
+          So I built a <b>plan</b>. A real, specific, written-down plan that anyone — and I
+          mean anyone — can follow. I'm calling it the <i>Energy Independence Blueprint</i>,
+          and I want to put it in your hands today for less than the cost of dinner for two.
+        </p>
+      </section>
+
+      {/* What's inside — letter style list */}
+      <section style={{ maxWidth: 760, margin: '28px auto 0', padding: '0 28px' }}>
+        <h2 style={{
+          fontFamily: '"IBM Plex Serif", Georgia, serif',
+          fontSize: 'clamp(22px, 2.6vw, 30px)', fontWeight: 600,
+          margin: '0 0 10px', borderBottom: '2px solid var(--b-red)', paddingBottom: 6,
+          display: 'inline-block'
+        }}>
+          Here's what's waiting for you inside.
+        </h2>
+        {[
+          ["Government programs Big Oil buried.",
+           "Federal and state savings programs worth thousands, quietly kept out of the evening news."],
+          ["Cut your gas bill 15–30% this week.",
+           "Legal, documented strategies that work on the vehicle you already own."],
+          ["Alternative fuels at 40–60% less.",
+           "Options available right now, near you, most Americans have no idea exist."],
+          ["Eliminate home gas dependency.",
+           "A plan for the biggest line items: heat, hot water, cooking. ROI math for every change."],
+          ["The 30-Day Fast Track.",
+           "Quick wins in week one, compounding savings every week after."],
+          ["100% legal, available right now.",
+           "No new tech. No grid-dropping. Just what works for regular families today."]
+        ].map((row, i) => (
+          <div key={i} style={{
+            padding: '16px 0', display: 'grid',
+            gridTemplateColumns: '44px 1fr', gap: 12, alignItems: 'baseline',
+            borderBottom: '1px solid rgba(0,0,0,0.12)'
+          }}>
+            <div style={{
+              fontFamily: '"IBM Plex Serif", Georgia, serif',
+              fontStyle: 'italic', color: 'var(--b-red)', fontSize: 22
+            }}>{String(i + 1).padStart(2, '0')}.</div>
+            <div>
+              <div style={{ fontSize: 17, fontWeight: 600 }}>{row[0]}</div>
+              <div style={{ fontSize: 15, color: 'var(--b-ink-2)', marginTop: 2, lineHeight: 1.55 }}>{row[1]}</div>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* Testimonials */}
+      <section style={{ maxWidth: 760, margin: '48px auto 0', padding: '0 28px' }}>
+        <div style={{
+          fontFamily: 'ui-monospace, Menlo, monospace',
+          fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase',
+          color: 'var(--b-red)', marginBottom: 10
+        }}>From the people who've read it</div>
+        {testimonials.map((t, i) => (
+          <div key={i} style={{
+            padding: '18px 0',
+            borderTop: '1px solid rgba(0,0,0,0.12)',
+            borderBottom: i === testimonials.length - 1 ? '1px solid rgba(0,0,0,0.12)' : 'none',
+            display: 'grid', gridTemplateColumns: '56px 1fr', gap: 18, alignItems: 'start'
+          }}>
+            <img src="images/icon-badge.png" alt="Certified" width={56} height={56} style={{ display: "block" }} />
+            <div>
+              <Stars color="var(--b-red)" size={12} />
+              <p style={{
+                fontFamily: '"IBM Plex Serif", Georgia, serif', fontStyle: 'italic',
+                fontSize: 17, lineHeight: 1.55, margin: '6px 0 8px'
+              }}>“{t.q}”</p>
+              <div style={{
+                fontFamily: 'ui-monospace, Menlo, monospace',
+                fontSize: 11, letterSpacing: '0.14em', color: 'var(--b-mute)'
+              }}>— {t.n.toUpperCase()}, {t.l.toUpperCase()}</div>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* Offer / value stack */}
+      <section style={{ maxWidth: 760, margin: '48px auto 0', padding: '0 28px' }}>
+        <div style={{
+          border: '1px solid rgba(0,0,0,0.3)',
+          padding: '28px 28px', background: 'var(--b-paper-2)'
+        }}>
+          <div style={{
+            fontFamily: 'ui-monospace, Menlo, monospace',
+            fontSize: 11, letterSpacing: '0.24em', textTransform: 'uppercase',
+            color: 'var(--b-red)', marginBottom: 8
+          }}>Your invitation today</div>
+          <h3 style={{
+            fontFamily: '"IBM Plex Serif", Georgia, serif',
+            fontSize: 'clamp(24px, 2.8vw, 32px)', margin: '0 0 16px', fontWeight: 600
+          }}>
+            The Energy Independence Blueprint — yours for ${price}.
+          </h3>
+
+          {showStack && (
+            <div style={{ borderTop: '1px solid rgba(0,0,0,0.2)' }}>
+              {[
+                ['The Blueprint (120-page PDF)', 97],
+                ['30-Day Fast-Track Plan', 47],
+                ['Government Programs Lookup (all 50 states)', 39],
+                ['Alternative Fuel Locator Map', 29],
+                ['Home Energy Audit Checklist', 19]
+              ].map((r, i) => (
+                <div key={i} style={{
+                  display: 'flex', justifyContent: 'space-between',
+                  padding: '10px 0', borderBottom: '1px dashed rgba(0,0,0,0.18)',
+                  fontSize: 15
+                }}>
+                  <span>{r[0]}</span>
+                  <span style={{
+                    fontFamily: 'ui-monospace, Menlo, monospace', color: 'var(--b-ink-2)'
+                  }}>${r[1]}</span>
+                </div>
+              ))}
+              <div style={{
+                display: 'flex', justifyContent: 'space-between',
+                padding: '12px 0 2px',
+                fontSize: 16, fontWeight: 600
+              }}>
+                <span>TOTAL VALUE</span>
+                <span style={{ textDecoration: 'line-through', color: 'var(--b-mute)' }}>$231</span>
+              </div>
+              <div style={{
+                display: 'flex', justifyContent: 'space-between', paddingTop: 6,
+                fontSize: 22, fontWeight: 700, color: 'var(--b-red)'
+              }}>
+                <span>Today</span>
+                <span>${price}</span>
+              </div>
+            </div>
+          )}
+
+          {showTimer && (
+            <div style={{
+              marginTop: 18, padding: '10px 14px',
+              border: '1px solid var(--b-red)',
+              display: 'inline-flex', gap: 10, alignItems: 'center'
+            }}>
+              <span style={{
+                fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 10,
+                letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--b-red)'
+              }}>Offer closes in</span>
+              <span style={{
+                fontFamily: 'ui-monospace, Menlo, monospace',
+                fontSize: 20, color: 'var(--b-ink)', letterSpacing: '0.06em'
+              }}>{mm}:{ss}</span>
+            </div>
+          )}
+
+          <button onClick={onGo} style={{
+            marginTop: 20, width: '100%',
+            background: 'var(--b-red)', color: '#fff',
+            fontFamily: '"IBM Plex Serif", Georgia, serif', fontStyle: 'italic',
+            fontSize: 22, letterSpacing: '0.01em',
+            padding: '18px 28px', border: 0,
+            boxShadow: '0 10px 0 -2px var(--b-red-ink)',
+            cursor: 'pointer'
+          }}>
+            Send me the Blueprint for ${price} →
+          </button>
+          <div style={{
+            marginTop: 12, textAlign: 'center',
+            fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+            letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--b-mute)'
+          }}>
+            🔒 Secure Checkout · 60-Day Guarantee · Instant Access
+          </div>
+        </div>
+      </section>
+
+      {/* Guarantee + Signature */}
+      <section style={{ maxWidth: 760, margin: '40px auto 0', padding: '0 28px' }}>
+        <div style={{
+          display: 'grid', gridTemplateColumns: '140px 1fr', gap: 24, alignItems: 'center',
+          padding: '24px 0', borderTop: '1px solid rgba(0,0,0,0.15)', borderBottom: '1px solid rgba(0,0,0,0.15)'
+        }}>
+          <div style={{
+            width: 140, height: 140, border: '2px double var(--b-red)', borderRadius: '50%',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+            color: 'var(--b-red)', fontFamily: '"IBM Plex Serif", Georgia, serif'
+          }}>
+            <div style={{ fontSize: 11, letterSpacing: '0.14em', fontStyle: 'italic' }}>IRON-CLAD</div>
+            <div style={{ fontSize: 36, fontWeight: 700, lineHeight: 1 }}>60</div>
+            <div style={{ fontSize: 12, letterSpacing: '0.2em' }}>DAY</div>
+            <div style={{ fontSize: 11, fontStyle: 'italic' }}>Guarantee</div>
+          </div>
+          <div>
+            <div style={{ fontFamily: '"IBM Plex Serif", Georgia, serif', fontSize: 20, fontWeight: 600 }}>
+              Save 10× what you paid — or pay nothing.
+            </div>
+            <p style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--b-ink-2)', marginTop: 6 }}>
+              Try the Blueprint for 60 days. If you implement what's inside and don't save
+              at least ten times what you paid — or if you're dissatisfied for any reason —
+              email us and we'll refund every penny. No questions, no fine print.
+            </p>
+          </div>
+        </div>
+
+        <div style={{ padding: '36px 0 12px' }}>
+          <p style={{ fontSize: 17, lineHeight: 1.6, margin: '0 0 6px' }}>
+            You can keep writing checks to Big Oil. Or you can take your household back today — while the window is still open.
+          </p>
+          <p style={{ fontSize: 17, lineHeight: 1.6, margin: '0 0 6px' }}>
+            I'll see you on the inside.
+          </p>
+          <div style={{
+            fontFamily: '"Caveat", "Brush Script MT", cursive',
+            fontSize: 44, color: 'var(--b-red)', lineHeight: 1, marginTop: 10
+          }}>J. Anderson</div>
+          <div style={{
+            fontFamily: 'ui-monospace, Menlo, monospace',
+            fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase',
+            color: 'var(--b-mute)', marginTop: 4
+          }}>Founder · Freeborn</div>
+        </div>
+      </section>
+
+      <div style={{ height: 32 }} />
+      <BFooter />
+    </div>
+  );
+}
+
+/* ============================================================
+   B-02 Checkout
+   ============================================================ */
+function VersionB_Checkout({ values, onGo }) {
+  const { mm, ss } = useCountdown(15 * 60, 'fb_vsl_cd');
+  const price = values.price || 17;
+  const [bumps, setBumps] = useStateB({ book: true, stove: false, flash: false });
+  const [form, setForm] = useStateB({
+    email: 'sarah.mitchell@aol.com', first: 'Sarah', last: 'Mitchell',
+    card: '4242 4242 4242 4242', exp: '09/29', cvv: '421', zip: '43220'
+  });
+  const bumpItems = [
+    { id: 'book',  price: 9, label: 'Energy Independence (softcover)', short: 'Softcover book' },
+    { id: 'stove', price: 9, label: 'Freeborn Camping Stove',          short: 'Camping stove' },
+    { id: 'flash', price: 9, label: 'Freeborn Tactical Flashlight',    short: 'Tactical flashlight' }
+  ];
+  const bumpTotal = bumpItems.reduce((s, b) => s + (bumps[b.id] ? b.price : 0), 0);
+  const total = price + bumpTotal;
+  const toggleBump = (id) => setBumps(b => ({ ...b, [id]: !b[id] }));
+  const set = (k) => (v) => setForm(f => ({ ...f, [k]: v }));
+
+  return (
+    <div data-screen-label="B-02 Checkout" style={{
+      background: 'var(--b-paper)', color: 'var(--b-ink)',
+      fontFamily: '"IBM Plex Serif", Georgia, serif', minHeight: '100vh'
+    }}>
+      <BHeader />
+
+      <div style={{ maxWidth: 960, margin: '0 auto', padding: '36px 24px 48px' }}>
+        <div style={{ textAlign: 'center', marginBottom: 28 }}>
+          <div style={{
+            fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+            letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--b-red)'
+          }}>
+            Secure Checkout · Order form expires in {mm}:{ss}
+          </div>
+          <h1 style={{
+            fontFamily: '"IBM Plex Serif", Georgia, serif', fontWeight: 600,
+            fontSize: 'clamp(30px, 4vw, 42px)', margin: '10px 0 4px'
+          }}>
+            One page between you and your Blueprint.
+          </h1>
+        </div>
+
+        <form onSubmit={e => { e.preventDefault(); onGo(); }} style={{
+          display: 'grid', gridTemplateColumns: '1.2fr 0.9fr', gap: 28, alignItems: 'start'
+        }}>
+          <div>
+            <BBox title="Contact">
+              <LField label="Email" value={form.email} onChange={set('email')} />
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+                <LField label="First name" value={form.first} onChange={set('first')} />
+                <LField label="Last name" value={form.last} onChange={set('last')} />
+              </div>
+            </BBox>
+
+            <div style={{
+              fontFamily: 'ui-monospace, Menlo, monospace',
+              fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase',
+              color: 'var(--b-mute)', marginTop: 18, marginBottom: 8
+            }}>Optional upgrades — each $9</div>
+
+            {bumpItems.map((b) => {
+              const active = bumps[b.id];
+              return (
+                <div key={b.id} style={{
+                  background: active ? '#fff8e8' : 'transparent',
+                  border: active ? '2px dashed var(--b-red)' : '1px dashed rgba(0,0,0,0.2)',
+                  padding: '14px 18px', marginBottom: 10,
+                  display: 'grid', gridTemplateColumns: '24px 68px 1fr 80px', gap: 14, alignItems: 'center',
+                  cursor: 'pointer'
+                }} onClick={() => toggleBump(b.id)}>
+                  <input type="checkbox" checked={active} onChange={() => toggleBump(b.id)}
+                    style={{ width: 20, height: 20, accentColor: 'var(--b-red)' }} />
+
+                  {b.id === 'book' && (
+                    <div aria-label="Energy Independence softcover" style={{
+                      width: 58, height: 80,
+                      background: 'linear-gradient(90deg, #96263a 0 6%, #b63552 6% 100%)',
+                      boxShadow: '2px 2px 0 rgba(0,0,0,0.18)',
+                      display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+                      padding: '5px 6px 5px 9px', color: '#f7d885', textAlign: 'center'
+                    }}>
+                      <div style={{
+                        fontFamily: 'ui-monospace, Menlo, monospace',
+                        fontSize: 7, letterSpacing: '0.2em', textTransform: 'uppercase',
+                        borderTop: '1px solid #e6b24a', borderBottom: '1px solid #e6b24a', padding: '2px 0'
+                      }}>FREEBORN</div>
+                      <div style={{
+                        fontFamily: '"IBM Plex Serif", Georgia, serif', fontStyle: 'italic',
+                        fontSize: 9, lineHeight: 1.05, color: '#fff2c9'
+                      }}>Energy<br/>Independence</div>
+                      <div style={{
+                        fontFamily: 'ui-monospace, Menlo, monospace',
+                        fontSize: 6, letterSpacing: '0.16em', opacity: 0.85
+                      }}>SOFTCOVER</div>
+                    </div>
+                  )}
+                  {b.id === 'stove' && (
+                    <div aria-label="Camping stove" style={{
+                      width: 58, height: 58, background: '#2e3640', position: 'relative',
+                      border: '2px solid var(--b-ink)', margin: '0 5px',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center'
+                    }}>
+                      <div style={{
+                        width: 36, height: 10, background: '#111',
+                        borderLeft: '3px solid #888', borderRight: '3px solid #888'
+                      }} />
+                      <div style={{
+                        position: 'absolute', top: 10, width: 32, height: 18,
+                        background: 'radial-gradient(ellipse at center, #ff6a1c 0%, #c0352a 60%, transparent 75%)'
+                      }} />
+                      <div style={{
+                        position: 'absolute', bottom: 4, left: 4, right: 4, height: 8,
+                        background: 'repeating-linear-gradient(90deg, #888 0 4px, #444 4px 8px)'
+                      }} />
+                    </div>
+                  )}
+                  {b.id === 'flash' && (
+                    <div aria-label="Tactical flashlight" style={{
+                      width: 58, height: 58, display: 'flex', alignItems: 'center', justifyContent: 'center'
+                    }}>
+                      <div style={{
+                        width: 48, height: 14,
+                        background: 'linear-gradient(90deg, #2a2e36 0 40%, #404650 40% 100%)',
+                        position: 'relative', border: '1px solid #1a1d22'
+                      }}>
+                        <div style={{
+                          position: 'absolute', right: -7, top: -3, width: 18, height: 20,
+                          background: 'linear-gradient(90deg, #5a6270 0%, #8a94a4 100%)',
+                          border: '1px solid #1a1d22'
+                        }} />
+                        <div style={{
+                          position: 'absolute', right: -26, top: 0, width: 18, height: 14,
+                          background: 'radial-gradient(ellipse at left, rgba(255,225,120,0.85) 0%, transparent 70%)'
+                        }} />
+                      </div>
+                    </div>
+                  )}
+
+                  <div>
+                    <div style={{
+                      fontFamily: 'ui-monospace, Menlo, monospace',
+                      fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
+                      color: active ? 'var(--b-red)' : 'var(--b-ink)', marginBottom: 2
+                    }}>{active ? 'YES · ADD' : 'ADD'} {b.label}</div>
+                    <div style={{ fontSize: 13, lineHeight: 1.5 }}>
+                      {b.id === 'book'  && (<><i>Energy Independence</i> — the <b>softcover</b> Blueprint, shipped free to your door.</>)}
+                      {b.id === 'stove' && (<>Single-burner propane camping stove with built-in igniter. Wind-resistant; runs on standard 1-lb canisters.</>)}
+                      {b.id === 'flash' && (<>1,200-lumen rechargeable tactical flashlight. Strobe + SOS modes. 300-yard beam.</>)}
+                    </div>
+                  </div>
+                  <div style={{ textAlign: 'right' }}>
+                    <div style={{
+                      fontFamily: '"IBM Plex Serif", Georgia, serif', fontStyle: 'italic',
+                      color: 'var(--b-red)', fontSize: 24
+                    }}>+$9</div>
+                    <div style={{
+                      fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 9, opacity: 0.7
+                    }}>free ship</div>
+                  </div>
+                </div>
+              );
+            })}
+
+            <BBox title="Payment" extra="VISA · MC · AMEX · DISC">
+              <LField label="Card number" value={form.card} onChange={set('card')} />
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 14 }}>
+                <LField label="Exp." value={form.exp} onChange={set('exp')} />
+                <LField label="CVV" value={form.cvv} onChange={set('cvv')} />
+                <LField label="Zip" value={form.zip} onChange={set('zip')} />
+              </div>
+            </BBox>
+
+            <button type="submit" style={{
+              marginTop: 22, width: '100%',
+              background: 'var(--b-red)', color: '#fff',
+              fontFamily: '"IBM Plex Serif", Georgia, serif', fontStyle: 'italic',
+              fontSize: 22, padding: '20px 20px', border: 0,
+              boxShadow: '0 10px 0 -2px var(--b-red-ink)', cursor: 'pointer'
+            }}>Send me my Blueprint — ${total}.00 →</button>
+            <div style={{
+              marginTop: 10, textAlign: 'center',
+              fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+              letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--b-mute)'
+            }}>
+              🔒 256-bit SSL · 60-Day Money Back
+            </div>
+          </div>
+
+          <aside style={{ position: 'sticky', top: 12 }}>
+            <div style={{
+              border: '1px solid rgba(0,0,0,0.2)', padding: '20px 22px',
+              background: 'var(--b-paper-2)'
+            }}>
+              <div style={{
+                fontFamily: 'ui-monospace, Menlo, monospace',
+                fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase',
+                color: 'var(--b-mute)'
+              }}>Your Order</div>
+              <div style={{ marginTop: 12, display: 'grid', gridTemplateColumns: '60px 1fr', gap: 12 }}>
+                <img src="images/product-mockup.png" alt="Energy Independence Blueprint" style={{ height: 60, width: "auto", display: "block", objectFit: "contain" }} />
+                <div>
+                  <div style={{ fontWeight: 600 }}>Energy Independence Blueprint</div>
+                  <div style={{ fontSize: 12, color: 'var(--b-mute)' }}>Delivered instantly</div>
+                </div>
+              </div>
+              <Row l="Blueprint" r={`$${price}.00`} />
+              {bumpItems.filter(b => bumps[b.id]).map(b => (
+                <Row key={b.id} l={`+ ${b.short}`} r={`$${b.price}.00`} red />
+              ))}
+              <div style={{
+                marginTop: 10, paddingTop: 10,
+                borderTop: '1px dashed rgba(0,0,0,0.2)',
+                display: 'flex', justifyContent: 'space-between',
+                fontSize: 18, fontWeight: 700
+              }}>
+                <span>Total</span><span>${total}.00</span>
+              </div>
+            </div>
+          </aside>
+        </form>
+      </div>
+
+      <BFooter />
+    </div>
+  );
+}
+
+function Row({ l, r, red }) {
+  return (
+    <div style={{
+      display: 'flex', justifyContent: 'space-between',
+      marginTop: 8, fontSize: 14,
+      color: red ? 'var(--b-red)' : 'inherit'
+    }}><span>{l}</span><span>{r}</span></div>
+  );
+}
+
+function BBox({ title, extra, children }) {
+  return (
+    <div style={{
+      background: '#fff', border: '1px solid rgba(0,0,0,0.2)',
+      padding: '20px 22px 4px', marginBottom: 14
+    }}>
+      <div style={{
+        display: 'flex', justifyContent: 'space-between',
+        marginBottom: 12
+      }}>
+        <div style={{
+          fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+          letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--b-ink-2)'
+        }}>{title}</div>
+        {extra && <div style={{
+          fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 10,
+          letterSpacing: '0.14em', color: 'var(--b-mute)'
+        }}>{extra}</div>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function LField({ label, value, onChange }) {
+  return (
+    <label style={{ display: 'block', marginBottom: 14 }}>
+      <div style={{
+        fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 10,
+        letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--b-mute)',
+        marginBottom: 4
+      }}>{label}</div>
+      <input value={value} onChange={e => onChange(e.target.value)} style={{
+        width: '100%', padding: '11px 13px',
+        fontFamily: '"IBM Plex Serif", Georgia, serif', fontSize: 16,
+        border: '1px solid rgba(0,0,0,0.25)', background: '#fdfbf5', outline: 'none'
+      }} />
+    </label>
+  );
+}
+
+/* ============================================================
+   B-03 OTO1
+   ============================================================ */
+function VersionB_OTO1({ onYes, onNo }) {
+  return (
+    <div data-screen-label="B-03 OTO1" style={{
+      background: 'var(--b-paper)', color: 'var(--b-ink)',
+      fontFamily: '"IBM Plex Serif", Georgia, serif', minHeight: '100vh'
+    }}>
+      <BHeader />
+
+      <section style={{ maxWidth: 760, margin: '0 auto', padding: '40px 28px 0' }}>
+        <div style={{
+          fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+          letterSpacing: '0.22em', textTransform: 'uppercase', color: '#1e6b3d', marginBottom: 6
+        }}>✓ Your Blueprint is on its way.</div>
+        <div style={{
+          fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+          letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--b-red)'
+        }}>Wait — before you go. Read this first.</div>
+
+        <h1 style={{
+          fontFamily: '"IBM Plex Serif", Georgia, serif', fontWeight: 600,
+          fontSize: 'clamp(32px, 4.4vw, 50px)', lineHeight: 1.08, margin: '10px 0 14px'
+        }}>
+          Send us your bills. We'll do the math <i>for you</i>.
+        </h1>
+        <p style={{ fontSize: 18, lineHeight: 1.65, margin: '0 0 14px' }}>
+          Here's the truth: the Blueprint works. But most people — even smart, capable people —
+          never actually sit down with their bills and do the math. Life gets in the way.
+          Kids. Work. Everything.
+        </p>
+        <p style={{ fontSize: 18, lineHeight: 1.65, margin: '0 0 14px' }}>
+          So don't. Upload your last 12 utility bills. Our analysts will comb through them
+          line by line and send back <b>a custom Energy Audit plan within 48 hours.</b>
+          No phone call. No calendar. No sales pitch. Just the plan.
+        </p>
+      </section>
+
+      <section style={{ maxWidth: 760, margin: '24px auto 0', padding: '0 28px' }}>
+        <div style={{
+          border: '1px solid rgba(0,0,0,0.3)',
+          padding: '26px 26px', background: 'var(--b-paper-2)'
+        }}>
+          <div style={{
+            fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+            letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--b-red)'
+          }}>THE FREEBORN ENERGY AUDIT</div>
+          <h3 style={{
+            fontFamily: '"IBM Plex Serif", Georgia, serif', fontSize: 24, fontWeight: 600,
+            margin: '6px 0 14px'
+          }}>Upload your bills. Get your plan in 48 hours.</h3>
+          <ol style={{ paddingLeft: 18, fontSize: 15, lineHeight: 1.75, margin: 0 }}>
+            <li><b>You upload</b> 12 months of utility bills (PDF or photo — 5 minutes).</li>
+            <li><b>Our analysts</b> review every line — rate class, tier, riders, taxes.</li>
+            <li><b>We match</b> every federal &amp; state program you qualify for by zip.</li>
+            <li><b>You receive</b> a personalized 30-day Energy Audit plan — <b>in 48 hrs</b>.</li>
+            <li>Average plan finds <b>$1,200–$2,800/year</b> in savings.</li>
+          </ol>
+
+          {/* Upload dropzone mock */}
+          <div style={{
+            marginTop: 18,
+            border: '2px dashed rgba(0,0,0,0.3)',
+            background: '#fff',
+            padding: '18px 18px',
+            textAlign: 'center'
+          }}>
+            <div style={{
+              fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+              letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--b-ink-2)'
+            }}>⬆ Drop your bills here · PDF · JPG · PNG</div>
+            <div style={{ marginTop: 10, textAlign: 'left' }}>
+              {[
+                ['electric_jan.pdf', '✓'],
+                ['electric_feb.pdf', '✓'],
+                ['gas_jan.pdf', '◷ 42%']
+              ].map(([n, s], i) => (
+                <div key={i} style={{
+                  display: 'flex', justifyContent: 'space-between',
+                  fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+                  padding: '3px 8px',
+                  background: i % 2 ? 'rgba(0,0,0,0.04)' : 'transparent',
+                  color: 'var(--b-ink-2)'
+                }}><span>{n}</span><span style={{ color: 'var(--b-red)' }}>{s}</span></div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{
+            marginTop: 18, display: 'flex', alignItems: 'baseline', gap: 14
+          }}>
+            <div style={{
+              textDecoration: 'line-through', color: 'var(--b-mute)',
+              fontFamily: '"IBM Plex Serif", Georgia, serif', fontStyle: 'italic', fontSize: 20
+            }}>$197</div>
+            <div style={{
+              fontFamily: '"IBM Plex Serif", Georgia, serif', fontWeight: 700,
+              color: 'var(--b-red)', fontSize: 48, lineHeight: 1
+            }}>$37</div>
+            <div style={{
+              fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+              letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--b-mute)'
+            }}>one time · plan in 48 hrs</div>
+          </div>
+
+          <button onClick={onYes} style={{
+            marginTop: 16, width: '100%',
+            background: 'var(--b-red)', color: '#fff',
+            fontFamily: '"IBM Plex Serif", Georgia, serif', fontStyle: 'italic',
+            fontSize: 20, padding: '18px 0', border: 0,
+            boxShadow: '0 10px 0 -2px var(--b-red-ink)', cursor: 'pointer'
+          }}>YES — audit my bills for $37 →</button>
+          <button onClick={onNo} style={{
+            marginTop: 10, width: '100%', background: 'transparent',
+            color: 'var(--b-mute)', padding: '8px 0',
+            fontFamily: '"IBM Plex Serif", Georgia, serif', fontStyle: 'italic',
+            fontSize: 13, textDecoration: 'underline', cursor: 'pointer'
+          }}>No thanks, I'd rather do this on my own</button>
+        </div>
+
+        <div style={{
+          marginTop: 28, borderTop: '1px solid rgba(0,0,0,0.15)', paddingTop: 20,
+          display: 'grid', gridTemplateColumns: '60px 1fr', gap: 18
+        }}>
+          <img src="images/icon-secondary.png" alt="Guaranteed" width={60} height={60} style={{ display: "block" }} />
+          <div>
+            <Stars color="var(--b-red)" size={12} />
+            <p style={{
+              fontFamily: '"IBM Plex Serif", Georgia, serif', fontStyle: 'italic',
+              fontSize: 17, lineHeight: 1.5, margin: '6px 0 8px'
+            }}>
+              “I uploaded 12 PDFs on a Tuesday. By Thursday they had a plan in my inbox
+              with $2,400/year in savings. Never talked to a soul.”
+            </p>
+            <div style={{
+              fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+              letterSpacing: '0.14em', color: 'var(--b-mute)'
+            }}>— BARBARA L., TALLAHASSEE, FL</div>
+          </div>
+        </div>
+      </section>
+
+      <div style={{ height: 40 }} />
+      <BFooter />
+    </div>
+  );
+}
+
+/* ============================================================
+   B-04 OTO2 — Freedom Club
+   ============================================================ */
+function VersionB_OTO2({ onYes, onNo }) {
+  return (
+    <div data-screen-label="B-04 OTO2" style={{
+      background: 'var(--b-paper)', color: 'var(--b-ink)',
+      fontFamily: '"IBM Plex Serif", Georgia, serif', minHeight: '100vh'
+    }}>
+      <BHeader />
+
+      <section style={{ maxWidth: 760, margin: '0 auto', padding: '40px 28px 0' }}>
+        <div style={{
+          fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+          letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--b-red)'
+        }}>A final invitation · Members only</div>
+        <h1 style={{
+          fontFamily: '"IBM Plex Serif", Georgia, serif', fontWeight: 600,
+          fontSize: 'clamp(32px, 4.4vw, 50px)', lineHeight: 1.08, margin: '10px 0 14px'
+        }}>
+          Join the Freeborn <i>Freedom Club</i>.
+        </h1>
+        <p style={{ fontSize: 18, lineHeight: 1.65, margin: '0 0 18px' }}>
+          The fight for your household doesn't end with a PDF. The Freedom Club is where
+          Americans share what's working, what's not, and what's coming next. First
+          month on me — cancel anytime.
+        </p>
+      </section>
+
+      <section style={{ maxWidth: 760, margin: '0 auto', padding: '0 28px' }}>
+        <div style={{
+          border: '1px solid rgba(0,0,0,0.3)',
+          padding: '26px 26px', background: 'var(--b-paper-2)'
+        }}>
+          {[
+            ['Disaster Preparedness Library', 'Ongoing guides for power outages, fuel shortages, severe weather, grid failures.'],
+            ['Off-Grid Living Playbooks', 'Water, shelter, waste, communications — the real skills, not the cosplay.'],
+            ['Alternative Energy Briefings', 'Solar, micro-wind, wood, propane, hydro — what works, what costs what, and where.'],
+            ['Sustainable Food Sourcing', 'Gardens, cellars, preservation, local meat — feeding a family without the supply chain.'],
+            ['Rapid Alert Notifications', 'Get notified the hour a new rebate opens in your state.'],
+            ['Private Member Community', 'Real families sharing real wins. No bots, no politics.'],
+            ['Monthly Intelligence Briefing', 'Rate changes, new programs, what Big Oil moved this month.'],
+            ['Live Founder Q&A (monthly)', 'One hour. Unfiltered. Bring a question.']
+          ].map((row, i) => (
+            <div key={i} style={{
+              padding: '12px 0',
+              borderTop: '1px solid rgba(0,0,0,0.12)',
+              borderBottom: i === 7 ? '1px solid rgba(0,0,0,0.12)' : 'none',
+              display: 'grid', gridTemplateColumns: '28px 1fr', gap: 10
+            }}>
+              <div style={{ color: 'var(--b-red)', fontSize: 18 }}>✦</div>
+              <div>
+                <div style={{ fontWeight: 600, fontSize: 16 }}>{row[0]}</div>
+                <div style={{ fontSize: 14, color: 'var(--b-ink-2)' }}>{row[1]}</div>
+              </div>
+            </div>
+          ))}
+
+          <div style={{
+            marginTop: 18, display: 'flex', alignItems: 'baseline', gap: 12
+          }}>
+            <div style={{
+              fontFamily: '"IBM Plex Serif", Georgia, serif', fontWeight: 700,
+              fontSize: 44, lineHeight: 1
+            }}>$0</div>
+            <div style={{
+              fontFamily: '"IBM Plex Serif", Georgia, serif', fontStyle: 'italic',
+              fontSize: 16, color: 'var(--b-ink-2)'
+            }}>first 14 days</div>
+          </div>
+          <div style={{
+            fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 10,
+            letterSpacing: '0.14em', color: 'var(--b-mute)', marginTop: 4
+          }}>Then $17/mo · Cancel anytime · No contract</div>
+
+          <button onClick={onYes} style={{
+            marginTop: 18, width: '100%',
+            background: 'var(--b-ink)', color: 'var(--b-paper)',
+            fontFamily: '"IBM Plex Serif", Georgia, serif', fontStyle: 'italic',
+            fontSize: 19, padding: '18px 0', border: 0,
+            boxShadow: '0 10px 0 -2px #000', cursor: 'pointer'
+          }}>Start my 14-day free trial →</button>
+          <button onClick={onNo} style={{
+            marginTop: 10, width: '100%', background: 'transparent',
+            color: 'var(--b-mute)', padding: '8px 0',
+            fontFamily: '"IBM Plex Serif", Georgia, serif', fontStyle: 'italic',
+            fontSize: 13, textDecoration: 'underline', cursor: 'pointer'
+          }}>No thanks, skip the free trial</button>
+        </div>
+      </section>
+
+      <div style={{ height: 40 }} />
+      <BFooter />
+    </div>
+  );
+}
+
+/* ============================================================
+   B-05 Thanks
+   ============================================================ */
+function VersionB_Thanks({ onRestart }) {
+  return (
+    <div data-screen-label="B-05 Thanks" style={{
+      background: 'var(--b-paper)', color: 'var(--b-ink)',
+      fontFamily: '"IBM Plex Serif", Georgia, serif', minHeight: '100vh'
+    }}>
+      <BHeader />
+
+      <section style={{ maxWidth: 760, margin: '0 auto', padding: '48px 28px 0' }}>
+        <div style={{
+          fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+          letterSpacing: '0.22em', textTransform: 'uppercase', color: '#1e6b3d'
+        }}>✓ Order complete · #FB-48219</div>
+        <h1 style={{
+          fontFamily: '"IBM Plex Serif", Georgia, serif', fontWeight: 600,
+          fontSize: 'clamp(32px, 4.6vw, 52px)', lineHeight: 1.08, margin: '10px 0 14px'
+        }}>
+          Welcome to the fight, Sarah.
+        </h1>
+        <p style={{ fontSize: 18, lineHeight: 1.65, margin: '0 0 26px' }}>
+          Your Blueprint is in your inbox. Here's what to do next.
+        </p>
+      </section>
+
+      <section style={{ maxWidth: 760, margin: '0 auto', padding: '0 28px' }}>
+        {[
+          { n: '01', t: 'Download your Blueprint', b: 'Full 120-page PDF + fast-track sheet.', a: 'Download PDF' },
+          { n: '02', t: 'Upload your bills', b: 'Send 12 months of bills. Plan back in 48 hrs.', a: 'Upload Bills' },
+          { n: '03', t: 'Open the Freedom Club', b: 'Your private community.', a: 'Open Club' }
+        ].map((c, i) => (
+          <div key={i} style={{
+            padding: '20px 0', display: 'grid',
+            gridTemplateColumns: '60px 1fr auto', gap: 16, alignItems: 'center',
+            borderTop: i === 0 ? '1px solid rgba(0,0,0,0.15)' : 'none',
+            borderBottom: '1px solid rgba(0,0,0,0.15)'
+          }}>
+            <div style={{
+              fontFamily: '"IBM Plex Serif", Georgia, serif',
+              fontStyle: 'italic', color: 'var(--b-red)', fontSize: 28
+            }}>{c.n}</div>
+            <div>
+              <div style={{ fontWeight: 600, fontSize: 17 }}>{c.t}</div>
+              <div style={{ fontSize: 14, color: 'var(--b-ink-2)' }}>{c.b}</div>
+            </div>
+            <button style={{
+              background: 'var(--b-ink)', color: 'var(--b-paper)',
+              fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+              letterSpacing: '0.16em', textTransform: 'uppercase',
+              padding: '10px 16px', border: 0, cursor: 'pointer'
+            }}>{c.a} →</button>
+          </div>
+        ))}
+
+        <div style={{
+          marginTop: 26, padding: '20px 22px',
+          background: 'var(--b-paper-2)', border: '1px solid rgba(0,0,0,0.15)',
+          display: 'grid', gridTemplateColumns: '90px 1fr', gap: 16, alignItems: 'center'
+        }}>
+          <img src="images/news-badge.jpg" alt="As seen in press" style={{ width: "100%", height: 70, objectFit: "cover", display: "block" }} />
+          <div>
+            <div style={{
+              fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 11,
+              letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--b-red)'
+            }}>This week in the Freeborn newsletter</div>
+            <div style={{
+              fontFamily: '"IBM Plex Serif", Georgia, serif', fontStyle: 'italic',
+              fontSize: 20, lineHeight: 1.25, marginTop: 4
+            }}>
+              The rebate that just opened in 19 states — and why Big Oil is quiet.
+            </div>
+          </div>
+        </div>
+
+        <div style={{ textAlign: 'center', margin: '36px 0 40px' }}>
+          <button onClick={onRestart} style={{
+            background: 'transparent', color: 'var(--b-mute)',
+            fontFamily: '"IBM Plex Serif", Georgia, serif', fontStyle: 'italic',
+            textDecoration: 'underline', fontSize: 13, cursor: 'pointer'
+          }}>↻ Restart the funnel demo</button>
+        </div>
+      </section>
+
+      <BFooter />
+    </div>
+  );
+}
+
+Object.assign(window, {
+  VersionB_VSL, VersionB_Checkout, VersionB_OTO1, VersionB_OTO2, VersionB_Thanks
+});
+
+
+const VALUES = { version: "b", price: 17, timer: true, stack: true, testimonials: 12 };
+
+function StandaloneApp() {
+  return <VersionB_Checkout values={VALUES} onGo={() => { location.href='b-03-oto1.html'; }} />;
+}
+ReactDOM.createRoot(document.getElementById('app')).render(<StandaloneApp />);
+</script>
+</body>
+</html>

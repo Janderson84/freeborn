@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Outer circle / seal -->
+  <circle cx="60" cy="60" r="56" fill="#0A2463" stroke="#C8A832" stroke-width="4"/>
+  <!-- Inner ring decoration -->
+  <circle cx="60" cy="60" r="48" fill="none" stroke="#C8A832" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- Middle circle -->
+  <circle cx="60" cy="60" r="40" fill="#1a3a7a"/>
+  <!-- Checkmark -->
+  <polyline points="34,60 50,76 86,40"
+            fill="none" stroke="#C8A832" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bottom text arc area -->
+  <path d="M 20 85 A 44 44 0 0 0 100 85" fill="#B22234"/>
+  <text x="60" y="100" text-anchor="middle" fill="#FFFFFF" font-family="serif" font-size="8" font-weight="bold">GUARANTEED</text>
+</svg>
