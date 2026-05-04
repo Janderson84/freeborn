@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — ResumeProof</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg: #FAF7EF; --ink: #1C1917; --ink-2: #44403C; --muted: #78716C;
+      --rule: rgba(28,25,23,0.12); --card: #FFFFFF; --border: #E7E2D9;
+      --accent: #C8570A; --accent-hover: #A84208; --navy: #0D2340;
+      --gold: #B08A3C; --success: #166534;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: 'Crimson Pro', Georgia, serif; background: var(--bg); color: var(--ink); margin: 0; padding: 0; }
+
+    .field-label {
+      display: block; font-family: 'DM Sans', sans-serif; font-size: 0.7rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.4rem;
+    }
+    input[type="text"], input[type="email"], input[type="tel"] {
+      width: 100%; font-family: 'Crimson Pro', Georgia, serif; font-size: 1rem;
+      color: var(--ink); background: var(--card); border: 1.5px solid var(--border);
+      border-radius: 4px; padding: 0.75rem 1rem; outline: none;
+      transition: border-color 0.2s; -webkit-appearance: none;
+    }
+    input:focus { border-color: var(--accent); }
+    .field-row { margin-bottom: 1.25rem; }
+
+    .btn-submit {
+      display: block; width: 100%; background: var(--accent); color: #fff;
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 1.1rem;
+      padding: 1.1rem 2rem; border-radius: 3px; border: none; cursor: pointer;
+      transition: background 0.2s; text-align: center; letter-spacing: 0.01em;
+    }
+    .btn-submit:hover { background: var(--accent-hover); }
+
+    /* Order bump */
+    .bump-card {
+      border: 1.5px solid var(--border); border-radius: 6px; padding: 1.25rem;
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
+    }
+    .bump-card:hover { border-color: var(--accent); }
+    .bump-card.selected { border-color: var(--accent); background: rgba(200,87,10,0.03); }
+
+    /* Card input styled fields */
+    .card-field {
+      font-family: 'DM Mono', monospace; font-size: 0.95rem;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV (logo only) -->
+  <nav style="background: var(--bg); border-bottom: 1px solid var(--border);">
+    <div style="max-width: 72rem; margin: 0 auto; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+      <span style="font-family: 'Playfair Display', serif; font-size: 1.375rem; font-weight: 700; color: var(--ink);">ResumeProof</span>
+      <div style="display: flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--success); letter-spacing: 0.1em;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        SECURE CHECKOUT
+      </div>
+    </div>
+  </nav>
+
+  <main style="max-width: 72rem; margin: 0 auto; padding: 3rem 1.5rem;">
+    <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem;">
+
+      <!-- LEFT: Order summary -->
+      <div>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); margin: 0 0 1.25rem;">Your Order</h2>
+
+        <!-- Main item -->
+        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 1.25rem; margin-bottom: 1rem;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;">
+            <div>
+              <p style="font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.95rem; color: var(--ink); margin: 0 0 0.35rem;">ResumeProof Expert Rewrite</p>
+              <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 0.9rem; color: var(--muted); margin: 0; line-height: 1.5;">Complete resume rewrite + ATS optimization + re-score. 48-hr delivery.</p>
+            </div>
+            <span style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--ink); white-space: nowrap;">$27</span>
+          </div>
+        </div>
+
+        <!-- Order bump -->
+        <div style="margin-bottom: 1.5rem;">
+          <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin: 0 0 0.5rem;">Add-On: One-Click Upgrade</p>
+          <div class="bump-card" id="bump-card" onclick="toggleBump()">
+            <div style="display: flex; align-items: flex-start; gap: 1rem;">
+              <div style="margin-top: 2px; flex-shrink: 0;">
+                <div id="bump-checkbox" style="width: 20px; height: 20px; border: 2px solid var(--border); border-radius: 3px; display: flex; align-items: center; justify-content: center; transition: background 0.2s, border-color 0.2s;">
+                  <svg id="bump-check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+              </div>
+              <div style="flex: 1;">
+                <p style="font-family: 'DM Sans', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.2rem;">Yes — Add Hiring Manager Commentary</p>
+                <p style="font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.9rem; color: var(--ink); margin: 0 0 0.35rem;">Priority Review + Hiring Manager Commentary <span style="color: var(--accent);">+$17</span></p>
+                <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 0.875rem; color: var(--muted); margin: 0; line-height: 1.5;">An 8–12 minute Loom walkthrough where your writer explains every major change and the hiring-manager signal behind it. Most clients say this is worth more than the rewrite itself.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Totals -->
+        <div style="border-top: 1px solid var(--border); padding-top: 1rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <span style="font-family: 'DM Sans', sans-serif; font-size: 0.875rem; color: var(--muted);">Resume Rewrite</span>
+            <span style="font-family: 'DM Mono', monospace; font-size: 0.875rem; color: var(--ink);">$27.00</span>
+          </div>
+          <div id="bump-line" style="display: none; justify-content: space-between; margin-bottom: 0.5rem;">
+            <span style="font-family: 'DM Sans', sans-serif; font-size: 0.875rem; color: var(--muted);">Hiring Manager Commentary</span>
+            <span style="font-family: 'DM Mono', monospace; font-size: 0.875rem; color: var(--ink);">$17.00</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 0.75rem; margin-top: 0.5rem;">
+            <span style="font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; color: var(--ink);">Total</span>
+            <span style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--ink);" id="total-display">$27.00</span>
+          </div>
+        </div>
+
+        <!-- Risk reversal -->
+        <div style="background: rgba(22,101,52,0.06); border: 1px solid rgba(22,101,52,0.2); border-radius: 4px; padding: 1rem 1.25rem; margin-top: 1.25rem;">
+          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--success); margin: 0 0 0.3rem;">Money-Back Guarantee</p>
+          <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 0.9rem; color: var(--ink-2); margin: 0; line-height: 1.5;">If your rewritten resume doesn't score higher on the 47-point diagnostic than your original, we refund you in full. No questions.</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: Payment form -->
+      <div>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); margin: 0 0 1.25rem;">Secure Checkout</h2>
+        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 1.75rem;">
+
+          <div class="field-row">
+            <label class="field-label" for="email">Email</label>
+            <input type="email" id="email" placeholder="your@email.com" autocomplete="email">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;" class="field-row">
+            <div>
+              <label class="field-label" for="firstname">First Name</label>
+              <input type="text" id="firstname" placeholder="First" autocomplete="given-name">
+            </div>
+            <div>
+              <label class="field-label" for="lastname">Last Name</label>
+              <input type="text" id="lastname" placeholder="Last" autocomplete="family-name">
+            </div>
+          </div>
+
+          <hr style="border: none; border-top: 1px solid var(--border); margin: 1.25rem 0;">
+
+          <div class="field-row">
+            <label class="field-label">Card Number</label>
+            <input type="tel" class="card-field" placeholder="1234  5678  9012  3456" maxlength="23" oninput="formatCard(this)">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;" class="field-row">
+            <div>
+              <label class="field-label">Expiry</label>
+              <input type="tel" class="card-field" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)">
+            </div>
+            <div>
+              <label class="field-label">CVC</label>
+              <input type="tel" class="card-field" placeholder="123" maxlength="4">
+            </div>
+          </div>
+
+          <button class="btn-submit" id="complete-btn" onclick="completeOrder()">
+            Complete My Order — <span id="btn-price">$27</span> &rarr;
+          </button>
+
+          <!-- Trust badges -->
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; margin-top: 1.25rem;">
+            <div style="display: flex; align-items: center; gap: 0.35rem; font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); letter-spacing: 0.06em;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              256-BIT SSL
+            </div>
+            <span style="color: var(--border);">&middot;</span>
+            <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); letter-spacing: 0.06em;">MONEY-BACK GUARANTEE</span>
+            <span style="color: var(--border);">&middot;</span>
+            <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); letter-spacing: 0.06em;">48-HR DELIVERY</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <style>
+    @media (min-width: 768px) {
+      main > div { grid-template-columns: 1fr 1fr !important; }
+    }
+  </style>
+
+  <script>
+    let bumpAdded = false;
+    const BASE = 27;
+    const BUMP = 17;
+
+    function toggleBump() {
+      bumpAdded = !bumpAdded;
+      const card = document.getElementById('bump-card');
+      const checkbox = document.getElementById('bump-checkbox');
+      const check = document.getElementById('bump-check');
+      const bumpLine = document.getElementById('bump-line');
+      const totalDisplay = document.getElementById('total-display');
+      const btnPrice = document.getElementById('btn-price');
+
+      card.classList.toggle('selected', bumpAdded);
+      checkbox.style.background = bumpAdded ? 'var(--accent)' : 'transparent';
+      checkbox.style.borderColor = bumpAdded ? 'var(--accent)' : 'var(--border)';
+      check.style.display = bumpAdded ? 'block' : 'none';
+      bumpLine.style.display = bumpAdded ? 'flex' : 'none';
+
+      const total = BASE + (bumpAdded ? BUMP : 0);
+      totalDisplay.textContent = '$' + total + '.00';
+      btnPrice.textContent = '$' + total;
+    }
+
+    function formatCard(input) {
+      let val = input.value.replace(/\D/g, '');
+      val = val.match(/.{1,4}/g)?.join('  ') || val;
+      input.value = val;
+    }
+
+    function formatExpiry(input) {
+      let val = input.value.replace(/\D/g, '');
+      if (val.length >= 2) val = val.slice(0,2) + ' / ' + val.slice(2,4);
+      input.value = val;
+    }
+
+    function completeOrder() {
+      window.location.href = 'upsell.html';
+    }
+  </script>
+</body>
+</html>

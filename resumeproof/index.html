@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResumeProof — Your Resume Is Being Rejected Before a Human Reads It</title>
+  <meta name="description" content="Get your free AI-Proof Score in 60 seconds. Find out exactly why qualified professionals aren't getting callbacks — and what to do about it.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg: #FAF7EF;
+      --bg-dark: #0D2340;
+      --ink: #1C1917;
+      --ink-2: #44403C;
+      --muted: #78716C;
+      --rule: rgba(28,25,23,0.12);
+      --card: #FFFFFF;
+      --border: #E7E2D9;
+      --accent: #C8570A;
+      --accent-hover: #A84208;
+      --navy: #0D2340;
+      --navy-2: #1A3A5C;
+      --gold: #B08A3C;
+      --danger: #991B1B;
+      --warning: #92400E;
+      --success: #166534;
+      --danger-bg: #FEF2F2;
+      --warning-bg: #FFFBEB;
+      --success-bg: #F0FDF4;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: 'Crimson Pro', Georgia, serif; background: var(--bg); color: var(--ink); margin: 0; padding: 0; }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+    .font-mono-dm { font-family: 'DM Mono', monospace; }
+    .font-sans-dm { font-family: 'DM Sans', sans-serif; }
+    .font-serif-crimson { font-family: 'Crimson Pro', Georgia, serif; }
+
+    /* FAQ accordion */
+    .faq-checkbox { display: none; }
+    .faq-checkbox:checked + .faq-label + .faq-body { max-height: 400px; opacity: 1; padding-top: 1rem; padding-bottom: 1.25rem; }
+    .faq-checkbox:checked + .faq-label .faq-icon { transform: rotate(45deg); }
+    .faq-body { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.3s ease; }
+    .faq-icon { transition: transform 0.3s ease; display: inline-block; }
+    .faq-label { cursor: pointer; }
+
+    /* Btn */
+    .btn-accent {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.9rem 2rem;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+    }
+    .btn-accent:hover { background: var(--accent-hover); }
+    .btn-accent-lg {
+      font-size: 1.125rem;
+      padding: 1.1rem 2.5rem;
+    }
+
+    /* Editorial rule */
+    .rule-divider { border: none; border-top: 1px solid var(--rule); margin: 1.5rem 0; }
+
+    /* Step number ghost */
+    .step-ghost {
+      font-family: 'DM Mono', monospace;
+      font-size: 7.5rem;
+      font-weight: 500;
+      color: var(--ink);
+      opacity: 0.04;
+      line-height: 1;
+      position: absolute;
+      top: -1.5rem;
+      left: -1rem;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Score metric card */
+    .metric-card {
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      background: var(--card);
+      border-radius: 0 4px 4px 0;
+    }
+    .metric-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .metric-desc {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1rem;
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+
+    /* Founder gold border */
+    .founder-img {
+      border: 2px solid var(--gold);
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav style="background: var(--bg); border-bottom: 1px solid var(--border);">
+    <div style="max-width: 72rem; margin: 0 auto; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+      <span style="font-family: 'Playfair Display', serif; font-size: 1.375rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em;">ResumeProof</span>
+      <a href="scan.html" class="btn-accent font-sans-dm" style="font-size: 0.875rem; padding: 0.6rem 1.25rem;">Get My Free Score &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section style="background: var(--navy); position: relative; overflow: hidden;">
+    <!-- Texture overlay -->
+    <div style="position: absolute; inset: 0; background-image: url('images/hero-bg.jpg'); background-size: cover; background-position: center; opacity: 0.08; pointer-events: none;"></div>
+    <div style="max-width: 72rem; margin: 0 auto; padding: 5rem 1.5rem 4rem; position: relative; z-index: 1;">
+      <div style="display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center;">
+        <!-- Left content -->
+        <div style="max-width: 38rem;">
+          <p class="font-mono-dm" style="font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem;">Free 60-Second Diagnostic</p>
+          <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(2.25rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.1; color: #FFFFFF; margin: 0 0 1.25rem;">Your Resume Is Being<br><em>Rejected Before</em><br>a Human Reads It.</h1>
+          <p class="font-serif-crimson" style="font-size: 1.25rem; color: rgba(255,255,255,0.8); line-height: 1.65; margin-bottom: 2rem; max-width: 32rem;">ATS systems and AI screeners eliminate 74% of applications before a recruiter ever opens them. Get your free AI-Proof Score and find out exactly where you stand.</p>
+          <a href="scan.html" class="btn-accent btn-accent-lg" style="display: inline-block; margin-bottom: 1.75rem;">Get My Free Score &rarr;</a>
+          <!-- Trust strip -->
+          <div class="font-mono-dm" style="display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 0.08em;">
+            <span>10,000+ resumes scored</span>
+            <span style="color: rgba(255,255,255,0.25);">·</span>
+            <span>60-second analysis</span>
+            <span style="color: rgba(255,255,255,0.25);">·</span>
+            <span>No credit card</span>
+          </div>
+        </div>
+        <!-- Right image -->
+        <div style="display: none;" class="hero-gauge">
+          <img src="images/score-gauge.jpg" alt="Resume score gauge" style="width: 100%; max-width: 420px; border-radius: 8px; opacity: 0.9; margin-left: auto;">
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+    @media (min-width: 768px) {
+      section .hero-gauge { display: block !important; }
+      section > div > div { grid-template-columns: 1fr 1fr !important; }
+    }
+  </style>
+
+  <!-- PAIN STRIP -->
+  <section style="background: var(--ink); padding: 3.5rem 1.5rem;">
+    <div style="max-width: 72rem; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; margin-bottom: 2rem;">
+        <div>
+          <p class="font-mono-dm" style="font-size: 2rem; font-weight: 500; color: var(--accent); margin: 0 0 0.5rem; line-height: 1;">500+</p>
+          <p class="font-serif-crimson" style="color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.5; margin: 0;">applications per posting average — your resume is competing in a flood</p>
+        </div>
+        <div>
+          <p class="font-mono-dm" style="font-size: 2rem; font-weight: 500; color: var(--accent); margin: 0 0 0.5rem; line-height: 1;">74%</p>
+          <p class="font-serif-crimson" style="color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.5; margin: 0;">of resumes are never seen by a human — eliminated by automated screening</p>
+        </div>
+        <div>
+          <p class="font-mono-dm" style="font-size: 2rem; font-weight: 500; color: var(--accent); margin: 0 0 0.5rem; line-height: 1;">87%</p>
+          <p class="font-serif-crimson" style="color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.5; margin: 0;">of hiring managers say most resumes look identical — yours does too</p>
+        </div>
+      </div>
+      <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.25rem; color: rgba(255,255,255,0.4); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; margin: 0;">The problem isn't your experience. It's the document presenting it.</p>
+    </div>
+  </section>
+
+  <!-- SCORE PREVIEW -->
+  <section style="background: var(--card); padding: 5rem 1.5rem;">
+    <div style="max-width: 72rem; margin: 0 auto;">
+      <div style="max-width: 32rem; margin-bottom: 3rem;">
+        <p class="font-mono-dm" style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem;">What We Measure</p>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.2; margin: 0; color: var(--ink);">Four Dimensions That Determine Whether You Get an Interview</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;">
+        <div class="metric-card">
+          <p class="metric-label">ATS Parse Score</p>
+          <p class="metric-desc">How well automated systems can read and extract your information. Most resumes fail at the first gate.</p>
+        </div>
+        <div class="metric-card">
+          <p class="metric-label">Keyword Alignment</p>
+          <p class="metric-desc">Whether your language matches what hiring systems are searching for in your target roles.</p>
+        </div>
+        <div class="metric-card">
+          <p class="metric-label">Impact & Specificity</p>
+          <p class="metric-desc">The difference between describing duties and demonstrating results. Measured quantitatively.</p>
+        </div>
+        <div class="metric-card">
+          <p class="metric-label">Differentiation Index</p>
+          <p class="metric-desc">How distinctly your resume positions you versus the 499 other applicants for the same role.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY NOW -->
+  <section style="background: var(--bg); padding: 5rem 1.5rem;">
+    <div style="max-width: 42rem; margin: 0 auto;">
+      <p class="font-mono-dm" style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem;">The Moment That Matters</p>
+      <h2 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.2; margin: 0 0 2.5rem; color: var(--ink);">The Job Market Has Changed. Your Resume Probably Hasn't.</h2>
+
+      <p class="font-serif-crimson" style="font-size: 1.15rem; line-height: 1.75; color: var(--ink-2); margin: 0 0 1.25rem;">In 2019, a well-formatted resume with strong experience would reliably move through screening. Recruiters read. Callbacks happened. The process, while imperfect, was human.</p>
+
+      <hr class="rule-divider">
+
+      <p class="font-serif-crimson" style="font-size: 1.15rem; line-height: 1.75; color: var(--ink-2); margin: 0 0 1.25rem;">That changed. Companies now process thousands of applications through AI scoring systems before any human involvement. These systems are not reading your resume — they are parsing it for specific signals, in a specific format, against a specific scoring model. If your resume wasn't built for this environment, it doesn't matter what you've accomplished.</p>
+
+      <hr class="rule-divider">
+
+      <p class="font-serif-crimson" style="font-size: 1.15rem; line-height: 1.75; color: var(--ink-2); margin: 0;">The professionals finding this hardest are experienced ones. Their resumes are often dense with accomplishment, written in narrative prose, using the vocabulary of their field — and systematically invisible to the algorithms doing the first pass. ResumeProof was built to fix that specific problem.</p>
+
+      <div style="margin-top: 2.5rem;">
+        <img src="images/resume-contrast.jpg" alt="Before and after: a resume that fails screening vs. one that passes" style="width: 100%; border-radius: 4px; border: 1px solid var(--border);">
+        <p class="font-mono-dm" style="font-size: 0.65rem; color: var(--muted); margin-top: 0.6rem; letter-spacing: 0.05em;">The same candidate. Two resume formats. One passes screening. One doesn't.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section style="background: var(--card); padding: 5rem 1.5rem;">
+    <div style="max-width: 42rem; margin: 0 auto;">
+      <p class="font-mono-dm" style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem;">The Process</p>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.2; margin: 0 0 3rem; color: var(--ink);">Three Steps to Know Exactly Where You Stand</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+        <!-- Step 1 -->
+        <div style="position: relative; padding-left: 0.5rem;">
+          <span class="step-ghost">01</span>
+          <p class="font-mono-dm" style="font-size: 0.7rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 0.4rem; position: relative; z-index: 1;">Step One</p>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.375rem; font-weight: 700; margin: 0 0 0.6rem; position: relative; z-index: 1; color: var(--ink);">Upload Your Resume</h3>
+          <p class="font-serif-crimson" style="font-size: 1.1rem; line-height: 1.65; color: var(--ink-2); margin: 0; position: relative; z-index: 1;">Upload your current resume (PDF or Word) and select your target role category. No login required. Takes under 60 seconds.</p>
+        </div>
+
+        <hr class="rule-divider" style="margin: 0;">
+
+        <!-- Step 2 -->
+        <div style="position: relative; padding-left: 0.5rem;">
+          <span class="step-ghost">02</span>
+          <p class="font-mono-dm" style="font-size: 0.7rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 0.4rem; position: relative; z-index: 1;">Step Two</p>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.375rem; font-weight: 700; margin: 0 0 0.6rem; position: relative; z-index: 1; color: var(--ink);">Receive Your AI-Proof Score</h3>
+          <p class="font-serif-crimson" style="font-size: 1.1rem; line-height: 1.65; color: var(--ink-2); margin: 0; position: relative; z-index: 1;">We run 47 diagnostic checks across four scoring dimensions and send your full results to your email — free. Your score is a number from 0–100 with a plain-language risk rating.</p>
+        </div>
+
+        <hr class="rule-divider" style="margin: 0;">
+
+        <!-- Step 3 -->
+        <div style="position: relative; padding-left: 0.5rem;">
+          <span class="step-ghost">03</span>
+          <p class="font-mono-dm" style="font-size: 0.7rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 0.4rem; position: relative; z-index: 1;">Step Three</p>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.375rem; font-weight: 700; margin: 0 0 0.6rem; position: relative; z-index: 1; color: var(--ink);">Understand Your Three Biggest Liabilities</h3>
+          <p class="font-serif-crimson" style="font-size: 1.1rem; line-height: 1.65; color: var(--ink-2); margin: 0; position: relative; z-index: 1;">Your results page shows the three specific weaknesses costing you the most — with before/after examples showing exactly what a passing version looks like.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 3rem; text-align: center;">
+        <a href="scan.html" class="btn-accent btn-accent-lg">Get My Free Score &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER BLOCK -->
+  <section style="background: var(--navy); padding: 5rem 1.5rem;">
+    <div style="max-width: 56rem; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center;">
+        <div style="max-width: 220px;">
+          <img src="images/founder.jpg" alt="Marcus Webb, Founder of ResumeProof" class="founder-img" style="width: 100%; display: block;">
+        </div>
+        <div>
+          <p class="font-mono-dm" style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;">From the Founder</p>
+          <h2 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; line-height: 1.3; color: #fff; margin: 0 0 1.5rem;">"I spent 12 years in recruiting. I watched brilliant people get screened out for reasons they never knew. That's what this tool corrects."</h2>
+          <p class="font-serif-crimson" style="font-size: 1.1rem; line-height: 1.7; color: rgba(255,255,255,0.65); margin: 0 0 1.25rem;">After a decade hiring at the director and VP level across Fortune 500 companies, I watched the industry adopt AI screening tools that most candidates had no idea existed. Accomplished professionals — 20-year veterans — being filtered out before I ever saw their names.</p>
+          <p class="font-mono-dm" style="font-size: 0.75rem; color: var(--gold); letter-spacing: 0.08em; margin: 0;">Marcus Webb &mdash; Founder, ResumeProof<br><span style="opacity: 0.6;">Fmr. VP Talent Acquisition, Morgan Analytics</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+    @media (min-width: 640px) {
+      section:has(.founder-img) > div > div { grid-template-columns: auto 1fr !important; }
+    }
+  </style>
+
+  <!-- FAQ -->
+  <section style="background: var(--bg); padding: 5rem 1.5rem;">
+    <div style="max-width: 42rem; margin: 0 auto;">
+      <p class="font-mono-dm" style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem;">Common Questions</p>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 700; margin: 0 0 2.5rem; color: var(--ink);">Before You Scan</h2>
+
+      <!-- FAQ items -->
+      <div>
+        <input type="checkbox" id="faq1" class="faq-checkbox">
+        <label for="faq1" class="faq-label" style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; color: var(--ink);">
+          Is the score actually free?
+          <span class="faq-icon" style="font-size: 1.25rem; color: var(--muted); flex-shrink: 0; margin-left: 1rem;">+</span>
+        </label>
+        <div class="faq-body" style="border-bottom: 1px solid var(--rule);">
+          <p class="font-serif-crimson" style="font-size: 1.05rem; line-height: 1.7; color: var(--ink-2); margin: 0;">Yes. The full diagnostic — score, breakdown, and three identified weaknesses — is completely free. No credit card. No trial period. We offer a paid rewrite service for those who want a human expert to fix what we find. The scan is the way we earn that relationship.</p>
+        </div>
+
+        <input type="checkbox" id="faq2" class="faq-checkbox">
+        <label for="faq2" class="faq-label" style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; color: var(--ink);">
+          What file types do you accept?
+          <span class="faq-icon" style="font-size: 1.25rem; color: var(--muted); flex-shrink: 0; margin-left: 1rem;">+</span>
+        </label>
+        <div class="faq-body" style="border-bottom: 1px solid var(--rule);">
+          <p class="font-serif-crimson" style="font-size: 1.05rem; line-height: 1.7; color: var(--ink-2); margin: 0;">PDF and .docx (Word). We recommend PDF if you want an accurate parse-quality assessment, since that's what most ATS systems receive. Files up to 5MB.</p>
+        </div>
+
+        <input type="checkbox" id="faq3" class="faq-checkbox">
+        <label for="faq3" class="faq-label" style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; color: var(--ink);">
+          Who is this for?
+          <span class="faq-icon" style="font-size: 1.25rem; color: var(--muted); flex-shrink: 0; margin-left: 1rem;">+</span>
+        </label>
+        <div class="faq-body" style="border-bottom: 1px solid var(--rule);">
+          <p class="font-serif-crimson" style="font-size: 1.05rem; line-height: 1.7; color: var(--ink-2); margin: 0;">Primarily mid-to-senior professionals (8+ years of experience) in roles that use formal application processes. Managers, directors, VPs, and senior individual contributors who are applying at the $80K–$250K+ level. Early-career or hourly roles tend to use different screening logic.</p>
+        </div>
+
+        <input type="checkbox" id="faq4" class="faq-checkbox">
+        <label for="faq4" class="faq-label" style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; color: var(--ink);">
+          How does the scoring work?
+          <span class="faq-icon" style="font-size: 1.25rem; color: var(--muted); flex-shrink: 0; margin-left: 1rem;">+</span>
+        </label>
+        <div class="faq-body" style="border-bottom: 1px solid var(--rule);">
+          <p class="font-serif-crimson" style="font-size: 1.05rem; line-height: 1.7; color: var(--ink-2); margin: 0;">We run your resume through a diagnostic model that tests 47 signals across four categories: ATS parse quality, keyword alignment to your target role, impact and specificity of your bullet points, and differentiation relative to benchmark candidates. The overall score is a weighted composite, 0–100.</p>
+        </div>
+
+        <input type="checkbox" id="faq5" class="faq-checkbox">
+        <label for="faq5" class="faq-label" style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; color: var(--ink);">
+          Is my resume data private?
+          <span class="faq-icon" style="font-size: 1.25rem; color: var(--muted); flex-shrink: 0; margin-left: 1rem;">+</span>
+        </label>
+        <div class="faq-body" style="border-bottom: 1px solid var(--rule);">
+          <p class="font-serif-crimson" style="font-size: 1.05rem; line-height: 1.7; color: var(--ink-2); margin: 0;">Yes. Your resume is processed for scoring, results are stored temporarily so you can view them, and we never share or sell individual resume data. We retain aggregated, anonymized data to improve scoring benchmarks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="background: var(--navy); padding: 5rem 1.5rem; text-align: center;">
+    <div style="max-width: 42rem; margin: 0 auto;">
+      <p class="font-mono-dm" style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;">Free. No Credit Card. 60 Seconds.</p>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-weight: 900; color: #fff; line-height: 1.2; margin: 0 0 1.25rem;">Stop Wondering Why You're Not Getting Called Back.</h2>
+      <p class="font-serif-crimson" style="font-size: 1.2rem; color: rgba(255,255,255,0.65); margin: 0 0 2rem;">Your score takes 60 seconds and tells you more about your application situation than a year of searching ever will.</p>
+      <a href="scan.html" class="btn-accent btn-accent-lg">Get My Free Score &rarr;</a>
+      <div class="font-mono-dm" style="margin-top: 1.5rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 1.25rem; font-size: 0.7rem; color: rgba(255,255,255,0.4); letter-spacing: 0.08em;">
+        <span>10,000+ resumes scored</span>
+        <span>·</span>
+        <span>60-second analysis</span>
+        <span>·</span>
+        <span>No credit card</span>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

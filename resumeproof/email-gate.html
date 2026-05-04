@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Score Is Ready — ResumeProof</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg: #FAF7EF; --ink: #1C1917; --ink-2: #44403C; --muted: #78716C;
+      --rule: rgba(28,25,23,0.12); --card: #FFFFFF; --border: #E7E2D9;
+      --accent: #C8570A; --accent-hover: #A84208; --navy: #0D2340;
+      --gold: #B08A3C; --success: #166534;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: 'Crimson Pro', Georgia, serif; background: var(--bg); color: var(--ink); margin: 0; padding: 0; }
+
+    .field-label {
+      display: block; font-family: 'DM Sans', sans-serif; font-size: 0.7rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.4rem;
+    }
+    input[type="email"], input[type="text"] {
+      width: 100%; font-family: 'Crimson Pro', Georgia, serif; font-size: 1.05rem;
+      color: var(--ink); background: var(--bg); border: 1.5px solid var(--border);
+      border-radius: 4px; padding: 0.75rem 1rem; outline: none;
+      transition: border-color 0.2s; -webkit-appearance: none;
+    }
+    input:focus { border-color: var(--accent); }
+    .btn-accent {
+      display: block; width: 100%; background: var(--accent); color: #fff;
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 1.05rem;
+      padding: 1rem 2rem; border-radius: 3px; border: none; cursor: pointer;
+      transition: background 0.2s; text-align: center; letter-spacing: 0.01em;
+    }
+    .btn-accent:hover { background: var(--accent-hover); }
+
+    .step-dot {
+      width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      font-weight: 500; flex-shrink: 0;
+    }
+    .step-dot.done { background: var(--success); color: #fff; }
+    .step-dot.active { background: var(--accent); color: #fff; }
+
+    /* Loading overlay */
+    #loading-overlay {
+      position: fixed; inset: 0; background: var(--navy); z-index: 100;
+      display: none; flex-direction: column; align-items: center; justify-content: center;
+      padding: 2rem;
+    }
+    #loading-overlay.visible { display: flex; }
+
+    .analysis-step {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem;
+      opacity: 0; transform: translateY(8px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .analysis-step.appeared { opacity: 1; transform: translateY(0); }
+
+    .step-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .spinner {
+      width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.2);
+      border-top-color: rgba(255,255,255,0.8); border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .check-icon { display: none; }
+    .analysis-step.complete .spinner { display: none; }
+    .analysis-step.complete .check-icon { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav style="background: var(--bg); border-bottom: 1px solid var(--border);">
+    <div style="max-width: 72rem; margin: 0 auto; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+      <a href="index.html" style="font-family: 'Playfair Display', serif; font-size: 1.375rem; font-weight: 700; color: var(--ink); text-decoration: none;">ResumeProof</a>
+      <span style="font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em;">FREE SCAN</span>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main style="min-height: calc(100vh - 65px); display: flex; align-items: flex-start; justify-content: center; padding: 3rem 1.5rem;">
+    <div style="width: 100%; max-width: 520px;">
+
+      <!-- Progress -->
+      <div style="display: flex; align-items: center; margin-bottom: 2.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <div class="step-dot done">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span style="font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500; color: var(--success);">Resume Uploaded</span>
+        </div>
+        <div style="width: 2.5rem; height: 1px; background: var(--border); margin: 0 0.75rem;"></div>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <div class="step-dot active">2</div>
+          <span style="font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--ink);">Get Your Score</span>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div style="background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 2.5rem;">
+        <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.5rem;">Step 2 of 2</p>
+        <h1 style="font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 700; line-height: 1.15; color: var(--ink); margin: 0 0 0.6rem;">Your Score Is Ready.</h1>
+        <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.1rem; color: var(--ink-2); line-height: 1.65; margin: 0 0 2rem;">Enter your email to see your full AI-Proof Score, breakdown, and the three specific weaknesses we identified.</p>
+
+        <!-- Email field -->
+        <div style="margin-bottom: 1.25rem;">
+          <label class="field-label" for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@company.com" autocomplete="email" oninput="checkReady()">
+        </div>
+
+        <!-- First name (optional) -->
+        <div style="margin-bottom: 1.75rem;">
+          <label class="field-label" for="firstname">First Name <span style="font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label>
+          <input type="text" id="firstname" placeholder="First name" autocomplete="given-name">
+        </div>
+
+        <!-- Privacy note -->
+        <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 0.875rem; color: var(--muted); line-height: 1.5; margin: 0 0 1.5rem; padding: 0.75rem 1rem; background: var(--bg); border-radius: 4px; border-left: 3px solid var(--border);">We'll email your score and send occasional advice for mid-career professionals. No spam. Unsubscribe any time.</p>
+
+        <button class="btn-accent" id="submit-btn" onclick="submitGate()">See My Score &rarr;</button>
+        <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); text-align: center; margin-top: 0.75rem; letter-spacing: 0.05em;">No credit card &middot; Free forever</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- LOADING OVERLAY -->
+  <div id="loading-overlay">
+    <div style="max-width: 380px; width: 100%;">
+      <p style="font-family: 'DM Mono', monospace; font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 0.15em; text-transform: uppercase; margin: 0 0 2.5rem; text-align: center;">Analyzing Resume</p>
+
+      <div class="analysis-step" id="step-parse">
+        <div class="step-icon">
+          <div class="spinner"></div>
+          <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span style="font-family: 'DM Mono', monospace; font-size: 0.875rem; color: rgba(255,255,255,0.85);">Parsing document structure</span>
+      </div>
+
+      <div class="analysis-step" id="step-ats">
+        <div class="step-icon">
+          <div class="spinner"></div>
+          <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span style="font-family: 'DM Mono', monospace; font-size: 0.875rem; color: rgba(255,255,255,0.85);">Running ATS compatibility checks</span>
+      </div>
+
+      <div class="analysis-step" id="step-keywords">
+        <div class="step-icon">
+          <div class="spinner"></div>
+          <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span style="font-family: 'DM Mono', monospace; font-size: 0.875rem; color: rgba(255,255,255,0.85);">Scoring keyword alignment</span>
+      </div>
+
+      <div class="analysis-step" id="step-impact">
+        <div class="step-icon">
+          <div class="spinner"></div>
+          <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span style="font-family: 'DM Mono', monospace; font-size: 0.875rem; color: rgba(255,255,255,0.85);">Measuring impact &amp; specificity</span>
+      </div>
+
+      <div style="margin-top: 2.5rem; text-align: center;">
+        <div style="height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden;">
+          <div id="progress-bar" style="height: 100%; width: 0%; background: var(--accent); transition: width 0.5s ease; border-radius: 2px;"></div>
+        </div>
+        <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; margin-top: 0.75rem;" id="progress-label">Preparing analysis…</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function checkReady() {
+      // Email gate is always submittable once email entered; validation on submit
+    }
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function submitGate() {
+      const email = document.getElementById('email').value.trim();
+      if (!isValidEmail(email)) {
+        document.getElementById('email').style.borderColor = '#991B1B';
+        document.getElementById('email').focus();
+        return;
+      }
+      startAnalysis();
+    }
+
+    function startAnalysis() {
+      const overlay = document.getElementById('loading-overlay');
+      overlay.classList.add('visible');
+
+      const steps = ['step-parse', 'step-ats', 'step-keywords', 'step-impact'];
+      const labels = ['Parsing document structure…', 'Running ATS checks…', 'Scoring keywords…', 'Measuring impact…'];
+      const progressStops = [20, 45, 68, 90];
+
+      let current = 0;
+
+      function showStep(i) {
+        if (i >= steps.length) {
+          // Complete
+          document.getElementById('progress-bar').style.width = '100%';
+          document.getElementById('progress-label').textContent = 'Analysis complete.';
+          setTimeout(() => { window.location.href = 'results.html'; }, 1200);
+          return;
+        }
+        const el = document.getElementById(steps[i]);
+        el.classList.add('appeared');
+        document.getElementById('progress-bar').style.width = progressStops[i] + '%';
+        document.getElementById('progress-label').textContent = labels[i];
+
+        // Complete previous step
+        if (i > 0) {
+          document.getElementById(steps[i-1]).classList.add('complete');
+        }
+
+        setTimeout(() => showStep(i + 1), i === 0 ? 1800 : 2200 + Math.random() * 800);
+      }
+
+      setTimeout(() => showStep(0), 400);
+    }
+  </script>
+</body>
+</html>

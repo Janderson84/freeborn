@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn DIY Guide — ResumeProof</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg: #FAF7EF; --ink: #1C1917; --ink-2: #44403C; --muted: #78716C;
+      --rule: rgba(28,25,23,0.12); --card: #FFFFFF; --border: #E7E2D9;
+      --accent: #C8570A; --accent-hover: #A84208; --navy: #0D2340;
+      --gold: #B08A3C; --success: #166534;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: 'Crimson Pro', Georgia, serif; background: var(--bg); color: var(--ink); margin: 0; padding: 0; }
+
+    .btn-primary {
+      display: block; background: var(--accent); color: #fff;
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 1rem;
+      padding: 0.9rem 2rem; border-radius: 3px; border: none; cursor: pointer;
+      transition: background 0.2s; text-align: center; text-decoration: none;
+      letter-spacing: 0.01em; margin-bottom: 0.75rem;
+    }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary {
+      display: block; text-align: center; font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem; color: var(--muted); text-decoration: none;
+      padding: 0.5rem; transition: color 0.2s;
+    }
+    .btn-secondary:hover { color: var(--ink); }
+  </style>
+</head>
+<body>
+
+  <!-- Soft confirmation banner -->
+  <div style="background: rgba(22,101,52,0.08); border-bottom: 1px solid rgba(22,101,52,0.15); padding: 0.9rem 1.5rem; text-align: center;">
+    <p style="margin: 0; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; color: var(--success);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline; vertical-align: middle; margin-right: 0.35rem;"><polyline points="20 6 9 17 4 12"/></svg>
+      Your resume rewrite is confirmed. Check your email — we'll deliver within 48 hours.
+    </p>
+  </div>
+
+  <!-- NAV -->
+  <nav style="background: var(--bg); border-bottom: 1px solid var(--border);">
+    <div style="max-width: 72rem; margin: 0 auto; padding: 1rem 1.5rem;">
+      <span style="font-family: 'Playfair Display', serif; font-size: 1.375rem; font-weight: 700; color: var(--ink);">ResumeProof</span>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main style="max-width: 44rem; margin: 0 auto; padding: 4rem 1.5rem;">
+
+    <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.75rem;">While You Wait</p>
+    <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin: 0 0 1rem;">No Problem — Here's How to Update Your LinkedIn Yourself.</h1>
+    <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.15rem; color: var(--ink-2); line-height: 1.7; margin: 0 0 2.5rem;">The LinkedIn rewrite isn't for everyone. If you'd rather do it yourself, here's what actually moves the needle — from someone who's reviewed thousands of profiles.</p>
+
+    <hr style="border: none; border-top: 1px solid var(--rule); margin: 0 0 2.5rem;">
+
+    <!-- DIY Guide -->
+    <div style="display: flex; flex-direction: column; gap: 2rem;">
+
+      <div>
+        <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.4rem;">Fix #1</p>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--ink); margin: 0 0 0.6rem;">Rewrite Your Headline Beyond Your Job Title</h2>
+        <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.05rem; color: var(--ink-2); line-height: 1.65; margin: 0;">Your headline defaults to your current title. Change it to a positioning statement: who you help, how, with what result. Example: "VP Operations &bull; $500M+ manufacturers &bull; Supply chain transformation &bull; $47M cost reductions"</p>
+      </div>
+
+      <hr style="border: none; border-top: 1px solid var(--rule);">
+
+      <div>
+        <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.4rem;">Fix #2</p>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--ink); margin: 0 0 0.6rem;">Write Your About Section in First Person</h2>
+        <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.05rem; color: var(--ink-2); line-height: 1.65; margin: 0;">Most About sections read like a resume in prose form. Write it like a human wrote it: "I've spent 18 years..." Lead with the problem you solve for employers, not your job history. End with a call to action.</p>
+      </div>
+
+      <hr style="border: none; border-top: 1px solid var(--rule);">
+
+      <div>
+        <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.4rem;">Fix #3</p>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--ink); margin: 0 0 0.6rem;">Match Your Most Recent Three Roles to Your Resume</h2>
+        <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.05rem; color: var(--ink-2); line-height: 1.65; margin: 0;">Once your new resume arrives, copy the quantified bullets from your three most recent roles into LinkedIn. Exact matches between the two documents signal consistency and reduce recruiter skepticism.</p>
+      </div>
+
+    </div>
+
+    <hr style="border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0;">
+
+    <!-- Soft re-offer -->
+    <div style="background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 1.75rem; margin-bottom: 2rem;">
+      <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.75rem;">Prefer We Handle It?</p>
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--ink); margin: 0 0 0.6rem;">Still available for $37 — matched to your new resume.</p>
+      <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1rem; color: var(--muted); line-height: 1.6; margin: 0 0 1.25rem;">The DIY path works if you have time. If you'd rather have it done right and delivered with your resume, the offer is still open for a limited time.</p>
+      <div style="max-width: 280px;">
+        <a href="thanks.html" class="btn-primary">Yes, Add LinkedIn for $37 &rarr;</a>
+        <a href="thanks.html" class="btn-secondary">No thanks — take me to my order</a>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

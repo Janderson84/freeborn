@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your AI-Proof Score — ResumeProof</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg: #FAF7EF; --bg-dark: #0D2340; --ink: #1C1917; --ink-2: #44403C;
+      --muted: #78716C; --rule: rgba(28,25,23,0.12); --card: #FFFFFF;
+      --border: #E7E2D9; --accent: #C8570A; --accent-hover: #A84208;
+      --navy: #0D2340; --navy-2: #1A3A5C; --gold: #B08A3C;
+      --danger: #991B1B; --warning: #92400E; --success: #166534;
+      --danger-bg: #FEF2F2; --warning-bg: #FFFBEB; --success-bg: #F0FDF4;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: 'Crimson Pro', Georgia, serif; background: var(--bg); color: var(--ink); margin: 0; padding: 0; }
+
+    .score-number {
+      font-family: 'DM Mono', monospace; font-size: clamp(5rem, 18vw, 8rem);
+      font-weight: 500; line-height: 1; display: block;
+    }
+    .score-high { color: #ef4444; }
+    .score-medium { color: #f59e0b; }
+    .score-low-ok { color: #22c55e; }
+
+    .risk-pill {
+      display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.3rem 0.75rem; border-radius: 2rem;
+    }
+    .risk-high { background: rgba(239,68,68,0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3); }
+    .risk-medium { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .risk-low { background: rgba(34,197,94,0.15); color: #86efac; border: 1px solid rgba(34,197,94,0.3); }
+
+    .score-bar-track { background: rgba(0,0,0,0.07); border-radius: 2px; height: 8px; overflow: hidden; flex: 1; }
+    .score-bar-fill { height: 100%; border-radius: 2px; transition: width 1s ease; }
+
+    .weakness-number {
+      font-family: 'DM Mono', monospace; font-size: 3.5rem; font-weight: 500;
+      color: var(--ink); opacity: 0.08; line-height: 1; position: absolute;
+      top: -0.5rem; right: 1rem; pointer-events: none;
+    }
+
+    .callout-before {
+      background: var(--warning-bg); border-left: 3px solid var(--warning);
+      padding: 0.9rem 1.1rem; border-radius: 0 4px 4px 0;
+      font-family: 'Crimson Pro', Georgia, serif; font-style: italic;
+      font-size: 1rem; color: var(--warning); line-height: 1.6;
+    }
+    .callout-after {
+      background: var(--success-bg); border-left: 3px solid var(--success);
+      padding: 0.9rem 1.1rem; border-radius: 0 4px 4px 0;
+      font-family: 'Crimson Pro', Georgia, serif; font-style: italic;
+      font-size: 1rem; color: var(--success); line-height: 1.6;
+    }
+
+    .btn-accent {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 1.1rem;
+      padding: 1rem 2.25rem; border-radius: 3px; text-decoration: none;
+      transition: background 0.2s; border: none; cursor: pointer; letter-spacing: 0.01em;
+    }
+    .btn-accent:hover { background: var(--accent-hover); }
+
+    /* Sticky mobile bar */
+    #sticky-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+      background: var(--navy); border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between;
+      transform: translateY(100%); transition: transform 0.3s ease;
+    }
+    #sticky-bar.visible { transform: translateY(0); }
+
+    @media (min-width: 768px) { #sticky-bar { display: none !important; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav style="background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.08);">
+    <div style="max-width: 72rem; margin: 0 auto; padding: 1rem 1.5rem; display: flex; align-items: center;">
+      <span style="font-family: 'Playfair Display', serif; font-size: 1.375rem; font-weight: 700; color: #fff; letter-spacing: -0.01em;">ResumeProof</span>
+      <span style="font-family: 'DM Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase; margin-left: 1rem;">Diagnostic Report</span>
+    </div>
+  </nav>
+
+  <!-- SCORE HERO -->
+  <section style="background: var(--navy); padding: 4rem 1.5rem 3.5rem; text-align: center;">
+    <div style="max-width: 44rem; margin: 0 auto;">
+      <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; color: rgba(255,255,255,0.45); text-transform: uppercase; margin: 0 0 1.5rem;">Your AI-Proof Score</p>
+      <span class="score-number score-high" id="score-display">31</span>
+      <div style="margin: 1.25rem 0 1rem;">
+        <span class="risk-pill risk-high" id="risk-pill">High Risk</span>
+      </div>
+      <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.25rem; color: rgba(255,255,255,0.7); line-height: 1.65; max-width: 34rem; margin: 0 auto;">Your resume is being filtered out by ATS systems before a recruiter reads it. Three specific liabilities are responsible for 68% of your score gap.</p>
+    </div>
+  </section>
+
+  <!-- SCORE BREAKDOWN -->
+  <section style="background: var(--card); padding: 4rem 1.5rem;">
+    <div style="max-width: 44rem; margin: 0 auto;">
+      <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.6rem;">Score Breakdown</p>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--ink); margin: 0 0 2.5rem;">Where Your Score Comes From</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <!-- ATS Parse -->
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
+            <span style="font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--ink);">ATS Parse Quality</span>
+            <span style="font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #991B1B; font-weight: 500;">28 / 100</span>
+          </div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width: 28%; background: #ef4444;"></div></div>
+          <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 0.9rem; color: var(--muted); margin: 0.35rem 0 0; line-height: 1.5;">Your formatting is preventing automated systems from extracting key information correctly.</p>
+        </div>
+        <!-- Keywords -->
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
+            <span style="font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--ink);">Keyword Alignment</span>
+            <span style="font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #92400E; font-weight: 500;">41 / 100</span>
+          </div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width: 41%; background: #f59e0b;"></div></div>
+          <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 0.9rem; color: var(--muted); margin: 0.35rem 0 0; line-height: 1.5;">Your vocabulary doesn't match what hiring algorithms score for in your target roles.</p>
+        </div>
+        <!-- Impact -->
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
+            <span style="font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--ink);">Impact &amp; Specificity</span>
+            <span style="font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #92400E; font-weight: 500;">38 / 100</span>
+          </div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width: 38%; background: #f59e0b;"></div></div>
+          <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 0.9rem; color: var(--muted); margin: 0.35rem 0 0; line-height: 1.5;">Most bullets describe responsibilities, not measurable results. Human reviewers discount them heavily.</p>
+        </div>
+        <!-- Differentiation -->
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
+            <span style="font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--ink);">Differentiation Index</span>
+            <span style="font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #991B1B; font-weight: 500;">22 / 100</span>
+          </div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width: 22%; background: #ef4444;"></div></div>
+          <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 0.9rem; color: var(--muted); margin: 0.35rem 0 0; line-height: 1.5;">Your resume reads like every other candidate. Nothing positions you as distinctly preferable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEAKNESSES -->
+  <section style="background: var(--bg); padding: 4rem 1.5rem;">
+    <div style="max-width: 44rem; margin: 0 auto;">
+      <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.6rem;">Identified Liabilities</p>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--ink); margin: 0 0 2.5rem; line-height: 1.2;">Your Three Biggest Resume Liabilities</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 2rem;">
+
+        <!-- Weakness 1 -->
+        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 1.75rem; position: relative; overflow: hidden;">
+          <span class="weakness-number">01</span>
+          <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; margin: 0 0 0.4rem;">Liability #1</p>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); margin: 0 0 1.25rem;">Duty-Based Bullets With No Quantified Outcomes</h3>
+
+          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.4rem;">What We Found</p>
+          <div class="callout-before" style="margin-bottom: 0.75rem;">"Managed cross-functional teams to deliver strategic initiatives aligned with business objectives."</div>
+
+          <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1rem; color: var(--ink-2); line-height: 1.65; margin: 0 0 1.25rem;">This bullet appears on 91% of resumes we've analyzed. It signals nothing concrete to a screener. It describes a job category, not a candidate. Hiring systems flag it as low-signal — and human reviewers read right past it.</p>
+
+          <div style="text-align: center; margin: 0.75rem 0; font-size: 1.25rem; color: var(--muted);">↓</div>
+
+          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.4rem;">What It Should Look Like</p>
+          <div class="callout-after">"Led 3 cross-functional teams (14 FTEs) to ship a $2.4M product initiative 6 weeks ahead of schedule, reducing customer churn by 18% in the following quarter."</div>
+        </div>
+
+        <!-- Weakness 2 -->
+        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 1.75rem; position: relative; overflow: hidden;">
+          <span class="weakness-number">02</span>
+          <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; margin: 0 0 0.4rem;">Liability #2</p>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); margin: 0 0 1.25rem;">Two-Column Layout Causing Critical ATS Parse Failures</h3>
+
+          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.4rem;">What We Found</p>
+          <div class="callout-before" style="margin-bottom: 0.75rem;">Your resume uses a side-column layout with skills and contact info placed in a separate left column. This reads well to humans but is frequently parsed incorrectly by ATS systems — contact data merges with work history, skills appear in the wrong section.</div>
+
+          <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1rem; color: var(--ink-2); line-height: 1.65; margin: 0 0 1.25rem;">Major ATS platforms including Workday, Greenhouse, and Taleo have documented failures with multi-column PDF layouts. The result: your resume may be imported as garbled text, with your name, employer, and title scrambled.</p>
+
+          <div style="text-align: center; margin: 0.75rem 0; font-size: 1.25rem; color: var(--muted);">↓</div>
+
+          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.4rem;">What It Should Look Like</p>
+          <div class="callout-after">A single-column layout with clearly labeled sections (Work Experience, Education, Skills) in a standard reading order. All content flows top-to-bottom. Headers and section titles use standard terms that ATS field-mappers recognize.</div>
+        </div>
+
+        <!-- Weakness 3 -->
+        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 1.75rem; position: relative; overflow: hidden;">
+          <span class="weakness-number">03</span>
+          <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; margin: 0 0 0.4rem;">Liability #3</p>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); margin: 0 0 1.25rem;">No Positioning Statement — You Look Like Everyone Else</h3>
+
+          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.4rem;">What We Found</p>
+          <div class="callout-before" style="margin-bottom: 0.75rem;">Your resume opens directly with your most recent job title and employer. There is no summary, positioning statement, or headline to orient the reader before they scan your history.</div>
+
+          <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1rem; color: var(--ink-2); line-height: 1.65; margin: 0 0 1.25rem;">A recruiter spending 7 seconds on your resume needs to know what you are before they'll read what you've done. Without a clear positioning statement, they impose their own interpretation — which is usually generic. Your 20 years of experience gets flattened to "another operations person."</p>
+
+          <div style="text-align: center; margin: 0.75rem 0; font-size: 1.25rem; color: var(--muted);">↓</div>
+
+          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.4rem;">What It Should Look Like</p>
+          <div class="callout-after">"Operations executive with 18 years leading supply chain transformations at $500M+ manufacturers. Consistent track record: 3 companies, $47M in cost reductions, 0 missed delivery commitments in the last 6 years."</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER BOX -->
+  <section id="offer-section" style="background: var(--navy); padding: 4.5rem 1.5rem;">
+    <div style="max-width: 44rem; margin: 0 auto;">
+      <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin: 0 0 1rem;">Fix It This Week</p>
+      <h2 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; color: #fff; line-height: 1.2; margin: 0 0 1.5rem;">Get a Human-Written Resume That Passes Every Screen We Just Failed You On.</h2>
+
+      <ul style="list-style: none; margin: 0 0 2rem; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+        <li style="display: flex; align-items: flex-start; gap: 0.75rem; font-family: 'Crimson Pro', Georgia, serif; font-size: 1.05rem; color: rgba(255,255,255,0.8); line-height: 1.5;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><polyline points="20 6 9 17 4 12"/></svg>
+          Full resume rewrite targeting your specific role category
+        </li>
+        <li style="display: flex; align-items: flex-start; gap: 0.75rem; font-family: 'Crimson Pro', Georgia, serif; font-size: 1.05rem; color: rgba(255,255,255,0.8); line-height: 1.5;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><polyline points="20 6 9 17 4 12"/></svg>
+          Every bullet rewritten to quantified impact format
+        </li>
+        <li style="display: flex; align-items: flex-start; gap: 0.75rem; font-family: 'Crimson Pro', Georgia, serif; font-size: 1.05rem; color: rgba(255,255,255,0.8); line-height: 1.5;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><polyline points="20 6 9 17 4 12"/></svg>
+          ATS-optimized single-column format (passes Workday, Greenhouse, Taleo)
+        </li>
+        <li style="display: flex; align-items: flex-start; gap: 0.75rem; font-family: 'Crimson Pro', Georgia, serif; font-size: 1.05rem; color: rgba(255,255,255,0.8); line-height: 1.5;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><polyline points="20 6 9 17 4 12"/></svg>
+          Positioning statement written to your seniority and target role
+        </li>
+        <li style="display: flex; align-items: flex-start; gap: 0.75rem; font-family: 'Crimson Pro', Georgia, serif; font-size: 1.05rem; color: rgba(255,255,255,0.8); line-height: 1.5;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><polyline points="20 6 9 17 4 12"/></svg>
+          Re-scored against the same 47-point diagnostic after delivery
+        </li>
+      </ul>
+
+      <!-- Pricing -->
+      <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 1.75rem 2rem; margin-bottom: 1.5rem;">
+        <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.5rem;">
+          <span style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.1rem; color: rgba(255,255,255,0.4); text-decoration: line-through;">$197</span>
+          <span style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: #fff;">$27</span>
+          <span style="font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase;">Launch Price</span>
+        </div>
+        <p style="font-family: 'DM Mono', monospace; font-size: 0.7rem; color: rgba(255,255,255,0.45); letter-spacing: 0.08em; margin: 0 0 1.5rem;">Price returns to $197 at midnight tonight &middot; 23 spots remaining at this rate</p>
+        <a href="checkout.html" class="btn-accent" style="display: block; text-align: center; font-size: 1.125rem; padding: 1.1rem 2rem;">Fix My Resume for $27 &rarr;</a>
+      </div>
+
+      <!-- Trust strip -->
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 1.25rem;">
+        <span style="font-family: 'DM Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.45); letter-spacing: 0.08em;">48-hour delivery</span>
+        <span style="color: rgba(255,255,255,0.2);">&middot;</span>
+        <span style="font-family: 'DM Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.45); letter-spacing: 0.08em;">Human-written</span>
+        <span style="color: rgba(255,255,255,0.2);">&middot;</span>
+        <span style="font-family: 'DM Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.45); letter-spacing: 0.08em;">Money-back guarantee</span>
+      </div>
+
+      <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 0.9rem; color: rgba(255,255,255,0.3); text-align: center; margin: 0;">Not ready? Your free score report has been sent to your email. You can return to this page from that email any time.</p>
+    </div>
+  </section>
+
+  <!-- STICKY MOBILE BAR -->
+  <div id="sticky-bar">
+    <div>
+      <span style="font-family: 'DM Mono', monospace; font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 0.08em;">Your score: </span>
+      <span style="font-family: 'DM Mono', monospace; font-size: 1rem; font-weight: 500; color: #ef4444;">31</span>
+      <span style="font-family: 'DM Sans', sans-serif; font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-left: 0.4rem;">High Risk</span>
+    </div>
+    <a href="checkout.html" style="background: var(--accent); color: #fff; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.875rem; padding: 0.6rem 1.25rem; border-radius: 3px; text-decoration: none; white-space: nowrap; flex-shrink: 0;">Fix It for $27 &rarr;</a>
+  </div>
+
+  <script>
+    // Show sticky bar when offer section is out of viewport (mobile)
+    const offerSection = document.getElementById('offer-section');
+    const stickyBar = document.getElementById('sticky-bar');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (window.innerWidth < 768) {
+          stickyBar.classList.toggle('visible', !entry.isIntersecting);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    observer.observe(offerSection);
+  </script>
+
+</body>
+</html>

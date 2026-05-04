@@ -1,0 +1,133 @@
+{
+  "landing_page": {
+    "eyebrow": "For experienced professionals who are qualified — and getting ghosted anyway",
+    "headline": "Your Resume Lists What You Did. Hiring Managers Are Looking for Evidence of What You'd Decide.",
+    "subheadline": "Run a free AI-Proof Score scan on your resume. Find out exactly why you're not getting callbacks — in 60 seconds.",
+    "cta_primary": "Scan My Resume Free →",
+    "trust_strip": "Built by a VP of Sales who has personally hired hundreds of people — and spent years on the other side of this frustration.",
+    "section_report_preview": {
+      "heading": "Your Free Scan Flags What Most Professionals Have Never Been Told",
+      "items": [
+        { "label": "Task Density Score", "description": "How much of your resume reads like a job description versus a record of decisions made, problems solved, and outcomes owned." },
+        { "label": "Judgment Signal Score", "description": "Whether a hiring manager can infer what kind of leader you are from your bullet points — or just what your job responsibilities were." },
+        { "label": "Impact Legibility Score", "description": "Can a reader immediately grasp the scale and quality of your work, or do they have to guess?" },
+        { "label": "AI Blend Risk Score", "description": "Whether your language patterns signal human authorship and earned experience — or generic output that reads like every other resume in the pile." }
+      ]
+    },
+    "section_why_now": {
+      "heading": "The Market Didn't Get Harder. The Filter Did.",
+      "paragraphs": [
+        "There are two candidates for every serious role right now. Same title. Same years of experience. Similar industries. One gets the interview. One doesn't. The difference isn't credentials — it's whether the resume communicates judgment or just presence.",
+        "AI tools have flooded every applicant pool with polished, keyword-dense, completely interchangeable resumes. That means the floor went up and the ceiling got harder to reach. A mediocre resume used to be a minor disadvantage. Now it's invisible.",
+        "This isn't an AI problem. It's a clarity problem. Your career has an arc — a real one, with decisions that paid off, teams you shaped, bets you made and won. None of that shows up if your resume reads like a task list."
+      ]
+    },
+    "section_how_it_works": {
+      "heading": "Three Steps to a Resume That Actually Reflects Your Career",
+      "steps": [
+        "Step 1: Upload your resume and tell us the type of role you're targeting. Takes 90 seconds. No account required.",
+        "Step 2: We run your resume through our scoring model and flag the exact weaknesses — task language where judgment language should be, missing impact signals, AI-blend risk, narrative gaps.",
+        "Step 3: If you want it fixed, the AI-Proof Resume Rewrite Sprint is $27. A human writer with hiring-manager experience rewrites your resume in 48 hours."
+      ]
+    },
+    "section_faq": [
+      { "question": "Is this just another AI tool that produces generic output?", "answer": "No. The scan is algorithmic. The rewrite is human. Specifically, a writer who has been a VP of Sales, has hired hundreds of people, and has spent years on both sides of this." },
+      { "question": "I already had my resume professionally rewritten and didn't get more interviews.", "answer": "Most resume services optimize for ATS keywords and surface polish. They produce something that looks better but reads the same — still task-heavy, still generic, still missing the judgment signals that experienced hiring managers actually respond to." },
+      { "question": "Is $27 actually credible for a full rewrite?", "answer": "We price it low on purpose. We're trying to prove the point. Twenty-seven dollars is a reasonable number to spend on a proof of concept." },
+      { "question": "What if I only need small tweaks, not a full rewrite?", "answer": "Run the scan first. If you score low risk across the board, you probably don't need us — and we'll say so." },
+      { "question": "What do I need to provide for the rewrite?", "answer": "Your existing resume and a short intake form. We do the rest. Delivery in 48 hours." }
+    ],
+    "final_cta": "Scan My Resume Free — Find Out Why You're Getting Ghosted →",
+    "founder_credibility_block": {
+      "heading": "I've Been on Both Sides of This Desk",
+      "body": "I spent years applying for roles I was qualified for and hearing nothing. Then I made a career pivot into tech sales in my late 30s — when I was supposedly too old, too outside the mold, too late. It worked. Then I became the VP making the hiring calls. I've reviewed thousands of resumes. I've seen exactly what experienced professionals get wrong — not because they're not good at their jobs, but because no one has ever told them plainly what a hiring manager is actually looking for.",
+      "byline": "— Founder, ResumeProof | Former VP of Sales | Career Pivot Practitioner"
+    }
+  },
+  "scan_page": {
+    "heading": "Let's See What a Hiring Manager Sees When They Open Your Resume",
+    "subheadline": "Upload your resume and tell us the type of role you're targeting. Your score and top three weaknesses will be ready in under 60 seconds.",
+    "field_resume_label": "Upload Your Resume",
+    "field_resume_hint": "PDF or Word doc. We don't store your file after scoring.",
+    "field_target_label": "What type of role are you targeting?",
+    "field_target_options": ["Individual contributor / senior specialist", "Manager or director", "VP, C-suite, or executive"],
+    "cta_button": "Analyze My Resume →"
+  },
+  "email_gate_page": {
+    "heading": "Your Score Is Ready.",
+    "subheadline": "Enter your email and we'll show you your AI-Proof Score, your risk level, and the three specific weaknesses dragging down your callback rate.",
+    "cta_button": "Show Me My Score →",
+    "consent_text": "We'll also send your results to this address. No daily emails. Unsubscribe anytime.",
+    "loading_heading": "Analyzing Your Resume…",
+    "loading_steps": ["Scanning for task language vs. judgment language ratio…", "Measuring impact legibility across each role…", "Flagging AI-blend risk patterns in phrasing and structure…", "Calculating your overall AI-Proof Score…"]
+  },
+  "results_page": {
+    "score_label": "Your AI-Proof Score",
+    "risk_level_labels": { "HIGH": "High Displacement Risk", "MEDIUM": "Moderate Displacement Risk", "LOW": "Low Displacement Risk" },
+    "score_interpretations": {
+      "HIGH": "Your resume is doing real damage to your search. It reads like a job description — heavy on responsibilities, thin on the decisions and outcomes that signal leadership capability. In the current market, this document is functionally invisible to experienced hiring managers.",
+      "MEDIUM": "Your resume has a foundation, but it's working against you in ways you probably haven't identified. Some roles and accomplishments come through clearly. Others are buried in task language that doesn't communicate what you actually contributed.",
+      "LOW": "Your resume is performing reasonably well — better than most. The risks we flagged below are refinements, not overhauls."
+    },
+    "weaknesses_heading": "Your Three Biggest Resume Liabilities",
+    "weakness_section_labels": { "found_on_resume": "What We Found", "why_it_hurts": "Why It's Costing You Interviews", "what_it_should_look_like": "What It Should Look Like Instead" },
+    "offer_box": {
+      "eyebrow": "Want This Fixed in 48 Hours?",
+      "heading": "The AI-Proof Resume Rewrite Sprint",
+      "description": "A human writer with real hiring-manager experience rebuilds your resume from the ground up — not edited, not keyword-stuffed, rebuilt around the evidence of your judgment, decisions, and career arc.",
+      "bullets": ["Full rewrite by a human — not a template, not AI-generated", "Written by someone who has personally hired hundreds of people", "Built around your specific career: your decisions, your outcomes, your trajectory", "Formatted and ready to submit — Word and PDF delivered", "48-hour turnaround from intake form submission"],
+      "price_crossed": "$197",
+      "price_current": "$27",
+      "price_justification": "We price the Sprint low because we want to earn your trust before asking for more of it.",
+      "cta_button": "Fix My Resume for $27 →",
+      "trust_strip": "48-hour delivery · Human-written · Money-back if we miss your deadline",
+      "non_buyer_note": "Not ready yet? Your score and weakness report have been sent to your email."
+    }
+  },
+  "checkout_page": {
+    "heading": "You're One Step Away from a Resume That Reflects What You've Actually Built",
+    "subheadline": "Complete your order below. You'll receive an intake form immediately after purchase.",
+    "order_item_label": "AI-Proof Resume Rewrite Sprint — 48-Hour Delivery",
+    "bump_eyebrow": "Add Before You Checkout — Based on Your Scan Results",
+    "bump_heading": "Priority Review + Hiring Manager Commentary ($17 Add-On)",
+    "bump_body": "Your rewrite comes with the revised document. This add-on includes a Loom walkthrough — 8 to 12 minutes — where your writer explains every major change and what signal it sends to a hiring manager.",
+    "bump_cta": "Yes — Add the Hiring Manager Commentary Walkthrough for $17",
+    "cta_button": "Complete My Order →",
+    "trust_strip": "Secure checkout · Immediate confirmation · 48-hour delivery guarantee"
+  },
+  "upsell_page": {
+    "headline": "Your Resume Is Being Fixed. Your LinkedIn Is Still Working Against You.",
+    "subheadline": "Most hiring managers check LinkedIn before they respond to a resume. If your profile still reads like a job description, the resume won't matter.",
+    "offer_heading": "LinkedIn Profile Overhaul — Human-Written, Delivered in 72 Hours",
+    "offer_description": "The same judgment-first framework applied to your full LinkedIn profile. Headline, About section, all experience entries, and featured section strategy.",
+    "bullets": ["LinkedIn headline rewritten to reflect positioning, not just current title", "About section rebuilt as a credibility narrative", "All experience entries rewritten to match your new resume's frame", "Featured section strategy included", "Search optimization for the roles you're targeting", "Delivered as a written brief you paste directly into LinkedIn"],
+    "urgency_box": "This offer is available on this page only. The standalone service is $197.",
+    "price_crossed": "$197",
+    "price_current": "$97",
+    "cta_yes": "Yes — Add the LinkedIn Overhaul for $97 →",
+    "cta_no": "No thanks — I'll take my chances with LinkedIn as-is"
+  },
+  "downsell_page": {
+    "headline": "Fair Enough. Here's Something That Costs Less and Still Closes the Gap.",
+    "subheadline": "You don't need us to rewrite your LinkedIn. But if it still reads like a job description, it's going to undercut the resume we just rebuilt for you.",
+    "offer_heading": "The LinkedIn DIY Pack",
+    "bullets": ["The exact headline formula we use for client rewrites — with 12 fill-in examples", "The About section framework: four-part structure", "The judgment-first bullet template", "A before/after swipe file of 20 real LinkedIn transformations", "A 15-minute self-audit checklist"],
+    "urgency_note": "Available on this page only. Not sold separately.",
+    "price_crossed": "$97",
+    "price_current": "$47",
+    "cta_yes": "Yes — Give Me the LinkedIn DIY Pack for $47 →",
+    "cta_no": "No thanks — I don't need LinkedIn help right now"
+  },
+  "thank_you_page": {
+    "headline": "You're In. The Rewrite Clock Starts When You Submit Your Intake Form.",
+    "subheadline": "Check your email for the intake form link. It takes about five minutes.",
+    "timeline_steps": [
+      { "timing": "Right now", "description": "Check your inbox for your order confirmation and intake form link." },
+      { "timing": "Within 2 hours of intake submission", "description": "Your writer reviews your intake and current resume." },
+      { "timing": "Within 48 hours of intake submission", "description": "Your rewritten resume lands in your inbox. Word and PDF formats." },
+      { "timing": "48 hours + 1 day", "description": "You have three days to request one round of revisions." }
+    ],
+    "while_you_wait_heading": "While You Wait — One Thing Worth Doing Right Now",
+    "while_you_wait_body": "Pull up the last three job postings you applied to and didn't hear back from. Open your current resume. Read one bullet point from each role. Ask yourself: does this tell a reader what I decided, or just what I was responsible for? That's the gap we're closing."
+  }
+}

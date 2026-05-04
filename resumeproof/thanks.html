@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed — ResumeProof</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg: #FAF7EF; --ink: #1C1917; --ink-2: #44403C; --muted: #78716C;
+      --rule: rgba(28,25,23,0.12); --card: #FFFFFF; --border: #E7E2D9;
+      --accent: #C8570A; --navy: #0D2340; --gold: #B08A3C;
+      --success: #166534; --success-bg: #F0FDF4;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: 'Crimson Pro', Georgia, serif; background: var(--bg); color: var(--ink); margin: 0; padding: 0; }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 2.75rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0.875rem; top: 1.5rem; bottom: 0;
+      width: 2px; background: var(--border);
+    }
+    .timeline-item { position: relative; padding-bottom: 2rem; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      position: absolute; left: -2.75rem; top: 0.2rem;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--card); border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Mono', monospace; font-size: 0.65rem;
+      font-weight: 500; color: var(--muted); z-index: 1;
+    }
+    .timeline-dot.complete { background: var(--success); border-color: var(--success); color: #fff; }
+    .timeline-dot.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .timeline-timing {
+      font-family: 'DM Mono', monospace; font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 0.3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav style="background: var(--bg); border-bottom: 1px solid var(--border);">
+    <div style="max-width: 72rem; margin: 0 auto; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+      <span style="font-family: 'Playfair Display', serif; font-size: 1.375rem; font-weight: 700; color: var(--ink);">ResumeProof</span>
+    </div>
+  </nav>
+
+  <!-- CONFIRMATION HERO -->
+  <section style="background: var(--success-bg); border-bottom: 1px solid rgba(22,101,52,0.15); padding: 3.5rem 1.5rem 3rem; text-align: center;">
+    <div style="max-width: 44rem; margin: 0 auto;">
+      <div style="width: 56px; height: 56px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--success); margin: 0 0 0.75rem;">Order Confirmed</p>
+      <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin: 0 0 1rem;">Your Resume Rewrite Is in Progress.</h1>
+      <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.15rem; color: var(--ink-2); line-height: 1.65; max-width: 36rem; margin: 0 auto;">A confirmation has been sent to your email. You'll receive your rewritten resume within 48 hours. Here's exactly what happens next.</p>
+    </div>
+  </section>
+
+  <!-- WHAT HAPPENS NEXT -->
+  <section style="background: var(--bg); padding: 4rem 1.5rem;">
+    <div style="max-width: 40rem; margin: 0 auto;">
+      <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.75rem;">Your Timeline</p>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; color: var(--ink); margin: 0 0 2.5rem;">What Happens From Here</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot complete">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <p class="timeline-timing" style="color: var(--success);">Right Now — Done</p>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); margin: 0 0 0.4rem;">Order Received &amp; Confirmation Sent</h3>
+          <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1rem; color: var(--ink-2); line-height: 1.6; margin: 0;">Check your inbox — a receipt with your order details has been sent. If you don't see it within 5 minutes, check spam or email us at support@resumeproof.com.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot active">2</div>
+          <p class="timeline-timing" style="color: var(--accent);">Within 2 Hours</p>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); margin: 0 0 0.4rem;">Writer Assignment</h3>
+          <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1rem; color: var(--ink-2); line-height: 1.6; margin: 0;">A writer with experience in your target role category is assigned to your project. They review your original resume and your diagnostic results before writing begins.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">3</div>
+          <p class="timeline-timing" style="color: var(--muted);">Within 24 Hours</p>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); margin: 0 0 0.4rem;">First Draft + Any Questions</h3>
+          <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1rem; color: var(--ink-2); line-height: 1.6; margin: 0;">If your writer needs any clarification (specific metrics, project names, dates), they'll email you directly. Otherwise, the first draft moves straight to QA and re-scoring.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">4</div>
+          <p class="timeline-timing" style="color: var(--muted);">Within 48 Hours</p>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); margin: 0 0 0.4rem;">Delivery + Re-Score Report</h3>
+          <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1rem; color: var(--ink-2); line-height: 1.6; margin: 0;">Your completed resume arrives in PDF and DOCX format, along with a new diagnostic score showing the improvement across all four dimensions. One round of revisions included.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHILE YOU WAIT -->
+  <section style="background: var(--card); padding: 4rem 1.5rem; border-top: 1px solid var(--border);">
+    <div style="max-width: 40rem; margin: 0 auto;">
+      <p style="font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.75rem;">While You Wait</p>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.375rem, 2.5vw, 1.75rem); font-weight: 700; color: var(--ink); margin: 0 0 1rem;">One Question Worth Thinking About</h2>
+      <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.15rem; color: var(--ink-2); line-height: 1.7; margin: 0 0 1.25rem;">Your writer is going to ask you for the specific numbers behind your work. Not job descriptions — evidence.</p>
+      <p style="font-family: 'Crimson Pro', Georgia, serif; font-size: 1.15rem; color: var(--ink-2); line-height: 1.7; margin: 0 0 1.5rem;">Before they email you: spend 15 minutes writing down the three most specific, measurable things you've accomplished in the last 5 years. Revenue influenced, costs reduced, teams led, projects shipped, customers served. Dollar figures, percentages, headcounts, timelines.</p>
+      <div style="background: var(--bg); border-left: 3px solid var(--accent); padding: 1rem 1.25rem; border-radius: 0 4px 4px 0;">
+        <p style="font-family: 'Crimson Pro', Georgia, serif; font-style: italic; font-size: 1.05rem; color: var(--ink-2); margin: 0; line-height: 1.65;">The more specific you can be, the stronger your resume will be. "Reduced costs by 22% ($1.4M)" will always outperform "improved operational efficiency."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background: var(--bg); border-top: 1px solid var(--border); padding: 2rem 1.5rem; text-align: center;">
+    <div style="max-width: 40rem; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; align-items: center;">
+      <span style="font-family: 'Playfair Display', serif; font-weight: 700; color: var(--ink); font-size: 1rem;">ResumeProof</span>
+      <a href="mailto:support@resumeproof.com" style="font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); text-decoration: none; letter-spacing: 0.05em;">support@resumeproof.com</a>
+      <a href="index.html#faq" style="font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); text-decoration: none; letter-spacing: 0.05em;">FAQ</a>
+    </div>
+  </footer>
+
+</body>
+</html>
